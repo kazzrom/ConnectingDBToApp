@@ -7,4 +7,13 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Images\SSMS\" />
+    <Folder Include="Images\SQLite\" />
+    <Folder Include="Images\Icons\" />
+    <Folder Include="Views\Pages\" />
+    <Folder Include="ViewModels\" />
+    <Folder Include="Fonts\" />
+  </ItemGroup>
+
 </Project>
