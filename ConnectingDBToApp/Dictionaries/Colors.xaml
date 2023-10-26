@@ -1,4 +1,9 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    
+    <SolidColorBrush x:Key="BackgroundWindowColor" Color="#F2F2F2"/>
+    <SolidColorBrush x:Key="BackgroundMenuColor" Color="#8A8C99"/>
+    <SolidColorBrush x:Key="BackgroundDarkGray" Color="#424C55"/>
+    <SolidColorBrush x:Key="MouseOverColor" Color="#D1CCDC"/>
+    <SolidColorBrush x:Key="ActiveStateColor" Color="#FFFFFF"/>
+    <SolidColorBrush x:Key="TitleWindowColor" Color="#F5EDF0"/>
 </ResourceDictionary>

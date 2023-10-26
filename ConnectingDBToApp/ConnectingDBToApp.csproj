@@ -8,12 +8,88 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Images\SSMS\" />
-    <Folder Include="Images\SQLite\" />
-    <Folder Include="Images\Icons\" />
+    <None Remove="Fonts\Mulish.ttf" />
+    <None Remove="Images\Icons\close.png" />
+    <None Remove="Images\Icons\fullscreen.png" />
+    <None Remove="Images\Icons\fullscreen_exit.png" />
+    <None Remove="Images\Icons\menu_close.png" />
+    <None Remove="Images\Icons\minimize.png" />
+    <None Remove="Images\Icons\SQLite.png" />
+    <None Remove="Images\Icons\SSMS.png" />
+    <None Remove="Images\Icons\Test.png" />
+    <None Remove="Images\SQLite\CreatingDB_1.png" />
+    <None Remove="Images\SQLite\CreatingDB_2.png" />
+    <None Remove="Images\SQLite\CreatingDB_3.png" />
+    <None Remove="Images\SQLite\CreatingDB_4.png" />
+    <None Remove="Images\SQLite\CreatingDB_5.png" />
+    <None Remove="Images\SQLite\CreatingDB_6.png" />
+    <None Remove="Images\SQLite\CreatingDB_7.png" />
+    <None Remove="Images\SQLite\EFCoreConnectingDB_1.png" />
+    <None Remove="Images\SQLite\EFCoreConnectingDB_2.png" />
+    <None Remove="Images\SQLite\EFCoreConnectingDB_3.png" />
+    <None Remove="Images\SQLite\EFCoreConnectingDB_4.png" />
+    <None Remove="Images\SQLite\EFCoreConnectingDB_5.png" />
+    <None Remove="Images\SQLite\EFCoreConnectingDB_6.png" />
+    <None Remove="Images\SQLite\EFCoreConnectingDB_DataGrid.png" />
+    <None Remove="Images\SSMS\ConnectingDB_1.png" />
+    <None Remove="Images\SSMS\ConnectingDB_2.png" />
+    <None Remove="Images\SSMS\ConnectingDB_3.png" />
+    <None Remove="Images\SSMS\ConnectingDB_4.png" />
+    <None Remove="Images\SSMS\ConnectingDB_5.png" />
+    <None Remove="Images\SSMS\ConnectingDB_6.png" />
+    <None Remove="Images\SSMS\ConnectingDB_7.png" />
+    <None Remove="Images\SSMS\CreatingDB_1.png" />
+    <None Remove="Images\SSMS\CreatingDB_10.png" />
+    <None Remove="Images\SSMS\CreatingDB_11.png" />
+    <None Remove="Images\SSMS\CreatingDB_12.png" />
+    <None Remove="Images\SSMS\CreatingDB_13.png" />
+    <None Remove="Images\SSMS\CreatingDB_2.png" />
+    <None Remove="Images\SSMS\CreatingDB_3.png" />
+    <None Remove="Images\SSMS\CreatingDB_4.png" />
+    <None Remove="Images\SSMS\CreatingDB_5.png" />
+    <None Remove="Images\SSMS\CreatingDB_6.png" />
+    <None Remove="Images\SSMS\CreatingDB_7.png" />
+    <None Remove="Images\SSMS\CreatingDB_8.png" />
+    <None Remove="Images\SSMS\CreatingDB_9.png" />
+    <None Remove="Images\SSMS\CreatingProject_1.png" />
+    <None Remove="Images\SSMS\CreatingProject_2.png" />
+    <None Remove="Images\SSMS\CreatingProject_3.png" />
+    <None Remove="Images\SSMS\CreatingProject_4.png" />
+    <None Remove="Images\SSMS\EFCore7_1.png" />
+    <None Remove="Images\SSMS\EFCore7_2.png" />
+    <None Remove="Images\SSMS\EFCore7_3.png" />
+    <None Remove="Images\SSMS\EFCore7_4.png" />
+    <None Remove="Images\SSMS\EFCore7_5.png" />
+    <None Remove="Images\SSMS\EFCore7_6.png" />
+    <None Remove="Images\SSMS\EFCore7_7.png" />
+    <None Remove="Images\SSMS\EFCore7_DataGrid.png" />
+    <None Remove="Images\SSMS\SQLClientConnectionDB_1.png" />
+    <None Remove="Images\SSMS\SQLClientConnectionDB_2.png" />
+    <None Remove="Images\SSMS\SQLClientConnectionDB_3.png" />
+    <None Remove="Images\SSMS\SQLClientConnectionDB_4.png" />
+    <None Remove="Images\SSMS\SQLClientConnectionDB_5.png" />
+    <None Remove="Images\SSMS\SQLClientConnectionDB_6.png" />
+    <None Remove="Images\SSMS\SQLClientConnectionDB_7.png" />
+    <None Remove="Images\SSMS\SQLClientConnectionDB_8.png" />
+    <None Remove="Images\SSMS\SQLClientConnectionDB_9.png" />
+    <None Remove="Images\SSMS\SQLClientQueryExecution1.png" />
+    <None Remove="Images\SSMS\SQLClientQueryExecution2.png" />
+    <None Remove="Images\SSMS\SQLClientQueryExecution3.png" />
+    <None Remove="Images\SSMS\SQLClientQueryExecution4.png" />
+    <None Remove="Images\SSMS\SQLClientQueryExecution5.png" />
+    <None Remove="Images\SSMS\SQLClientQueryExecution6.png" />
+    <None Remove="Images\SSMS\SQLClientQueryExecution7.png" />
+    <None Remove="Images\SSMS\SQLClient_1.png" />
+    <None Remove="Images\SSMS\SQLClient_2.png" />
+    <None Remove="Images\SSMS\SQLClient_3.png" />
+    <None Remove="Images\SSMS\SQLClient_4.png" />
+    <None Remove="Images\SSMS\SQLClient_5.png" />
+    <None Remove="Images\SSMS\SQLClient_DataGrid.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Views\Pages\" />
     <Folder Include="ViewModels\" />
-    <Folder Include="Fonts\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -22,6 +98,86 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Fonts\Mulish.ttf" />
+    <Resource Include="Images\Icons\close.png" />
+    <Resource Include="Images\Icons\fullscreen.png" />
+    <Resource Include="Images\Icons\fullscreen_exit.png" />
+    <Resource Include="Images\Icons\menu_close.png" />
+    <Resource Include="Images\Icons\minimize.png" />
+    <Resource Include="Images\Icons\SQLite.png" />
+    <Resource Include="Images\Icons\SSMS.png" />
+    <Resource Include="Images\Icons\Test.png" />
+    <Resource Include="Images\SQLite\CreatingDB_1.png" />
+    <Resource Include="Images\SQLite\CreatingDB_2.png" />
+    <Resource Include="Images\SQLite\CreatingDB_3.png" />
+    <Resource Include="Images\SQLite\CreatingDB_4.png" />
+    <Resource Include="Images\SQLite\CreatingDB_5.png" />
+    <Resource Include="Images\SQLite\CreatingDB_6.png" />
+    <Resource Include="Images\SQLite\CreatingDB_7.png" />
+    <Resource Include="Images\SQLite\EFCoreConnectingDB_1.png" />
+    <Resource Include="Images\SQLite\EFCoreConnectingDB_2.png" />
+    <Resource Include="Images\SQLite\EFCoreConnectingDB_3.png" />
+    <Resource Include="Images\SQLite\EFCoreConnectingDB_4.png" />
+    <Resource Include="Images\SQLite\EFCoreConnectingDB_5.png" />
+    <Resource Include="Images\SQLite\EFCoreConnectingDB_6.png" />
+    <Resource Include="Images\SQLite\EFCoreConnectingDB_DataGrid.png" />
+    <Resource Include="Images\SSMS\ConnectingDB_1.png" />
+    <Resource Include="Images\SSMS\ConnectingDB_2.png" />
+    <Resource Include="Images\SSMS\ConnectingDB_3.png" />
+    <Resource Include="Images\SSMS\ConnectingDB_4.png" />
+    <Resource Include="Images\SSMS\ConnectingDB_5.png" />
+    <Resource Include="Images\SSMS\ConnectingDB_6.png" />
+    <Resource Include="Images\SSMS\ConnectingDB_7.png" />
+    <Resource Include="Images\SSMS\CreatingDB_1.png" />
+    <Resource Include="Images\SSMS\CreatingDB_10.png" />
+    <Resource Include="Images\SSMS\CreatingDB_11.png" />
+    <Resource Include="Images\SSMS\CreatingDB_12.png" />
+    <Resource Include="Images\SSMS\CreatingDB_13.png" />
+    <Resource Include="Images\SSMS\CreatingDB_2.png" />
+    <Resource Include="Images\SSMS\CreatingDB_3.png" />
+    <Resource Include="Images\SSMS\CreatingDB_4.png" />
+    <Resource Include="Images\SSMS\CreatingDB_5.png" />
+    <Resource Include="Images\SSMS\CreatingDB_6.png" />
+    <Resource Include="Images\SSMS\CreatingDB_7.png" />
+    <Resource Include="Images\SSMS\CreatingDB_8.png" />
+    <Resource Include="Images\SSMS\CreatingDB_9.png" />
+    <Resource Include="Images\SSMS\CreatingProject_1.png" />
+    <Resource Include="Images\SSMS\CreatingProject_2.png" />
+    <Resource Include="Images\SSMS\CreatingProject_3.png" />
+    <Resource Include="Images\SSMS\CreatingProject_4.png" />
+    <Resource Include="Images\SSMS\EFCore7_1.png" />
+    <Resource Include="Images\SSMS\EFCore7_2.png" />
+    <Resource Include="Images\SSMS\EFCore7_3.png" />
+    <Resource Include="Images\SSMS\EFCore7_4.png" />
+    <Resource Include="Images\SSMS\EFCore7_5.png" />
+    <Resource Include="Images\SSMS\EFCore7_6.png" />
+    <Resource Include="Images\SSMS\EFCore7_7.png" />
+    <Resource Include="Images\SSMS\EFCore7_DataGrid.png" />
+    <Resource Include="Images\SSMS\SQLClientConnectionDB_1.png" />
+    <Resource Include="Images\SSMS\SQLClientConnectionDB_2.png" />
+    <Resource Include="Images\SSMS\SQLClientConnectionDB_3.png" />
+    <Resource Include="Images\SSMS\SQLClientConnectionDB_4.png" />
+    <Resource Include="Images\SSMS\SQLClientConnectionDB_5.png" />
+    <Resource Include="Images\SSMS\SQLClientConnectionDB_6.png" />
+    <Resource Include="Images\SSMS\SQLClientConnectionDB_7.png" />
+    <Resource Include="Images\SSMS\SQLClientConnectionDB_8.png" />
+    <Resource Include="Images\SSMS\SQLClientConnectionDB_9.png" />
+    <Resource Include="Images\SSMS\SQLClientQueryExecution1.png" />
+    <Resource Include="Images\SSMS\SQLClientQueryExecution2.png" />
+    <Resource Include="Images\SSMS\SQLClientQueryExecution3.png" />
+    <Resource Include="Images\SSMS\SQLClientQueryExecution4.png" />
+    <Resource Include="Images\SSMS\SQLClientQueryExecution5.png" />
+    <Resource Include="Images\SSMS\SQLClientQueryExecution6.png" />
+    <Resource Include="Images\SSMS\SQLClientQueryExecution7.png" />
+    <Resource Include="Images\SSMS\SQLClient_1.png" />
+    <Resource Include="Images\SSMS\SQLClient_2.png" />
+    <Resource Include="Images\SSMS\SQLClient_3.png" />
+    <Resource Include="Images\SSMS\SQLClient_4.png" />
+    <Resource Include="Images\SSMS\SQLClient_5.png" />
+    <Resource Include="Images\SSMS\SQLClient_DataGrid.png" />
   </ItemGroup>
 
 </Project>
