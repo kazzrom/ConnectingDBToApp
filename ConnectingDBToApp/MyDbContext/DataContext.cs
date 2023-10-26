@@ -17,24 +17,33 @@ public partial class DataContext : DbContext
     {
     }
 
+    public virtual DbSet<SqliteElement> SqliteElements { get; set; }
+
+    public virtual DbSet<Ssmselement> Ssmselements { get; set; }
+
     public virtual DbSet<TestQuestion> TestQuestions { get; set; }
 
-    public virtual DbSet<Uielement> Uielements { get; set; }
-
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseSqlite(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
+        => optionsBuilder.UseSqlite(ConfigurationManager.ConnectionStrings["DefaultConnetion"].ConnectionString);
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<TestQuestion>(entity =>
+        modelBuilder.Entity<SqliteElement>(entity =>
         {
+            entity.ToTable("SQLiteElements");
+
             entity.Property(e => e.Id).HasColumnName("ID");
         });
 
-        modelBuilder.Entity<Uielement>(entity =>
+        modelBuilder.Entity<Ssmselement>(entity =>
         {
-            entity.ToTable("UIElements");
+            entity.ToTable("SSMSElements");
 
+            entity.Property(e => e.Id).HasColumnName("ID");
+        });
+
+        modelBuilder.Entity<TestQuestion>(entity =>
+        {
             entity.Property(e => e.Id).HasColumnName("ID");
         });
 
