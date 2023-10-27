@@ -26,10 +26,9 @@
                    Background="{DynamicResource BackgroundDarkGray}"
                    MouseDown="HeaderWindow_MouseDown">
             <Button DockPanel.Dock="Left"
-                    Style="{StaticResource HeaderButton}"
-                    Width="50">
+                    Style="{StaticResource HeaderButton}">
                 <Image Width="30" Height="30"
-                       Source="/Images/Icons/menu.png"/>
+                       Source="/Images/Icons/menu_close.png"/>
             </Button>
             <Button DockPanel.Dock="Right"
                     Style="{StaticResource CloseButton}"

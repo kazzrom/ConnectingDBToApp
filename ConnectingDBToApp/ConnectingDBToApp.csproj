@@ -12,6 +12,7 @@
     <None Remove="Images\Icons\close.png" />
     <None Remove="Images\Icons\fullscreen.png" />
     <None Remove="Images\Icons\fullscreen_exit.png" />
+    <None Remove="Images\Icons\menu.png" />
     <None Remove="Images\Icons\menu_close.png" />
     <None Remove="Images\Icons\minimize.png" />
     <None Remove="Images\Icons\SQLite.png" />
@@ -104,6 +105,7 @@
     <Resource Include="Images\Icons\close.png" />
     <Resource Include="Images\Icons\fullscreen.png" />
     <Resource Include="Images\Icons\fullscreen_exit.png" />
+    <Resource Include="Images\Icons\menu.png" />
     <Resource Include="Images\Icons\menu_close.png" />
     <Resource Include="Images\Icons\minimize.png" />
     <Resource Include="Images\Icons\SQLite.png" />
