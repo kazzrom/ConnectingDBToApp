@@ -5,8 +5,65 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ConnectingDBToApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="MainWindow"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        MinWidth="800" MinHeight="500"
+        Width="800" Height="500">
+    <Window.Resources>
+        <Image x:Key="Image.Fullscreen"
+               Width="30" Height="30"
+               Source="/Images/Icons/fullscreen.png"/>
+        <Image x:Key="Image.FullscreenExit"
+               Width="30" Height="30"
+               Source="/Images/Icons/fullscreen_exit.png"/>
+    </Window.Resources>
+    <DockPanel LastChildFill="True">
+        <DockPanel x:Name="HeaderWindow"
+                   LastChildFill="True" 
+                   DockPanel.Dock="Top" 
+                   Height="40"
+                   Background="{DynamicResource BackgroundDarkGray}"
+                   MouseDown="HeaderWindow_MouseDown">
+            <Button DockPanel.Dock="Left"
+                    Style="{StaticResource HeaderButton}"
+                    Width="50">
+                <Image Width="30" Height="30"
+                       Source="/Images/Icons/menu.png"/>
+            </Button>
+            <Button DockPanel.Dock="Right"
+                    Style="{StaticResource CloseButton}"
+                    Click="CloseWindow">
+                <Image Width="30" Height="30"
+                       Source="\Images\Icons\close.png"/>
+            </Button>
+            <Button DockPanel.Dock="Right"
+                    Style="{StaticResource HeaderButton}"
+                    Click="FullScreenWindow">
+                <Image Width="30" Height="30" 
+                       Source="/Images/Icons/fullscreen.png"/>
+            </Button>
+            <Button DockPanel.Dock="Right"
+                    Style="{StaticResource HeaderButton}"
+                    Click="MinimizeWindow">
+                <Image Width="30" Height="30" 
+                       Source="\Images\Icons\minimize.png"/>
+            </Button>
+            <TextBlock Style="{StaticResource TitleWindow}"
+                       VerticalAlignment="Center"/>
+        </DockPanel>
 
-    </Grid>
+        <ListBox DockPanel.Dock="Left"
+                 Width="200"
+                 Background="{DynamicResource BackgroundMenuColor}">
+
+        </ListBox>
+
+        <ScrollViewer>
+            <StackPanel>
+                
+            </StackPanel>
+        </ScrollViewer>
+
+    </DockPanel>
 </Window>

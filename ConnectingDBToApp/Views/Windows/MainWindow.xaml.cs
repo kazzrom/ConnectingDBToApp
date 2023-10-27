@@ -24,5 +24,40 @@ namespace ConnectingDBToApp
         {
             InitializeComponent();
         }
+
+        private void CloseWindow(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void MinimizeWindow(object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState.Minimized;
+        }
+
+        private void FullScreenWindow(object sender, RoutedEventArgs e)
+        {
+            var button = (Button)sender;
+
+            switch (WindowState)
+            {
+                case WindowState.Normal:
+                    button.Content = Resources["Image.FullscreenExit"];
+                    WindowState = WindowState.Maximized;
+                    break;
+                case WindowState.Maximized:
+                    button.Content = Resources["Image.Fullscreen"];
+                    WindowState = WindowState.Normal;
+                    break;
+            }
+        }
+
+        private void HeaderWindow_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if(e.ChangedButton == MouseButton.Left)
+            {
+                DragMove();
+            }
+        }
     }
 }

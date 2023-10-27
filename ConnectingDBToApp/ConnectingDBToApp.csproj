@@ -89,7 +89,6 @@
 
   <ItemGroup>
     <Folder Include="Views\Pages\" />
-    <Folder Include="ViewModels\" />
   </ItemGroup>
 
   <ItemGroup>

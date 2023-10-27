@@ -6,4 +6,5 @@
     <SolidColorBrush x:Key="MouseOverColor" Color="#D1CCDC"/>
     <SolidColorBrush x:Key="ActiveStateColor" Color="#FFFFFF"/>
     <SolidColorBrush x:Key="TitleWindowColor" Color="#F5EDF0"/>
+    <SolidColorBrush x:Key="CloseHoverColor" Color="#E81123"/>
 </ResourceDictionary>
