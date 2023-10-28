@@ -19,12 +19,12 @@ public partial class DataContext : DbContext
 
     public virtual DbSet<SqliteElement> SqliteElements { get; set; }
 
-    public virtual DbSet<Ssmselement> Ssmselements { get; set; }
+    public virtual DbSet<SsmsElement> Ssmselements { get; set; }
 
     public virtual DbSet<TestQuestion> TestQuestions { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseSqlite(ConfigurationManager.ConnectionStrings["DefaultConnetion"].ConnectionString);
+        => optionsBuilder.UseSqlite(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -35,7 +35,7 @@ public partial class DataContext : DbContext
             entity.Property(e => e.Id).HasColumnName("ID");
         });
 
-        modelBuilder.Entity<Ssmselement>(entity =>
+        modelBuilder.Entity<SsmsElement>(entity =>
         {
             entity.ToTable("SSMSElements");
 

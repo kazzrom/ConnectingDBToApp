@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace ConnectingDBToApp.Models;
 
-public partial class Ssmselement
+public partial class SsmsElement
 {
     public long Id { get; set; }
 

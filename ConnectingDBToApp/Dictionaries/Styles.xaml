@@ -199,32 +199,34 @@
     <!--Styles for ListBoxItem-->
 
     <Style x:Key="H1" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="{StaticResource Mulish}"/>
         <Setter Property="FontSize" Value="36"/>
         <Setter Property="FontWeight" Value="Bold"/>
-        <Setter Property="Margin" Value="0 30 0 10"/>
+        <Setter Property="Margin" Value="0 50 0 10"/>
     </Style>
 
     <Style x:Key="H2" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="{StaticResource Mulish}"/>
         <Setter Property="FontSize" Value="24"/>
         <Setter Property="FontWeight" Value="Bold"/>
         <Setter Property="Margin" Value="0 15 0 15"/>
     </Style>
 
     <Style x:Key="PlainText" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="{StaticResource Mulish}"/>
         <Setter Property="FontSize" Value="18"/>
         <Setter Property="FontWeight" Value="Regular"/>
         <Setter Property="Margin" Value="0 10"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
     </Style>
     
     <Style x:Key="H1Item" TargetType="ListBoxItem">
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate>
-                    <Border>
-                        <TextBlock x:Name="TextBlockContent"
-                                   Text="{Binding Text}"
-                                   Style="{StaticResource H1}"/>
-                    </Border>
+                    <TextBlock x:Name="TextBlockContent"
+                               Text="{Binding Text}"
+                               Style="{StaticResource H1}"/>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -234,11 +236,9 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate>
-                    <Border>
-                        <TextBlock x:Name="TextBlockContent"
-                                   Text="{Binding Text}"
-                                   Style="{StaticResource H2}"/>
-                    </Border>
+                    <TextBlock x:Name="TextBlockContent"
+                               Text="{Binding Text}"
+                               Style="{StaticResource H2}"/>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -253,6 +253,19 @@
                                    Text="{Binding Text}"
                                    Style="{StaticResource PlainText}"/>
                     </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="ImageItem" TargetType="ListBoxItem">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Image Source="{Binding Text}"
+                           Margin="0 5"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"/>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

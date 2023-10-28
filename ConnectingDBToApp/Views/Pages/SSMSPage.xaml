@@ -4,13 +4,28 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ConnectingDBToApp.Views.Pages"
+      xmlns:vm="clr-namespace:ConnectingDBToApp.ViewModels"
+      xmlns:gc="clr-namespace:ConnectingDBToApp.GlobalClasses"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="SSMSPage">
-
+      Title="SSMSPage" Background="White">
+    <Page.DataContext>
+        <vm:SSMSViewModel/>
+    </Page.DataContext>
     <Grid>
-        <TextBlock Text="SSMS"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Center"/>
+        <ListBox ItemsSource="{Binding SSMSElements}"
+                 ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                 ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                 BorderThickness="0"
+                 Margin="30 0"
+                 MaxWidth="750">
+            <ListBox.ItemContainerStyleSelector>
+                <gc:CustomStyleSelector
+                    H1Item="{StaticResource H1Item}" 
+                    H2Item="{StaticResource H2Item}"
+                    ImageItem="{StaticResource ImageItem}" 
+                    PlainTextItem="{StaticResource PlainTextItem}"/>
+            </ListBox.ItemContainerStyleSelector>
+        </ListBox>
     </Grid>
 </Page>

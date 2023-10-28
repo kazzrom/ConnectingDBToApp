@@ -20,18 +20,11 @@ namespace ConnectingDBToApp.ViewModels
 {
     public class MainViewModel : INotifyPropertyChanged
     {
-        public event PropertyChangedEventHandler? PropertyChanged;
-
-        public void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
         public ObservableCollection<SideBarItem> SideBarItems { get; set; }
-        public MainViewModel() 
-        { 
-            SideBarItems = new ObservableCollection<SideBarItem>() 
-            { 
+        public MainViewModel()
+        {
+            SideBarItems = new ObservableCollection<SideBarItem>()
+            {
                 new SideBarItem()
                 {
                     Title = "SSMS",
@@ -48,6 +41,13 @@ namespace ConnectingDBToApp.ViewModels
                     PathImage = "/Images/Icons/Test.png"
                 },
             };
+        }
+
+        public event PropertyChangedEventHandler? PropertyChanged;
+
+        public void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
         private SideBarItem _sideBarItem;
