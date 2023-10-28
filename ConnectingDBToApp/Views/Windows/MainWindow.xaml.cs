@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ConnectingDBToApp.GlobalClasses;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,33 +24,20 @@ namespace ConnectingDBToApp
         public MainWindow()
         {
             InitializeComponent();
-        }
 
-        private void CloseWindow(object sender, RoutedEventArgs e)
-        {
-            Close();
-        }
-
-        private void MinimizeWindow(object sender, RoutedEventArgs e)
-        {
-            WindowState = WindowState.Minimized;
-        }
-
-        private void FullScreenWindow(object sender, RoutedEventArgs e)
-        {
-            var button = (Button)sender;
-
-            switch (WindowState)
+            MainFrame.Frame = MainFrameApp;
+            MainWindowMethods.Minimize = () => { WindowState = WindowState.Minimized; };
+            MainWindowMethods.Close = () => { Close(); };
+            MainWindowMethods.Fullscreen = () => 
             {
-                case WindowState.Normal:
-                    button.Content = Resources["Image.FullscreenExit"];
-                    WindowState = WindowState.Maximized;
-                    break;
-                case WindowState.Maximized:
-                    button.Content = Resources["Image.Fullscreen"];
-                    WindowState = WindowState.Normal;
-                    break;
-            }
+                switch (WindowState)
+                {
+                    case WindowState.Normal:
+                        WindowState = WindowState.Maximized; break;
+                    case WindowState.Maximized:
+                        WindowState = WindowState.Normal; break;
+                }
+            };
         }
 
         private void HeaderWindow_MouseDown(object sender, MouseButtonEventArgs e)

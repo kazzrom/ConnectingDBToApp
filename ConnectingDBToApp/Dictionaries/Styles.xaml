@@ -20,48 +20,123 @@
         <Setter Property="Margin" Value="10 0 0 0"/>
     </Style>
 
-    <Style x:Key="HeaderButton" TargetType="Button">
+    <Style x:Key="MenuButton" TargetType="ToggleButton">
         <Setter Property="Width" Value="40"/>
         <Setter Property="Height" Value="40"/>
-        <Setter Property="Background" Value="Transparent"/>
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="Button">
-                    <Border x:Name="BackgroundElement"
-                            Width="{TemplateBinding Width}"
-                            Height="{TemplateBinding Height}"
-                            Background="{TemplateBinding Background}">
-                        <ContentPresenter VerticalAlignment="Center"
-                                          HorizontalAlignment="Center"/>
+                <ControlTemplate TargetType="ToggleButton">
+                    <Border x:Name="BackgroundElement">
+                        <Border x:Name="Icon" Width="30" Height="30">
+                            <Border.Background>
+                                <ImageBrush ImageSource="/Images/Icons/menu_close.png"/>
+                            </Border.Background>
+                        </Border>
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" Value="{DynamicResource BackgroundMenuColor}"/>
-                            <Setter Property="Content" Value="dfs"/>
+                            <Setter TargetName="BackgroundElement"
+                                Property="Background" Value="{DynamicResource BackgroundMenuColor}"/>
                         </Trigger>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter TargetName="Icon" 
+                                    Property="Background">
+                                <Setter.Value>
+                                    <ImageBrush ImageSource="/Images/Icons/menu.png"/>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                        
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
 
-    <Style x:Key="CloseButton" TargetType="Button">
+    <Style x:Key="MinimizeButton" TargetType="Button">
         <Setter Property="Width" Value="40"/>
         <Setter Property="Height" Value="40"/>
-        <Setter Property="Background" Value="Transparent"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
-                    <Border x:Name="BackgroundElement"
-                        Width="{TemplateBinding Width}"
-                        Height="{TemplateBinding Height}"
-                        Background="{TemplateBinding Background}">
-                        <ContentPresenter VerticalAlignment="Center"
-                                      HorizontalAlignment="Center"/>
+                    <Border x:Name="BackgroundElement">
+                        <Border Width="30" Height="30">
+                            <Border.Background>
+                                <ImageBrush ImageSource="/Images/Icons/minimize.png"/>
+                            </Border.Background>
+                        </Border>
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" Value="{DynamicResource CloseHoverColor}"/>
+                            <Setter TargetName="BackgroundElement"
+                                    Property="Background" Value="{DynamicResource BackgroundMenuColor}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <Style x:Key="FullscreenButton" TargetType="Button">
+        <Setter Property="Width" Value="40"/>
+        <Setter Property="Height" Value="40"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="BackgroundElement">
+                        <Border x:Name="Icon"
+                                Width="30" Height="30">
+                            <Border.Background>
+                                <ImageBrush ImageSource="/Images/Icons/fullscreen.png"/>
+                            </Border.Background>
+                        </Border>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="BackgroundElement"
+                                    Property="Background" Value="{DynamicResource BackgroundMenuColor}"/>
+                        </Trigger>
+                        <DataTrigger Binding="{Binding WindowState, RelativeSource={RelativeSource AncestorType=Window}}"
+                                     Value="Normal">
+                            <Setter TargetName="Icon" 
+                                    Property="Background">
+                                <Setter.Value>
+                                    <ImageBrush ImageSource="/Images/Icons/fullscreen.png"/>
+                                </Setter.Value>
+                            </Setter>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding WindowState, RelativeSource={RelativeSource AncestorType=Window}}"
+                                     Value="Maximized">
+                            <Setter TargetName="Icon"
+                                    Property="Background">
+                                <Setter.Value>
+                                    <ImageBrush ImageSource="/Images/Icons/fullscreen_exit.png"/>
+                                </Setter.Value>
+                            </Setter>
+                        </DataTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+        
+    <Style x:Key="CloseButton" TargetType="Button">
+        <Setter Property="Width" Value="40"/>
+        <Setter Property="Height" Value="40"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="BackgroundElement">
+                        <Border Width="30" Height="30">
+                            <Border.Background>
+                                <ImageBrush ImageSource="\Images\Icons\close.png"/>
+                            </Border.Background>
+                        </Border>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="BackgroundElement"
+                                    Property="Background" Value="{DynamicResource CloseHoverColor}"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -71,6 +146,55 @@
 
     <!--End-->
     
+    
+    <!--Style sidebar-->
+
+    <Style x:Key="SideBarItem" TargetType="ListBoxItem">
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ListBoxItem">
+                    <Border x:Name="BackgroundElement"
+                            CornerRadius="5"
+                            Padding="15 15 0 15"
+                            Margin="0 0 0 10"
+                            Background="Transparent">
+                        <StackPanel Orientation="Horizontal">
+                            <Border x:Name="Icon"
+                                    Width="25" Height="25"
+                                    Margin="0 0 10 0">
+                                <Border.Background>
+                                    <ImageBrush ImageSource="{Binding PathImage}"/>
+                                </Border.Background>
+                            </Border>
+                            <TextBlock Text="{Binding Title}"/>
+                        </StackPanel>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="BackgroundElement" 
+                                    Property="Background" Value="{DynamicResource MouseOverColor}"/>
+                        </Trigger>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter TargetName="BackgroundElement" 
+                                    Property="Background" Value="{DynamicResource ActiveStateColor}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="SideBarApp" TargetType="ListBox">
+        <Setter Property="Width" Value="200"/>
+        <Setter Property="Background" Value="{DynamicResource BackgroundMenuColor}"/>
+        <Setter Property="Padding" Value="10 30 10 0"/>
+        <Setter Property="ItemContainerStyle" Value="{StaticResource SideBarItem}"/>
+    </Style>
+    
+    <!--End-->
+        
     
     <!--Styles for ListBoxItem-->
 

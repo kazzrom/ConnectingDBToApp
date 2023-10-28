@@ -4,65 +4,50 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ConnectingDBToApp"
+        xmlns:vm="clr-namespace:ConnectingDBToApp.ViewModels"
         mc:Ignorable="d"
         Title="MainWindow"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         MinWidth="800" MinHeight="500"
-        Width="800" Height="500">
-    <Window.Resources>
-        <Image x:Key="Image.Fullscreen"
-               Width="30" Height="30"
-               Source="/Images/Icons/fullscreen.png"/>
-        <Image x:Key="Image.FullscreenExit"
-               Width="30" Height="30"
-               Source="/Images/Icons/fullscreen_exit.png"/>
-    </Window.Resources>
+        Width="800" Height="500"
+        x:Name="MainWindowApp">
+    <Window.DataContext>
+        <vm:MainViewModel/>
+    </Window.DataContext>
     <DockPanel LastChildFill="True">
-        <DockPanel x:Name="HeaderWindow"
-                   LastChildFill="True" 
+        <DockPanel LastChildFill="True" 
                    DockPanel.Dock="Top" 
                    Height="40"
                    Background="{DynamicResource BackgroundDarkGray}"
                    MouseDown="HeaderWindow_MouseDown">
-            <Button DockPanel.Dock="Left"
-                    Style="{StaticResource HeaderButton}">
-                <Image Width="30" Height="30"
-                       Source="/Images/Icons/menu_close.png"/>
-            </Button>
+            <ToggleButton DockPanel.Dock="Left"
+                          Style="{StaticResource MenuButton}"
+                          Command="{Binding ShowSideBar}"
+                          CommandParameter="{Binding ElementName=SideBar}"/>
             <Button DockPanel.Dock="Right"
                     Style="{StaticResource CloseButton}"
-                    Click="CloseWindow">
-                <Image Width="30" Height="30"
-                       Source="\Images\Icons\close.png"/>
-            </Button>
+                    Command="{Binding CloseWindow}"/>
+
             <Button DockPanel.Dock="Right"
-                    Style="{StaticResource HeaderButton}"
-                    Click="FullScreenWindow">
-                <Image Width="30" Height="30" 
-                       Source="/Images/Icons/fullscreen.png"/>
-            </Button>
+                    Style="{StaticResource FullscreenButton}"
+                    Command="{Binding FullscreenWindow}"/>
             <Button DockPanel.Dock="Right"
-                    Style="{StaticResource HeaderButton}"
-                    Click="MinimizeWindow">
-                <Image Width="30" Height="30" 
-                       Source="\Images\Icons\minimize.png"/>
-            </Button>
+                    Style="{StaticResource MinimizeButton}"
+                    Command="{Binding MinimizeWindow}"/>
             <TextBlock Style="{StaticResource TitleWindow}"
                        VerticalAlignment="Center"/>
         </DockPanel>
 
-        <ListBox DockPanel.Dock="Left"
-                 Width="200"
-                 Background="{DynamicResource BackgroundMenuColor}">
-
-        </ListBox>
+        <ListBox x:Name="SideBar"
+                 DockPanel.Dock="Left"
+                 Style="{StaticResource SideBarApp}"
+                 ItemsSource="{Binding SideBarItems}"
+                 SelectedItem="{Binding SideBarItem}"/>
 
         <ScrollViewer>
-            <StackPanel>
-                
-            </StackPanel>
+            <Frame x:Name="MainFrameApp"
+                   NavigationUIVisibility="Hidden"/>
         </ScrollViewer>
-
     </DockPanel>
 </Window>
