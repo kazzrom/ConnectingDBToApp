@@ -5,8 +5,69 @@
     <Style TargetType="TextBlock">
         <Setter Property="FontFamily" Value="{StaticResource Mulish}"/>
     </Style>
+
+
+    <!--Style for TabControl-->
+
+    <Style TargetType="TabItem">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Foreground" Value="{DynamicResource MouseOverColor}"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Padding" Value="20 12"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TabItem">
+                    <Border Background="{TemplateBinding Background}"
+                            Padding="{TemplateBinding Padding}"
+                            CornerRadius="5"
+                            Margin="0 0 5 0">
+                        <ContentPresenter
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            ContentSource="Header"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="{DynamicResource MouseOverColor}"/>
+                            <Setter Property="Foreground" Value="Black"/>
+                        </Trigger>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Background" Value="{DynamicResource BackgroundDarkGray}"/>
+                            <Setter Property="Foreground" Value="{DynamicResource TitleWindowColor}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="TabControl">
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TabControl">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <WrapPanel Grid.Row="0"
+                                   IsItemsHost="True"
+                                   Margin="0 0 0 20"/>
+                        <Border Grid.Row="1">
+                            <ContentPresenter ContentSource="SelectedContent"/>
+                        </Border>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--End: Style for TabControl-->
     
-    <!--End-->
+    <!--End: Global Styles-->
     
     
     <!--Header window-->
@@ -144,7 +205,7 @@
         </Setter>
     </Style>
 
-    <!--End-->
+    <!--End: Header window-->
     
     
     <!--Style sidebar-->
@@ -192,8 +253,8 @@
         <Setter Property="Padding" Value="10 30 10 0"/>
         <Setter Property="ItemContainerStyle" Value="{StaticResource SideBarItem}"/>
     </Style>
-    
-    <!--End-->
+
+    <!--End: Style sidebar-->
         
     
     <!--Styles for ListBoxItem-->
@@ -265,12 +326,27 @@
                     <Image Source="{Binding Text}"
                            Margin="0 5"
                            HorizontalAlignment="Center"
-                           VerticalAlignment="Center"/>
+                           VerticalAlignment="Center"
+                           MaxWidth="600"/>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
 
-    <!--End-->
+    <Style x:Key="DoubleImageItem" TargetType="ListBoxItem">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <UniformGrid Columns="2"
+                                 Margin="0 5">
+                        <Image Source="{Binding Text}"/>
+                        <Image Source="{Binding AdditionalText}"/>
+                    </UniformGrid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--End: Styles for ListBoxItem-->
     
 </ResourceDictionary>

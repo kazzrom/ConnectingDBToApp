@@ -12,20 +12,50 @@
     <Page.DataContext>
         <vm:SSMSViewModel/>
     </Page.DataContext>
+    <Page.Resources>
+        <Style TargetType="ListBox">
+            <Setter Property="ItemContainerStyleSelector">
+                <Setter.Value>
+                    <gc:CustomStyleSelector
+                        H1Item="{StaticResource H1Item}" 
+                        H2Item="{StaticResource H2Item}"
+                        ImageItem="{StaticResource ImageItem}"
+                        DoubleImageItem="{StaticResource DoubleImageItem}"
+                        PlainTextItem="{StaticResource PlainTextItem}"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
     <Grid>
-        <ListBox ItemsSource="{Binding SSMSElements}"
-                 ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                 ScrollViewer.VerticalScrollBarVisibility="Disabled"
-                 BorderThickness="0"
-                 Margin="30 0"
-                 MaxWidth="750">
-            <ListBox.ItemContainerStyleSelector>
-                <gc:CustomStyleSelector
-                    H1Item="{StaticResource H1Item}" 
-                    H2Item="{StaticResource H2Item}"
-                    ImageItem="{StaticResource ImageItem}" 
-                    PlainTextItem="{StaticResource PlainTextItem}"/>
-            </ListBox.ItemContainerStyleSelector>
-        </ListBox>
+        <TabControl>
+            <TabItem Header="Создание БД"
+                     IsSelected="True">
+                <ListBox ItemsSource="{Binding CreatingDbItems}"
+                         ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                         ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                         BorderThickness="0"
+                         Margin="30 0"
+                         MaxWidth="800"/>
+            </TabItem>
+            <TabItem Header="Cоединение БД в VS">
+                
+            </TabItem>
+            <TabItem Header="Работа с SqlClient">
+                <TabControl>
+                    <TabItem Header="Установка SqlClient">
+                        
+                    </TabItem>
+                    <TabItem Header="Подключение БД">
+
+                    </TabItem>
+                    <TabItem Header="Выполнение запросов">
+
+                    </TabItem>
+                </TabControl>
+            </TabItem>
+            <TabItem Header="Работа EF Core 7">
+
+            </TabItem>
+        </TabControl>
     </Grid>
 </Page>
