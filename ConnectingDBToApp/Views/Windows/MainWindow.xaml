@@ -10,7 +10,6 @@
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         MinWidth="800" MinHeight="500"
-        Width="800" Height="500"
         x:Name="MainWindowApp">
     <Window.DataContext>
         <vm:MainViewModel/>
@@ -44,9 +43,11 @@
                  Style="{StaticResource SideBarApp}"
                  ItemsSource="{Binding SideBarItems}"
                  SelectedItem="{Binding SideBarItem}"/>
+        
         <ScrollViewer HorizontalScrollBarVisibility="Disabled">
             <Frame x:Name="MainFrameApp"
-               NavigationUIVisibility="Hidden"/>
+                   NavigationUIVisibility="Hidden"
+                   Padding="30 20 0 30"/>
         </ScrollViewer>
     </DockPanel>
 </Window>

@@ -9,9 +9,11 @@ public partial class SqliteElement
 
     public string ObjectType { get; set; } = null!;
 
+    public string Chapter { get; set; } = null!;
+
     public string Text { get; set; } = null!;
 
-    public string? Code { get; set; }
-
     public string? AdditionalText { get; set; }
+
+    public string? Code { get; set; }
 }

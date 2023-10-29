@@ -1,20 +1,18 @@
-﻿using ConnectingDBToApp.Commands;
-using ConnectingDBToApp.GlobalClasses;
-using ConnectingDBToApp.Models;
-using ConnectingDBToApp.Views.Pages;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media.Animation;
-using static System.Net.Mime.MediaTypeNames;
+
+using ConnectingDBToApp.Commands;
+using ConnectingDBToApp.GlobalClasses;
+using ConnectingDBToApp.Models;
+using ConnectingDBToApp.Views.Pages;
+
 
 namespace ConnectingDBToApp.ViewModels
 {
@@ -50,7 +48,7 @@ namespace ConnectingDBToApp.ViewModels
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        private SideBarItem _sideBarItem;
+        private SideBarItem _sideBarItem = null!;
         public SideBarItem SideBarItem
         {
             get { return _sideBarItem; }
@@ -58,7 +56,7 @@ namespace ConnectingDBToApp.ViewModels
             {
                 _sideBarItem = value;
                 OnPropertyChanged(nameof(SideBarItem));
-
+                
                 switch (_sideBarItem.Title) 
                 {
                     case "SSMS":
@@ -96,7 +94,7 @@ namespace ConnectingDBToApp.ViewModels
             {
                 var sideBar = (ListBox)item;
 
-                DoubleAnimation animation = new DoubleAnimation();
+                var animation = new DoubleAnimation();
                 animation.EasingFunction = new QuadraticEase() { EasingMode = EasingMode.EaseOut };
                 animation.Duration = TimeSpan.FromMilliseconds(200);
 

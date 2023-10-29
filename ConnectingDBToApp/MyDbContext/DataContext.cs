@@ -33,6 +33,7 @@ public partial class DataContext : DbContext
             entity.ToTable("SQLiteElements");
 
             entity.Property(e => e.Id).HasColumnName("ID");
+            entity.Property(e => e.ObjectType).HasDefaultValueSql("'PlainText'");
         });
 
         modelBuilder.Entity<SsmsElement>(entity =>
@@ -40,6 +41,7 @@ public partial class DataContext : DbContext
             entity.ToTable("SSMSElements");
 
             entity.Property(e => e.Id).HasColumnName("ID");
+            entity.Property(e => e.ObjectType).HasDefaultValueSql("'PlainText'");
         });
 
         modelBuilder.Entity<TestQuestion>(entity =>
