@@ -21,12 +21,16 @@
                         H2Item="{StaticResource H2Item}"
                         ImageItem="{StaticResource ImageItem}"
                         DoubleImageItem="{StaticResource DoubleImageItem}"
-                        PlainTextItem="{StaticResource PlainTextItem}"/>
+                        PlainTextItem="{StaticResource PlainTextItem}"
+                        CopyButtonItem="{StaticResource CopyButtonItem}"
+                        CodeImageItem="{StaticResource CodeImageItem}"/>
                 </Setter.Value>
             </Setter>
         </Style>
     </Page.Resources>
-    <Grid>
+    <StackPanel Orientation="Vertical">
+        <TextBlock Text="SQL Server Management Studio"
+                   Style="{StaticResource H1}"/>
         <TabControl>
             <TabItem Header="Создание БД"
                      IsSelected="True">
@@ -57,5 +61,5 @@
 
             </TabItem>
         </TabControl>
-    </Grid>
+    </StackPanel>
 </Page>

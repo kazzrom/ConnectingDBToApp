@@ -10,6 +10,8 @@
   <ItemGroup>
     <None Remove="Fonts\Mulish.ttf" />
     <None Remove="Images\Icons\close.png" />
+    <None Remove="Images\Icons\content_copy.png" />
+    <None Remove="Images\Icons\content_copy_white.png" />
     <None Remove="Images\Icons\fullscreen.png" />
     <None Remove="Images\Icons\fullscreen_exit.png" />
     <None Remove="Images\Icons\menu.png" />
@@ -31,6 +33,7 @@
     <None Remove="Images\SQLite\EFCoreConnectingDB_4.png" />
     <None Remove="Images\SQLite\EFCoreConnectingDB_5.png" />
     <None Remove="Images\SQLite\EFCoreConnectingDB_6.png" />
+    <None Remove="Images\SQLite\EFCoreConnectingDB_7.png" />
     <None Remove="Images\SQLite\EFCoreConnectingDB_DataGrid.png" />
     <None Remove="Images\SSMS\ConnectingDB_1.png" />
     <None Remove="Images\SSMS\ConnectingDB_2.png" />
@@ -99,6 +102,8 @@
   <ItemGroup>
     <Resource Include="Fonts\Mulish.ttf" />
     <Resource Include="Images\Icons\close.png" />
+    <Resource Include="Images\Icons\content_copy.png" />
+    <Resource Include="Images\Icons\content_copy_white.png" />
     <Resource Include="Images\Icons\fullscreen.png" />
     <Resource Include="Images\Icons\fullscreen_exit.png" />
     <Resource Include="Images\Icons\menu.png" />
@@ -120,6 +125,7 @@
     <Resource Include="Images\SQLite\EFCoreConnectingDB_4.png" />
     <Resource Include="Images\SQLite\EFCoreConnectingDB_5.png" />
     <Resource Include="Images\SQLite\EFCoreConnectingDB_6.png" />
+    <Resource Include="Images\SQLite\EFCoreConnectingDB_7.png" />
     <Resource Include="Images\SQLite\EFCoreConnectingDB_DataGrid.png" />
     <Resource Include="Images\SSMS\ConnectingDB_1.png" />
     <Resource Include="Images\SSMS\ConnectingDB_2.png" />
