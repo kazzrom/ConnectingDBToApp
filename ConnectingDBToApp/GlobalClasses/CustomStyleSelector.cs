@@ -18,10 +18,12 @@ namespace ConnectingDBToApp.GlobalClasses
         public Style H2Item { get; set; } = null!;
         public Style ImageItem { get; set; } = null!;
         public Style DoubleImageItem { get; set; } = null!;
+        public Style CopyButtonItem { get; set; } = null!;
+        public Style CodeImageItem { get; set; } = null!;
 
         public override Style SelectStyle(object item, DependencyObject container)
         {
-            var elementItem = (SsmsElement)item;
+            var elementItem = (ElementItem)item;
 
             switch (elementItem.ObjectType)
             {
@@ -33,6 +35,10 @@ namespace ConnectingDBToApp.GlobalClasses
                     return ImageItem;
                 case "DoubleImage":
                     return DoubleImageItem;
+                case "CopyButton":
+                    return CopyButtonItem;
+                case "CodeImage":
+                    return CodeImageItem;
                 default:
                     return PlainTextItem;
             }
