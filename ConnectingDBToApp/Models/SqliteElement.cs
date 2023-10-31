@@ -1,9 +1,12 @@
-﻿using System;
+﻿using ConnectingDBToApp.Commands;
+using System;
 using System.Collections.Generic;
+using System.Windows;
+using System.Windows.Input;
 
 namespace ConnectingDBToApp.Models;
 
-public partial class SqliteElement
+public partial class SqliteElement : ElementItem
 {
     public long Id { get; set; }
 
@@ -16,4 +19,12 @@ public partial class SqliteElement
     public string? AdditionalText { get; set; }
 
     public string? Code { get; set; }
+
+    public ICommand CopyText
+    {
+        get => new DelegateCommand((obj) =>
+        {
+            Clipboard.SetText(Code);
+        });
+    }
 }

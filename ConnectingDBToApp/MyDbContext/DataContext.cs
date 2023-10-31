@@ -19,7 +19,7 @@ public partial class DataContext : DbContext
 
     public virtual DbSet<SqliteElement> SqliteElements { get; set; }
 
-    public virtual DbSet<SsmsElement> Ssmselements { get; set; }
+    public virtual DbSet<SsmsElement> SsmsElements { get; set; }
 
     public virtual DbSet<TestQuestion> TestQuestions { get; set; }
 

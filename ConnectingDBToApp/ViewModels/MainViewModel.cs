@@ -100,10 +100,10 @@ namespace ConnectingDBToApp.ViewModels
 
                 switch(sideBar.Width) 
                 {
-                    case 200:
+                    case 230:
                         animation.To = 0; break;
                     case 0: 
-                        animation.To = 200; break;
+                        animation.To = 230; break;
                 }
 
                 sideBar.BeginAnimation(FrameworkElement.WidthProperty, animation);
