@@ -19,11 +19,4 @@ public partial class SSMSElement : ElementItem
     public string? AdditionalText { get; set; }
 
     public string? Code { get; set; }
-    public ICommand CopyText
-    {
-        get => new DelegateCommand((obj) =>
-        {
-            Clipboard.SetText(Code);
-        });
-    }
 }

@@ -71,14 +71,12 @@ namespace ConnectingDBToApp.ViewModels
             }
         }
 
-
-
         public ICommand MinimizeWindow
         {
             get => new DelegateCommand((obj) => { MainWindowMethods.Minimize(); });
         }
 
-        public ICommand FullscreenWindow
+        public ICommand FullScreenWindow
         {
             get => new DelegateCommand((obj) => { MainWindowMethods.Fullscreen(); });
         }

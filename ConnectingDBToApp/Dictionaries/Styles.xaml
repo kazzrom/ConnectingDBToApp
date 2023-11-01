@@ -444,7 +444,8 @@
                         <Button Grid.Column="0"
                                 Style="{StaticResource CopyButton}"
                                 Content="Скопировать" 
-                                Command="{Binding CopyText}"
+                                Command="{Binding DataContext.CopyText, RelativeSource={RelativeSource AncestorType=Page}}"
+                                CommandParameter="{Binding Code}"
                                 Margin="10 0 5 0"/>
                         <TextBlock Grid.Column="1"
                                    Style="{StaticResource PlainText}"
@@ -465,7 +466,8 @@
                         <Grid>
                             <Image Source="{Binding Text}"/>
                             <Button Content="Скопировать код"
-                                    Command="{Binding CopyText}"
+                                    Command="{Binding DataContext.CopyText, RelativeSource={RelativeSource AncestorType=Page}}"
+                                    CommandParameter="{Binding Code}"
                                     Style="{StaticResource CopyButton}"
                                     Foreground="White"
                                     VerticalAlignment="Top"
