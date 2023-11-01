@@ -16,23 +16,24 @@ namespace ConnectingDBToApp.ViewModels
 {
     public class SQLiteViewModel : INotifyPropertyChanged
     {
+        public List<SQLiteElement> CreatingDbItems { get; set; }
+        public List<SQLiteElement> EFCoreConnectingDb { get; set; }
+        public SQLiteViewModel()
+        {
+            CreatingDbItems = DbContext.Tables.SqliteElements
+                                               .Where(item => item.Chapter == "CreatingDB")
+                                               .ToList();
+
+            EFCoreConnectingDb = DbContext.Tables.SqliteElements
+                                                  .Where(item => item.Chapter == "EFCoreConnectingDB")
+                                                  .ToList();
+        }
+
         public event PropertyChangedEventHandler? PropertyChanged;
 
         public void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-        public ObservableCollection<SqliteElement> CreatingDbItems { get; set; }
-        public ObservableCollection<SqliteElement> EFCoreConnectingDb { get; set; }
-
-        public SQLiteViewModel() 
-        {
-            CreatingDbItems = new ObservableCollection<SqliteElement>(DbContext.Tables.SqliteElements
-                                                                                       .Where(item => item.Chapter == "CreatingDB"));
-
-            EFCoreConnectingDb = new ObservableCollection<SqliteElement>(DbContext.Tables.SqliteElements
-                                                                                       .Where(item => item.Chapter == "EFCoreConnectingDB"));
         }
     }
 }

@@ -17,18 +17,19 @@ namespace ConnectingDBToApp.ViewModels
 {
     public class SSMSViewModel : INotifyPropertyChanged
     {
+        public List<SSMSElement> CreatingDbItems { get; set; }
+        public SSMSViewModel()
+        {
+            CreatingDbItems = DbContext.Tables.SsmsElements
+                                               .Where(item => item.Chapter == "CreatingDB")
+                                               .ToList();
+        }
+
         public event PropertyChangedEventHandler? PropertyChanged;
 
         public void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-        public ObservableCollection<SsmsElement> CreatingDbItems { get; set; }
-        public SSMSViewModel()
-        {
-            CreatingDbItems = new ObservableCollection<SsmsElement>(DbContext.Tables.SsmsElements
-                                                                                     .Where(item => item.Chapter == "CreatingDB"));
         }
     }
 }

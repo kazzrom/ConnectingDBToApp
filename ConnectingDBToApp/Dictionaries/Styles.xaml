@@ -2,8 +2,8 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <!--Global Styles-->
 
-    
-    <!--Style TextBlock-->
+     
+     <!--Style TextBlock-->
     
     <Style TargetType="TextBlock">
         <Setter Property="FontFamily" Value="{StaticResource Mulish}"/>
@@ -137,11 +137,13 @@
             <Setter.Value>
                 <ControlTemplate TargetType="ToggleButton">
                     <Border x:Name="BackgroundElement">
-                        <Border x:Name="Icon" Width="30" Height="30">
-                            <Border.Background>
-                                <ImageBrush ImageSource="/Images/Icons/menu_close.png"/>
-                            </Border.Background>
-                        </Border>
+                        <Rectangle x:Name="Icon" 
+                                   Width="22.5" Height="15"
+                                   Fill="{DynamicResource TitleWindowColor}">
+                            <Rectangle.OpacityMask>
+                                <VisualBrush Stretch="Uniform" Visual="{StaticResource MenuCloseIcon}"/>
+                            </Rectangle.OpacityMask>
+                        </Rectangle>
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
@@ -150,13 +152,12 @@
                         </Trigger>
                         <Trigger Property="IsChecked" Value="True">
                             <Setter TargetName="Icon" 
-                                    Property="Background">
+                                    Property="OpacityMask">
                                 <Setter.Value>
-                                    <ImageBrush ImageSource="/Images/Icons/menu.png"/>
+                                    <VisualBrush Stretch="Uniform" Visual="{StaticResource MenuIcon}"/>
                                 </Setter.Value>
                             </Setter>
                         </Trigger>
-                        
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
@@ -169,12 +170,17 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
-                    <Border x:Name="BackgroundElement">
-                        <Border Width="30" Height="30">
-                            <Border.Background>
-                                <ImageBrush ImageSource="/Images/Icons/minimize.png"/>
-                            </Border.Background>
-                        </Border>
+                    <Border x:Name="BackgroundElement"
+                            Background="Transparent"
+                            Padding="0 20 0 0">
+                        <Rectangle x:Name="Icon" 
+                                   Width="15" Height="5"
+                                   Fill="{DynamicResource TitleWindowColor}">
+                            <Rectangle.OpacityMask>
+                                <VisualBrush Stretch="Uniform" 
+                                             Visual="{StaticResource MinimizeIcon}"/>
+                            </Rectangle.OpacityMask>
+                        </Rectangle>
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
@@ -194,13 +200,14 @@
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
                     <Border x:Name="BackgroundElement">
-                        <Border x:Name="Icon"
-                                Width="30" Height="30">
-                            <Border.Background>
-                                <ImageBrush ImageSource="/Images/Icons/fullscreen.png"/>
-                            </Border.Background>
+                        <Rectangle x:Name="Icon" 
+                                   Width="22.5" Height="22.5"
+                                   Fill="{DynamicResource TitleWindowColor}">
+                                <Rectangle.OpacityMask>
+                                    <VisualBrush Stretch="Uniform" Visual="{StaticResource FullScreenIcon}"/>
+                                </Rectangle.OpacityMask>
+                            </Rectangle>
                         </Border>
-                    </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter TargetName="BackgroundElement"
@@ -209,18 +216,18 @@
                         <DataTrigger Binding="{Binding WindowState, RelativeSource={RelativeSource AncestorType=Window}}"
                                      Value="Normal">
                             <Setter TargetName="Icon" 
-                                    Property="Background">
+                                    Property="OpacityMask">
                                 <Setter.Value>
-                                    <ImageBrush ImageSource="/Images/Icons/fullscreen.png"/>
+                                    <VisualBrush Stretch="Uniform" Visual="{StaticResource FullScreenIcon}"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
                         <DataTrigger Binding="{Binding WindowState, RelativeSource={RelativeSource AncestorType=Window}}"
                                      Value="Maximized">
                             <Setter TargetName="Icon"
-                                    Property="Background">
+                                    Property="OpacityMask">
                                 <Setter.Value>
-                                    <ImageBrush ImageSource="/Images/Icons/fullscreen_exit.png"/>
+                                    <VisualBrush Stretch="Uniform" Visual="{StaticResource FullScreenExitIcon}"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
@@ -237,11 +244,13 @@
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
                     <Border x:Name="BackgroundElement">
-                        <Border Width="30" Height="30">
-                            <Border.Background>
-                                <ImageBrush ImageSource="\Images\Icons\close.png"/>
-                            </Border.Background>
-                        </Border>
+                        <Rectangle x:Name="Icon" 
+                                   Width="17.5" Height="17.5"
+                                   Fill="{DynamicResource TitleWindowColor}">
+                            <Rectangle.OpacityMask>
+                                <VisualBrush Stretch="Uniform" Visual="{StaticResource CloseIcon}"/>
+                            </Rectangle.OpacityMask>
+                        </Rectangle>
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
@@ -397,16 +406,20 @@
     <Style x:Key="CopyButton" TargetType="Button">
         <Setter Property="Width" Value="30"/>
         <Setter Property="Height" Value="30"/>
+        <Setter Property="Foreground" Value="Black"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
                     <Border x:Name="BackgroundElement"
+                            Background="Transparent"
                             CornerRadius="5">
-                        <Border Width="24" Height="24">
-                            <Border.Background>
-                                <ImageBrush ImageSource="/Images/Icons/content_copy.png"/>
-                            </Border.Background>
-                        </Border>
+                        <Rectangle x:Name="Icon" 
+                                   Width="22.5" Height="22.5"
+                                   Fill="{TemplateBinding Foreground}">
+                            <Rectangle.OpacityMask>
+                                <VisualBrush Stretch="Uniform" Visual="{StaticResource ContentCopyIcon}"/>
+                            </Rectangle.OpacityMask>
+                        </Rectangle>
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
@@ -453,8 +466,11 @@
                             <Image Source="{Binding Text}"/>
                             <Button Content="Скопировать код"
                                     Command="{Binding CopyText}"
-                                    VerticalAlignment="Center"
-                                    HorizontalAlignment="Center"/>
+                                    Style="{StaticResource CopyButton}"
+                                    Foreground="White"
+                                    VerticalAlignment="Top"
+                                    HorizontalAlignment="Right"
+                                    Margin="0 30 30 0"/>
                         </Grid>
                     </Border>
                 </ControlTemplate>

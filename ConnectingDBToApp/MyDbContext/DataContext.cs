@@ -17,9 +17,9 @@ public partial class DataContext : DbContext
     {
     }
 
-    public virtual DbSet<SqliteElement> SqliteElements { get; set; }
+    public virtual DbSet<SQLiteElement> SqliteElements { get; set; }
 
-    public virtual DbSet<SsmsElement> SsmsElements { get; set; }
+    public virtual DbSet<SSMSElement> SsmsElements { get; set; }
 
     public virtual DbSet<TestQuestion> TestQuestions { get; set; }
 
@@ -28,7 +28,7 @@ public partial class DataContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<SqliteElement>(entity =>
+        modelBuilder.Entity<SQLiteElement>(entity =>
         {
             entity.ToTable("SQLiteElements");
 
@@ -36,7 +36,7 @@ public partial class DataContext : DbContext
             entity.Property(e => e.ObjectType).HasDefaultValueSql("'PlainText'");
         });
 
-        modelBuilder.Entity<SsmsElement>(entity =>
+        modelBuilder.Entity<SSMSElement>(entity =>
         {
             entity.ToTable("SSMSElements");
 

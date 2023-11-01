@@ -6,6 +6,7 @@
       xmlns:local="clr-namespace:ConnectingDBToApp.Views.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
+      Background="White"
       Title="TestPage">
 
     <Grid>

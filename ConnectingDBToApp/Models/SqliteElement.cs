@@ -6,7 +6,7 @@ using System.Windows.Input;
 
 namespace ConnectingDBToApp.Models;
 
-public partial class SqliteElement : ElementItem
+public partial class SQLiteElement : ElementItem
 {
     public long Id { get; set; }
 
