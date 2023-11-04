@@ -1,5 +1,7 @@
 ﻿ <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                     xmlns:gc="clr-namespace:ConnectingDBToApp.GlobalClasses">
+     
     <!--Global Styles-->
 
      
@@ -395,7 +397,8 @@
                 <ControlTemplate>
                     <UniformGrid Columns="2"
                                  Margin="0 5">
-                        <Image Source="{Binding Text}"/>
+                        <Image Source="{Binding Text}"
+                               Margin="0 0 5 0"/>
                         <Image Source="{Binding AdditionalText}"/>
                     </UniformGrid>
                 </ControlTemplate>
@@ -406,7 +409,6 @@
     <Style x:Key="CopyButton" TargetType="Button">
         <Setter Property="Width" Value="30"/>
         <Setter Property="Height" Value="30"/>
-        <Setter Property="Foreground" Value="Black"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
@@ -415,7 +417,7 @@
                             CornerRadius="5">
                         <Rectangle x:Name="Icon" 
                                    Width="22.5" Height="22.5"
-                                   Fill="{TemplateBinding Foreground}">
+                                   Fill="Black">
                             <Rectangle.OpacityMask>
                                 <VisualBrush Stretch="Uniform" Visual="{StaticResource ContentCopyIcon}"/>
                             </Rectangle.OpacityMask>
@@ -425,6 +427,46 @@
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter TargetName="BackgroundElement"
                                     Property="Background" Value="{DynamicResource MouseOverColor}"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="BackgroundElement"
+                                    Property="Background" Value="{DynamicResource BackgroundDarkGray}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="CopyButtonCodeImage" TargetType="Button">
+        <Setter Property="Width" Value="30"/>
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="BackgroundElement"
+                        Background="Transparent"
+                        CornerRadius="5">
+                        <Rectangle x:Name="Icon" 
+                               Width="22.5" Height="22.5"
+                               Fill="White">
+                            <Rectangle.OpacityMask>
+                                <VisualBrush Stretch="Uniform" Visual="{StaticResource ContentCopyIcon}"/>
+                            </Rectangle.OpacityMask>
+                        </Rectangle>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="BackgroundElement"
+                                    Property="Background" Value="White"/>
+                            <Setter TargetName="Icon"
+                                    Property="Fill" Value="Black"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="BackgroundElement"
+                                    Property="Background" Value="Black"/>
+                            <Setter TargetName="Icon"
+                                    Property="Fill" Value="White"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -468,8 +510,7 @@
                             <Button Content="Скопировать код"
                                     Command="{Binding DataContext.CopyText, RelativeSource={RelativeSource AncestorType=Page}}"
                                     CommandParameter="{Binding Code}"
-                                    Style="{StaticResource CopyButton}"
-                                    Foreground="White"
+                                    Style="{StaticResource CopyButtonCodeImage}"
                                     VerticalAlignment="Top"
                                     HorizontalAlignment="Right"
                                     Margin="0 30 30 0"/>
@@ -482,4 +523,28 @@
 
     <!--End: Styles for ListBoxItem-->
     
+     
+     <!--Style DataListBox-->
+
+    <Style x:Key="DataListBox" TargetType="ListBox">
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled"/>
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Disabled"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Margin" Value="30 0"/>
+        <Setter Property="MaxWidth" Value="800"/>
+        <Setter Property="ItemContainerStyleSelector">
+            <Setter.Value>
+                <gc:CustomStyleSelector
+                        H1Item="{StaticResource H1Item}" 
+                        H2Item="{StaticResource H2Item}"
+                        ImageItem="{StaticResource ImageItem}"
+                        DoubleImageItem="{StaticResource DoubleImageItem}"
+                        PlainTextItem="{StaticResource PlainTextItem}"
+                        CopyButtonItem="{StaticResource CopyButtonItem}"
+                        CodeImageItem="{StaticResource CodeImageItem}"/>
+            </Setter.Value>
+        </Setter>
+    </Style>
+     
+     <!--End: Style DataListBox-->
 </ResourceDictionary>

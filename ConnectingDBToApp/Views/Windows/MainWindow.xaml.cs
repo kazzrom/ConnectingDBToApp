@@ -29,7 +29,7 @@ namespace ConnectingDBToApp
             MainFrame.Frame = MainFrameApp;
             MainWindowMethods.Minimize = () => { WindowState = WindowState.Minimized; };
             MainWindowMethods.Close = () => { Close(); };
-            MainWindowMethods.Fullscreen = () => 
+            MainWindowMethods.FullScreen = () => 
             {
                 switch (WindowState)
                 {

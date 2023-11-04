@@ -5,29 +5,12 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ConnectingDBToApp.Views.Pages"
       xmlns:vm="clr-namespace:ConnectingDBToApp.ViewModels"
-      xmlns:gc="clr-namespace:ConnectingDBToApp.GlobalClasses"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="SSMSPage" Background="White">
     <Page.DataContext>
         <vm:SSMSViewModel/>
     </Page.DataContext>
-    <Page.Resources>
-        <Style TargetType="ListBox">
-            <Setter Property="ItemContainerStyleSelector">
-                <Setter.Value>
-                    <gc:CustomStyleSelector
-                        H1Item="{StaticResource H1Item}" 
-                        H2Item="{StaticResource H2Item}"
-                        ImageItem="{StaticResource ImageItem}"
-                        DoubleImageItem="{StaticResource DoubleImageItem}"
-                        PlainTextItem="{StaticResource PlainTextItem}"
-                        CopyButtonItem="{StaticResource CopyButtonItem}"
-                        CodeImageItem="{StaticResource CodeImageItem}"/>
-                </Setter.Value>
-            </Setter>
-        </Style>
-    </Page.Resources>
     <StackPanel Orientation="Vertical">
         <TextBlock Text="SQL Server Management Studio"
                    Style="{StaticResource H1}"/>
@@ -35,30 +18,31 @@
             <TabItem Header="Создание БД"
                      IsSelected="True">
                 <ListBox ItemsSource="{Binding CreatingDbItems}"
-                         ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                         ScrollViewer.VerticalScrollBarVisibility="Disabled"
-                         BorderThickness="0"
-                         Margin="30 0"
-                         MaxWidth="800"/>
+                         Style="{StaticResource DataListBox}"/>
             </TabItem>
             <TabItem Header="Cоединение БД в VS">
-                
+                <ListBox ItemsSource="{Binding ConnectionDBItems}"
+                         Style="{StaticResource DataListBox}"/>
             </TabItem>
             <TabItem Header="Работа с SqlClient">
                 <TabControl>
                     <TabItem Header="Установка SqlClient">
-                        
+                        <ListBox ItemsSource="{Binding SQLClientDownloadItems}"
+                                 Style="{StaticResource DataListBox}"/>
                     </TabItem>
                     <TabItem Header="Подключение БД">
-
+                        <ListBox ItemsSource="{Binding SQLClientConnectionDBItems}"
+                                 Style="{StaticResource DataListBox}"/>
                     </TabItem>
                     <TabItem Header="Выполнение запросов">
-
+                        <ListBox ItemsSource="{Binding SQLClientQueryExecutionItems}"
+                                 Style="{StaticResource DataListBox}"/>
                     </TabItem>
                 </TabControl>
             </TabItem>
             <TabItem Header="Работа EF Core 7">
-
+                <ListBox ItemsSource="{Binding EFCore7Items}"
+                         Style="{StaticResource DataListBox}"/>
             </TabItem>
         </TabControl>
     </StackPanel>

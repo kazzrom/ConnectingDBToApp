@@ -17,14 +17,14 @@ namespace ConnectingDBToApp.ViewModels
     public class SQLiteViewModel : INotifyPropertyChanged
     {
         public List<SQLiteElement> CreatingDbItems { get; set; }
-        public List<SQLiteElement> EFCoreConnectingDb { get; set; }
+        public List<SQLiteElement> EFCoreConnectingDbItems { get; set; }
         public SQLiteViewModel()
         {
             CreatingDbItems = DbContext.Tables.SqliteElements
                                                .Where(item => item.Chapter == "CreatingDB")
                                                .ToList();
 
-            EFCoreConnectingDb = DbContext.Tables.SqliteElements
+            EFCoreConnectingDbItems = DbContext.Tables.SqliteElements
                                                   .Where(item => item.Chapter == "EFCoreConnectingDB")
                                                   .ToList();
         }
@@ -36,7 +36,7 @@ namespace ConnectingDBToApp.ViewModels
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        public ICommand CopyText
+        public static ICommand CopyText
         {
             get => new DelegateCommand((code) =>
             {

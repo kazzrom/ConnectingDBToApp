@@ -12,41 +12,17 @@
     <Page.DataContext>
         <vm:SQLiteViewModel/>
     </Page.DataContext>
-    <Page.Resources>
-        <Style TargetType="ListBox">
-            <Setter Property="ItemContainerStyleSelector">
-                <Setter.Value>
-                    <gc:CustomStyleSelector
-                        H1Item="{StaticResource H1Item}" 
-                        H2Item="{StaticResource H2Item}"
-                        ImageItem="{StaticResource ImageItem}"
-                        DoubleImageItem="{StaticResource DoubleImageItem}"
-                        PlainTextItem="{StaticResource PlainTextItem}"
-                        CopyButtonItem="{StaticResource CopyButtonItem}"
-                        CodeImageItem="{StaticResource CodeImageItem}"/>
-                </Setter.Value>
-            </Setter>
-        </Style>
-    </Page.Resources>
     <StackPanel>
         <TextBlock Text="SQLite"
                    Style="{StaticResource H1}"/>
         <TabControl>
             <TabItem Header="Создание БД">
                 <ListBox ItemsSource="{Binding CreatingDbItems}"
-                         ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                         ScrollViewer.VerticalScrollBarVisibility="Disabled"
-                         BorderThickness="0"
-                         Margin="30 0"
-                         MaxWidth="800"/>
+                         Style="{StaticResource DataListBox}"/>
             </TabItem>
             <TabItem Header="Подключение БД">
-                <ListBox ItemsSource="{Binding EFCoreConnectingDb}"
-                         ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                         ScrollViewer.VerticalScrollBarVisibility="Disabled"
-                         BorderThickness="0"
-                         Margin="30 0"
-                         MaxWidth="800"/>
+                <ListBox ItemsSource="{Binding EFCoreConnectingDbItems}"
+                         Style="{StaticResource DataListBox}"/>
             </TabItem>
         </TabControl>
     </StackPanel>

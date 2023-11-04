@@ -78,7 +78,7 @@ namespace ConnectingDBToApp.ViewModels
 
         public ICommand FullScreenWindow
         {
-            get => new DelegateCommand((obj) => { MainWindowMethods.Fullscreen(); });
+            get => new DelegateCommand((obj) => { MainWindowMethods.FullScreen(); });
         }
 
         public ICommand CloseWindow
