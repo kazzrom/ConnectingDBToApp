@@ -7,4 +7,6 @@
     <SolidColorBrush x:Key="ActiveStateColor" Color="#FFFFFF"/>
     <SolidColorBrush x:Key="TitleWindowColor" Color="#F5EDF0"/>
     <SolidColorBrush x:Key="CloseHoverColor" Color="#E81123"/>
+    <SolidColorBrush x:Key="TestButtonHoverColor" Color="#5f6e7b"/>
+    <SolidColorBrush x:Key="TestButtonPressColor" Color="#1a1e21"/>
 </ResourceDictionary>

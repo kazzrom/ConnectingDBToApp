@@ -1,0 +1,30 @@
+﻿<Page x:Class="ConnectingDBToApp.Views.Pages.QuestionPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ConnectingDBToApp.Views.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="QuestionPage">
+
+    <Grid>
+        <StackPanel Orientation="Vertical">
+            <TextBlock Text="Вопрос 1"
+                       Style="{StaticResource H1}"/>
+            <TextBlock Text="Какой класс используется для подключения к базы данных?"
+                       Style="{StaticResource H2}"/>
+            <UniformGrid Columns="1"
+                         Margin="30 0 0 0">
+                <RadioButton Content="SqlConnection"
+                             Style="{StaticResource CustomRadioButton}"/>
+                <RadioButton Content="SqlConnection"
+                             Style="{StaticResource CustomRadioButton}"/>
+                <RadioButton Content="SqlConnection"
+                             Style="{StaticResource CustomRadioButton}"/>
+                <RadioButton Content="SqlConnection"
+                             Style="{StaticResource CustomRadioButton}"/>
+            </UniformGrid>
+        </StackPanel>
+    </Grid>
+</Page>

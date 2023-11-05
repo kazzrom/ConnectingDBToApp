@@ -160,6 +160,10 @@
                                 </Setter.Value>
                             </Setter>
                         </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="Icon" 
+                                    Property="Fill" Value="Black"/> 
+                        </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
@@ -429,8 +433,8 @@
                                     Property="Background" Value="{DynamicResource MouseOverColor}"/>
                         </Trigger>
                         <Trigger Property="IsPressed" Value="True">
-                            <Setter TargetName="BackgroundElement"
-                                    Property="Background" Value="{DynamicResource BackgroundDarkGray}"/>
+                            <Setter Property="Background" Value="{DynamicResource BackgroundDarkGray}"
+                                    TargetName="BackgroundElement"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -547,4 +551,74 @@
     </Style>
      
      <!--End: Style DataListBox-->
+     
+     
+     <!--Style for test-->
+
+    <Style x:Key="TestButton" TargetType="Button">
+        <Setter Property="Background" Value="{DynamicResource BackgroundDarkGray}"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="FontWeight" Value="Black"/>
+        <Setter Property="Padding" Value="30 15"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="BackgroundElement"
+                            CornerRadius="5"
+                            Background="{TemplateBinding Background}"
+                            Padding="{TemplateBinding Padding}">
+                        <ContentPresenter HorizontalAlignment="Center"
+                                          VerticalAlignment="Center"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="{DynamicResource TestButtonHoverColor}"
+                                    TargetName="BackgroundElement"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" Value="{DynamicResource TestButtonPressColor}"
+                                    TargetName="BackgroundElement"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="CustomRadioButton" TargetType="RadioButton">
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="Margin" Value="0 0 0 20"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="RadioButton">
+                    <BulletDecorator>
+                        <BulletDecorator.Bullet>
+                            <Grid>
+                                <Ellipse x:Name="Border"
+                                         Width="20" Height="20"
+                                         Fill="{StaticResource BackgroundDarkGray}"/>
+                                <Ellipse x:Name="CheckMark"
+                                         Width="14" Height="14"
+                                         StrokeThickness="2"
+                                         Stroke="White"
+                                         Fill="White"/>
+                            </Grid>
+                        </BulletDecorator.Bullet>
+                        <ContentPresenter Margin="15 0 0 0"/>
+                    </BulletDecorator>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter Property="Fill" Value="Transparent"
+                                    TargetName="CheckMark"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+     
+     <!--End: Style for test-->
+     
 </ResourceDictionary>

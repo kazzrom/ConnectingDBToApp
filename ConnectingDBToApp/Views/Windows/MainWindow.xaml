@@ -21,6 +21,7 @@
                    Background="{DynamicResource BackgroundDarkGray}"
                    MouseDown="HeaderWindow_MouseDown">
             <ToggleButton DockPanel.Dock="Left"
+                          x:Name="MenuButton"
                           Style="{StaticResource MenuButton}"
                           Command="{Binding ShowSideBar}"
                           CommandParameter="{Binding ElementName=SideBar}"/>

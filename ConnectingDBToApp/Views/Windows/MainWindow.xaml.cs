@@ -26,7 +26,10 @@ namespace ConnectingDBToApp
         {
             InitializeComponent();
 
-            MainFrame.Frame = MainFrameApp;
+            GlobalObjs.MainFrame = MainFrameApp;
+            GlobalObjs.SideBar = SideBar;
+            GlobalObjs.MenuButton = MenuButton;
+
             MainWindowMethods.Minimize = () => { WindowState = WindowState.Minimized; };
             MainWindowMethods.Close = () => { Close(); };
             MainWindowMethods.FullScreen = () => 

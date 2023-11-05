@@ -57,12 +57,7 @@ namespace ConnectingDBToApp.ViewModels
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        public static ICommand CopyText
-        {
-            get => new DelegateCommand((code) =>
-            {
-                Clipboard.SetText((string)code);
-            });
-        }
+        public static ICommand CopyText =>
+            new DelegateCommand(execute: (code) => { Clipboard.SetText((string)code); });
     }
 }

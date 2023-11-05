@@ -60,35 +60,28 @@ namespace ConnectingDBToApp.ViewModels
                 switch (_sideBarItem.Title) 
                 {
                     case "SSMS":
-                        MainFrame.Frame.Navigate(new SSMSPage()); break;
+                        GlobalObjs.MainFrame.Navigate(new SSMSPage()); break;
                     case "SQLite":
-                        MainFrame.Frame.Navigate(new SQLitePage()); break;
+                        GlobalObjs.MainFrame.Navigate(new SQLitePage()); break;
                     case "Тест":
-                        MainFrame.Frame.Navigate(new TestPage()); break;
+                        GlobalObjs.MainFrame.Navigate(new TestPage()); break;
                     default:
-                        MainFrame.Frame.Navigate(new TestPage()); break;
+                        GlobalObjs.MainFrame.Navigate(new TestPage()); break;
                 }
             }
         }
 
-        public ICommand MinimizeWindow
-        {
-            get => new DelegateCommand((obj) => { MainWindowMethods.Minimize(); });
-        }
+        public ICommand MinimizeWindow => 
+            new DelegateCommand(execute: (obj) => { MainWindowMethods.Minimize(); });
 
-        public ICommand FullScreenWindow
-        {
-            get => new DelegateCommand((obj) => { MainWindowMethods.FullScreen(); });
-        }
+        public ICommand FullScreenWindow => 
+            new DelegateCommand(execute: (obj) => { MainWindowMethods.FullScreen(); });
 
-        public ICommand CloseWindow
-        {
-            get => new DelegateCommand((obj) => { MainWindowMethods.Close(); });
-        }
+        public ICommand CloseWindow => 
+            new DelegateCommand(execute: (obj) => { MainWindowMethods.Close(); });
 
-        public ICommand ShowSideBar
-        {
-            get => new DelegateCommand((item) =>
+        public ICommand ShowSideBar => 
+            new DelegateCommand(execute: (item) =>
             {
                 var sideBar = (ListBox)item;
 
@@ -106,6 +99,5 @@ namespace ConnectingDBToApp.ViewModels
 
                 sideBar.BeginAnimation(FrameworkElement.WidthProperty, animation);
             });
-        }
     }
 }
