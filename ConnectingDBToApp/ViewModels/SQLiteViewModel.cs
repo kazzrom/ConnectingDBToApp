@@ -20,11 +20,11 @@ namespace ConnectingDBToApp.ViewModels
         public List<SQLiteElement> EFCoreConnectingDbItems { get; set; }
         public SQLiteViewModel()
         {
-            CreatingDbItems = DbContext.Tables.SqliteElements
+            CreatingDbItems = DbContext.Tables.SQLiteElements
                                                .Where(item => item.Chapter == "CreatingDB")
                                                .ToList();
 
-            EFCoreConnectingDbItems = DbContext.Tables.SqliteElements
+            EFCoreConnectingDbItems = DbContext.Tables.SQLiteElements
                                                   .Where(item => item.Chapter == "EFCoreConnectingDB")
                                                   .ToList();
         }

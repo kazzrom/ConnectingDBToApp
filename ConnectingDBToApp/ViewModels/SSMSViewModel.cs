@@ -25,27 +25,27 @@ namespace ConnectingDBToApp.ViewModels
         public List<SSMSElement> EFCore7Items { get; set; }
         public SSMSViewModel()
         {
-            CreatingDbItems = DbContext.Tables.SsmsElements
+            CreatingDbItems = DbContext.Tables.SSMSElements
                                                .Where(item => item.Chapter == "CreatingDB")
                                                .ToList();
 
-            ConnectionDBItems = DbContext.Tables.SsmsElements
+            ConnectionDBItems = DbContext.Tables.SSMSElements
                                                  .Where(item => item.Chapter == "ConnectionDB")
                                                  .ToList();
 
-            SQLClientDownloadItems = DbContext.Tables.SsmsElements
+            SQLClientDownloadItems = DbContext.Tables.SSMSElements
                                                       .Where(item => item.Chapter == "SQLClientDownload")
                                                       .ToList();
 
-            SQLClientConnectionDBItems = DbContext.Tables.SsmsElements
+            SQLClientConnectionDBItems = DbContext.Tables.SSMSElements
                                                           .Where(item => item.Chapter == "SQLClientConnectionDB")
                                                           .ToList();
 
-            SQLClientQueryExecutionItems = DbContext.Tables.SsmsElements
+            SQLClientQueryExecutionItems = DbContext.Tables.SSMSElements
                                                             .Where(item => item.Chapter == "SQLClientQueryExecution")
                                                             .ToList();
 
-            EFCore7Items = DbContext.Tables.SsmsElements
+            EFCore7Items = DbContext.Tables.SSMSElements
                                             .Where(item => item.Chapter == "EFCore7")
                                             .ToList();
         }

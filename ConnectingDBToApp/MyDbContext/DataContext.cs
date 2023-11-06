@@ -17,11 +17,13 @@ public partial class DataContext : DbContext
     {
     }
 
-    public virtual DbSet<SQLiteElement> SqliteElements { get; set; }
+    public virtual DbSet<SQLiteElement> SQLiteElements { get; set; }
 
-    public virtual DbSet<SSMSElement> SsmsElements { get; set; }
+    public virtual DbSet<SSMSElement> SSMSElements { get; set; }
 
     public virtual DbSet<TestQuestion> TestQuestions { get; set; }
+
+    public virtual DbSet<TestResult> TestResults { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         => optionsBuilder.UseSqlite(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
@@ -45,6 +47,11 @@ public partial class DataContext : DbContext
         });
 
         modelBuilder.Entity<TestQuestion>(entity =>
+        {
+            entity.Property(e => e.Id).HasColumnName("ID");
+        });
+
+        modelBuilder.Entity<TestResult>(entity =>
         {
             entity.Property(e => e.Id).HasColumnName("ID");
         });

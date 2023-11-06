@@ -5,9 +5,9 @@ namespace ConnectingDBToApp.Models;
 
 public partial class TestQuestion
 {
-    public long Id { get; set; }
+    public int Id { get; set; }
 
-    public string Ouestion { get; set; } = null!;
+    public string Question { get; set; } = null!;
 
     public string Variant1 { get; set; } = null!;
 
@@ -17,5 +17,5 @@ public partial class TestQuestion
 
     public string Variant4 { get; set; } = null!;
 
-    public long RightAnswer { get; set; }
+    public string RightAnswer { get; set; } = null!;
 }

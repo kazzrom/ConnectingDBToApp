@@ -4,26 +4,45 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ConnectingDBToApp.Views.Pages"
+      xmlns:vm="clr-namespace:ConnectingDBToApp.ViewModels"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
+      Background="White"
       Title="QuestionPage">
-
+    <Page.DataContext>
+        <vm:QuestionViewModel/>
+    </Page.DataContext>
     <Grid>
-        <StackPanel Orientation="Vertical">
-            <TextBlock Text="Вопрос 1"
+        <StackPanel Orientation="Vertical"
+                    DataContext="{Binding CurrentQuestion}">
+            <TextBlock Text="{Binding StringFormat=Вопрос {0}, Path=Id}"
                        Style="{StaticResource H1}"/>
-            <TextBlock Text="Какой класс используется для подключения к базы данных?"
+            <TextBlock Text="{Binding Question}"
                        Style="{StaticResource H2}"/>
             <UniformGrid Columns="1"
                          Margin="30 0 0 0">
-                <RadioButton Content="SqlConnection"
-                             Style="{StaticResource CustomRadioButton}"/>
-                <RadioButton Content="SqlConnection"
-                             Style="{StaticResource CustomRadioButton}"/>
-                <RadioButton Content="SqlConnection"
-                             Style="{StaticResource CustomRadioButton}"/>
-                <RadioButton Content="SqlConnection"
-                             Style="{StaticResource CustomRadioButton}"/>
+                <RadioButton Content="{Binding Variant1}"
+                             Style="{StaticResource CustomRadioButton}"
+                             Command="{Binding DataContext.CheckedRadioButton, RelativeSource={RelativeSource AncestorType=Page}}"
+                             CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}}"/>
+                <RadioButton Content="{Binding Variant2}"
+                             Style="{StaticResource CustomRadioButton}"
+                             Command="{Binding DataContext.CheckedRadioButton, RelativeSource={RelativeSource AncestorType=Page}}"
+                             CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}}"/>
+                <RadioButton Content="{Binding Variant3}"
+                             Style="{StaticResource CustomRadioButton}"
+                             Command="{Binding DataContext.CheckedRadioButton, RelativeSource={RelativeSource AncestorType=Page}}"
+                             CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}}"/>
+                <RadioButton Content="{Binding Variant4}"
+                             Style="{StaticResource CustomRadioButton}"
+                             Command="{Binding DataContext.CheckedRadioButton, RelativeSource={RelativeSource AncestorType=Page}}"
+                             CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}}"/>
+                <Button x:Name="ButtonNext"
+                        Content="Далее"
+                        Style="{StaticResource NextQuestionButton}"
+                        HorizontalAlignment="Right"
+                        Command="{Binding DataContext.NextQuestion, RelativeSource={RelativeSource AncestorType=Page}}"
+                        CommandParameter="{Binding ElementName=ButtonNext}"/>
             </UniformGrid>
         </StackPanel>
     </Grid>

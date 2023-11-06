@@ -22,9 +22,8 @@ namespace ConnectingDBToApp.ViewModels
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        public static ICommand OpenTest
-        {
-            get => new DelegateCommand((obj) =>
+        public static ICommand OpenTest => 
+            new DelegateCommand(execute: (obj) =>
             {
                 DoubleAnimation animation = new DoubleAnimation() 
                 { 
@@ -37,6 +36,5 @@ namespace ConnectingDBToApp.ViewModels
                 GlobalObjs.SideBar.BeginAnimation(FrameworkElement.WidthProperty, animation);
                 GlobalObjs.MainFrame.Navigate(new QuestionPage()); 
             });
-        }
     }
 }
