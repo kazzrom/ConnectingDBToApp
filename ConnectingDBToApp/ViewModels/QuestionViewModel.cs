@@ -10,6 +10,9 @@ using ConnectingDBToApp.Models;
 using ConnectingDBToApp.GlobalClasses;
 using System.Windows.Controls;
 using ConnectingDBToApp.Views.Pages;
+using ConnectingDBToApp.ViewModels;
+using System.Windows.Media.Animation;
+using System.Windows;
 
 namespace ConnectingDBToApp.ViewModels
 {
@@ -17,12 +20,13 @@ namespace ConnectingDBToApp.ViewModels
     {
         public Queue<TestQuestion> TestQuestions;
         private int _countQuestions;
-        private int _countRightQAnswers = 0;
+        private int _countRightAnswers;
 
         public QuestionViewModel()
         {
             TestQuestions = new Queue<TestQuestion>(DbContext.Tables.TestQuestions);
             _countQuestions = TestQuestions.Count;
+            _countRightAnswers = 0;
             CurrentQuestion = TestQuestions.Dequeue();
         }
 
@@ -62,29 +66,45 @@ namespace ConnectingDBToApp.ViewModels
             });
 
         public ICommand NextQuestion =>
-            new DelegateCommand(execute: (obj) =>
-            {
-                string selectedAnswer = SelectedRadioButton.Content.ToString()!;
-                if (selectedAnswer == CurrentQuestion.RightAnswer)
+            new DelegateCommand(
+                execute: (obj) =>
                 {
-                    _countRightQAnswers++;
-                }
+                    string selectedAnswer = SelectedRadioButton.Content.ToString()!;
+                    if (selectedAnswer == CurrentQuestion.RightAnswer)
+                    {
+                        _countRightAnswers++;
+                    }
 
-                if (TestQuestions.Count >= 1) 
+                    if (TestQuestions.Count >= 1) 
+                    {
+                        CurrentQuestion = TestQuestions.Dequeue();
+                        var button = (Button)obj;
+                        SelectedRadioButton.IsChecked = false;
+                        SelectedRadioButton = null!;
+                    }
+                    else
+                    {
+                        GlobalObjs.Result.CountRightAnswer = _countRightAnswers;
+                        GlobalObjs.Result.CountQuestions = _countQuestions;
+                        GlobalObjs.Result.Percentages = _countRightAnswers * 1.0 / _countQuestions;
+
+                        GlobalObjs.MainFrame.Navigate(new ResultPage(GlobalObjs.Result));
+
+                        DoubleAnimation animation = new DoubleAnimation()
+                        {
+                            To = 230,
+                            Duration = TimeSpan.FromMilliseconds(200)
+                        };
+                        animation.EasingFunction = new QuadraticEase() { EasingMode = EasingMode.EaseOut };
+                        GlobalObjs.SideBar.BeginAnimation(FrameworkElement.WidthProperty, animation);
+
+                        GlobalObjs.MenuButton.IsEnabled = true;
+                    }
+                }, 
+                canExecute: (obj) =>
                 {
-                    CurrentQuestion = TestQuestions.Dequeue();
-                    var button = (Button)obj;
-                    SelectedRadioButton.IsChecked = false;
-                    SelectedRadioButton = null!;
+                    return SelectedRadioButton != null;
                 }
-                else
-                {
-                    GlobalObjs.MainFrame.Navigate(new ResultPage(_countRightQAnswers, _countQuestions));
-                }
-            }, 
-            canExecute: (obj) =>
-            {
-                return SelectedRadioButton != null;
-            });
+            );
     }
 }

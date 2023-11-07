@@ -4,18 +4,11 @@
                      xmlns:gc="clr-namespace:ConnectingDBToApp.GlobalClasses">
      
     <!--Global Styles-->
-
-     
-     <!--Style TextBlock-->
     
     <Style TargetType="TextBlock">
         <Setter Property="FontFamily" Value="{StaticResource Mulish}"/>
     </Style>
-    
-    <!--End: Style TextBlock-->
-
-
-    <!--Style TabControl-->
+   
 
     <Style TargetType="TabItem">
         <Setter Property="Background" Value="Transparent"/>
@@ -72,11 +65,7 @@
             </Setter.Value>
         </Setter>
     </Style>
-
-    <!--End: Style TabControl-->
-    
-    
-    <!--Style ScrollViewer-->
+     
     
     <Style x:Key="ScrollBarThumbStyle" TargetType="Thumb">
         <Setter Property="Background" Value="{DynamicResource MouseOverColor}"/>
@@ -115,10 +104,7 @@
             </Setter.Value>
         </Setter>
     </Style>
-    
-    <!--End: Style ScrollViewer-->
-    
-    
+
     <!--End: Global Styles-->
     
     
@@ -162,8 +148,14 @@
                             </Setter>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="Icon"
+                                    Property="Fill" Value="{DynamicResource BackgroundDarkGray}"/>
                             <Setter TargetName="Icon" 
-                                    Property="Fill" Value="Black"/> 
+                                    Property="OpacityMask">
+                                <Setter.Value>
+                                    <VisualBrush Stretch="Uniform" Visual="{StaticResource MenuIcon}"/>
+                                </Setter.Value>
+                            </Setter>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -536,7 +528,7 @@
         <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Disabled"/>
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Margin" Value="30 0"/>
-        <Setter Property="MaxWidth" Value="800"/>
+        <Setter Property="MaxWidth" Value="850"/>
         <Setter Property="ItemContainerStyleSelector">
             <Setter.Value>
                 <gc:CustomStyleSelector
@@ -643,6 +635,48 @@
                             <Setter Property="BorderBrush" Value="{StaticResource MouseOverColor}" TargetName="BackgroundElement"/>
                             <Setter Property="Foreground" Value="{StaticResource MouseOverColor}"/>
                         </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="UsernameTextBox" TargetType="TextBox">
+        <Setter Property="Width" Value="200"/>
+        <Setter Property="Padding" Value="5 3 0 3"/>
+        <Setter Property="VerticalContentAlignment" Value="Stretch"/>
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="FontFamily" Value="{StaticResource Mulish}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TextBoxBase">
+                    <Border x:Name="Border"
+                            BorderThickness="1"
+                            BorderBrush="{DynamicResource BackgroundMenuColor}"
+                            CornerRadius="5"
+                            Padding="{TemplateBinding Padding}">
+                        <Grid>
+                            <TextBlock x:Name="Placeholder"
+                                       Text="Username"
+                                       Foreground="{StaticResource BackgroundMenuColor}"
+                                       VerticalAlignment="Center"
+                                       Margin="5 0 0 0"
+                                       Visibility="Collapsed"/>
+                            <ScrollViewer x:Name="PART_ContentHost" 
+                                          VerticalAlignment="Center"/>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsFocused" Value="True">
+                            <Setter Property="BorderBrush" Value="{StaticResource BackgroundDarkGray}"
+                                    TargetName="Border"/>
+                            <Setter Property="Visibility" Value="Collapsed"
+                                    TargetName="Placeholder"/>
+                        </Trigger>
+                        <DataTrigger Binding="{Binding Text}" Value="">
+                            <Setter Property="Visibility" Value="Visible"
+                                    TargetName="Placeholder"/>
+                        </DataTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>

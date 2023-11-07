@@ -17,6 +17,17 @@
                 VerticalAlignment="Center">
         <TextBlock Text="Тест на полученные знания"
                    Style="{StaticResource H1}"/>
+        <StackPanel Orientation="Horizontal"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Margin="0 0 0 20">
+            <TextBlock Text="Ваше ФИ: "
+                       FontSize="18"
+                       Margin="0 0 10 0"
+                       VerticalAlignment="Center"/>
+            <TextBox Text="{Binding Username}"
+                     Style="{StaticResource UsernameTextBox}"/>
+        </StackPanel>
         <Button Content="ПРОЙТИ"
                 Style="{StaticResource TestButton}"
                 Command="{Binding OpenTest}"/>

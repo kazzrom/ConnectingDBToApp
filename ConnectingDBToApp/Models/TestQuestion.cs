@@ -5,7 +5,7 @@ namespace ConnectingDBToApp.Models;
 
 public partial class TestQuestion
 {
-    public int Id { get; set; }
+    public long Id { get; set; }
 
     public string Question { get; set; } = null!;
 

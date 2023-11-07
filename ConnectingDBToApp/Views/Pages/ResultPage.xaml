@@ -8,13 +8,22 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ResultPage">
 
-    <Grid>
+    <StackPanel Orientation="Vertical"
+                >
+        <TextBlock Text="{Binding Username}"/>
         <TextBlock>
-            <Run Text="Вы набрали"/>
-            <Run Text="{Binding countRightAnswer}"/>
-            <Run Text=" из "/>
-            <Run Text="{Binding [1]}"/>
-            <Run Text=" баллов"/>
+            <TextBlock.Text>
+                <MultiBinding StringFormat="Вы набрали {0} из {1}">
+                    <Binding Path="CountRightAnswer"/>
+                    <Binding Path="CountQuestions"/>
+                </MultiBinding>
+            </TextBlock.Text>
         </TextBlock>
-    </Grid>
+        <TextBlock>
+            <TextBlock.Text>
+                <Binding StringFormat="Процентное соотношение: {0:P}"
+                         Path="Percentages"/>
+            </TextBlock.Text>
+        </TextBlock>
+    </StackPanel>
 </Page>

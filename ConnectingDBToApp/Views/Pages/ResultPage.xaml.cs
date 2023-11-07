@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ConnectingDBToApp.Models;
+using ConnectingDBToApp.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,10 +22,10 @@ namespace ConnectingDBToApp.Views.Pages
     /// </summary>
     public partial class ResultPage : Page
     {
-        public ResultPage(int countRightAnswer, int countQuestion)
+        public ResultPage(TestResult result)
         {
             InitializeComponent();
-            DataContext = (countRightAnswer, countQuestion);
+            DataContext = result;
         }
     }
 }

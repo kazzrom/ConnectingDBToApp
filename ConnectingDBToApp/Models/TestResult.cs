@@ -9,5 +9,9 @@ public partial class TestResult
 
     public string Username { get; set; } = null!;
 
+    public long CountRightAnswer { get; set; }
+
+    public long CountQuestions { get; set; }
+
     public double Percentages { get; set; }
 }

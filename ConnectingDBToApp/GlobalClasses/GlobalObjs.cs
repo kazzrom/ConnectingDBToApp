@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ConnectingDBToApp.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,5 +14,6 @@ namespace ConnectingDBToApp.GlobalClasses
         public static Frame MainFrame { get; set; }
         public static ListBox SideBar { get; set; }
         public static ToggleButton MenuButton { get; set; }
+        public static TestResult Result { get; set; } = new TestResult();
     }
 }
