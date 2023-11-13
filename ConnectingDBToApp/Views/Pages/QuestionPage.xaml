@@ -41,7 +41,7 @@
                          Command="{Binding DataContext.CheckedRadioButton, RelativeSource={RelativeSource AncestorType=Page}}"
                          CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}}"/>
         </UniformGrid>
-        <Button Content="Далее"
+        <Button Content="{Binding DataContext.ButtonContent, RelativeSource={RelativeSource AncestorType=Page}}"
                 Style="{StaticResource NextQuestionButton}"
                 HorizontalAlignment="Center"
                 Margin="0 20 0 0"

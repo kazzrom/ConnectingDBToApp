@@ -22,10 +22,9 @@ namespace ConnectingDBToApp.Views.Pages
     /// </summary>
     public partial class ResultPage : Page
     {
-        public ResultPage(TestResult result)
+        public ResultPage()
         {
             InitializeComponent();
-            DataContext = result;
         }
     }
 }

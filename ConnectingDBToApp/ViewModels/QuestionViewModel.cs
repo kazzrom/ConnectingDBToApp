@@ -59,6 +59,17 @@ namespace ConnectingDBToApp.ViewModels
             }
         }
 
+        private string _buttonContent = "Далее";
+        public string ButtonContent
+        {
+            get => _buttonContent;
+            set
+            {
+                _buttonContent = value;
+                OnPropertyChanged(nameof(ButtonContent));
+            }
+        }
+
         public ICommand CheckedRadioButton =>
             new DelegateCommand(execute: (radioButton) =>
             {
@@ -70,6 +81,7 @@ namespace ConnectingDBToApp.ViewModels
                 execute: (obj) =>
                 {
                     string selectedAnswer = SelectedRadioButton.Content.ToString()!;
+                    ButtonContent = "Далее";
                     if (selectedAnswer == CurrentQuestion.RightAnswer)
                     {
                         _countRightAnswers++;
@@ -77,6 +89,8 @@ namespace ConnectingDBToApp.ViewModels
 
                     if (TestQuestions.Count >= 1) 
                     {
+                        if(TestQuestions.Count == 1)
+                            ButtonContent = "Завершить";
                         CurrentQuestion = TestQuestions.Dequeue();
                         var button = (Button)obj;
                         SelectedRadioButton.IsChecked = false;
@@ -87,8 +101,10 @@ namespace ConnectingDBToApp.ViewModels
                         GlobalObjs.Result.CountRightAnswer = _countRightAnswers;
                         GlobalObjs.Result.CountQuestions = _countQuestions;
                         GlobalObjs.Result.Percentages = _countRightAnswers * 1.0 / _countQuestions;
+                        DbContext.Tables.Add(GlobalObjs.Result);
+                        DbContext.Tables.SaveChanges();
 
-                        GlobalObjs.MainFrame.Navigate(new ResultPage(GlobalObjs.Result));
+                        GlobalObjs.MainFrame.Navigate(new ResultPage());
 
                         DoubleAnimation animation = new DoubleAnimation()
                         {
