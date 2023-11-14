@@ -518,6 +518,21 @@
         </Setter>
     </Style>
 
+    <Style x:Key="HyperLinkItem" TargetType="ListBoxItem">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <TextBlock>
+                        <Hyperlink Command="{Binding DataContext.NavigateLink, RelativeSource={RelativeSource AncestorType=Page}}"
+                                   CommandParameter="{Binding Code}">
+                            <TextBlock Text="{Binding Text}"/>
+                        </Hyperlink>
+                    </TextBlock>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
     <!--End: Styles for ListBoxItem-->
     
      
@@ -538,7 +553,8 @@
                         DoubleImageItem="{StaticResource DoubleImageItem}"
                         PlainTextItem="{StaticResource PlainTextItem}"
                         CopyButtonItem="{StaticResource CopyButtonItem}"
-                        CodeImageItem="{StaticResource CodeImageItem}"/>
+                        CodeImageItem="{StaticResource CodeImageItem}"
+                        HyperLinkItem="{StaticResource HyperLinkItem}"/>
             </Setter.Value>
         </Setter>
     </Style>

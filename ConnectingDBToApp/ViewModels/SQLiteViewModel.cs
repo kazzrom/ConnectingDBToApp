@@ -38,5 +38,8 @@ namespace ConnectingDBToApp.ViewModels
 
         public static ICommand CopyText => 
             new DelegateCommand(execute: (code) => { Clipboard.SetText((string)code); });
+
+        public static ICommand NavigateLink =>
+            new DelegateCommand(execute: (link) => { Process.Start(new ProcessStartInfo((string)link) { UseShellExecute = true }); });
     }
 }

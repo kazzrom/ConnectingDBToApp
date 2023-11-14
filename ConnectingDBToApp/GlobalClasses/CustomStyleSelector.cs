@@ -20,6 +20,7 @@ namespace ConnectingDBToApp.GlobalClasses
         public Style DoubleImageItem { get; set; } = null!;
         public Style CopyButtonItem { get; set; } = null!;
         public Style CodeImageItem { get; set; } = null!;
+        public Style HyperLinkItem { get; set; } = null!;
 
         public override Style SelectStyle(object item, DependencyObject container)
         {
@@ -39,6 +40,8 @@ namespace ConnectingDBToApp.GlobalClasses
                     return CopyButtonItem;
                 case "CodeImage":
                     return CodeImageItem;
+                case "HyperLink":
+                    return HyperLinkItem;
                 default:
                     return PlainTextItem;
             }

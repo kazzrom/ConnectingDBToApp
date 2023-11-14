@@ -43,7 +43,7 @@
                  Style="{StaticResource SideBarApp}"
                  ItemsSource="{Binding SideBarItems}"
                  SelectedItem="{Binding SideBarItem}"/>
-        
+
         <ScrollViewer HorizontalScrollBarVisibility="Disabled">
             <Frame x:Name="MainFrameApp"
                    NavigationUIVisibility="Hidden"
