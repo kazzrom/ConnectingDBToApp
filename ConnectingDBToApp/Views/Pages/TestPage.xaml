@@ -12,24 +12,31 @@
     <Page.DataContext>
         <vm:TestViewModel/>
     </Page.DataContext>
-    <StackPanel Orientation="Vertical"
+    <Grid>
+        <Button Content="Результаты пользователей"
+                Style="{StaticResource NextQuestionButton}"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                Command="{Binding OpenAllResults}"/>
+        <StackPanel Orientation="Vertical"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center">
-        <TextBlock Text="Тест на полученные знания"
-                   Style="{StaticResource H1}"/>
-        <StackPanel Orientation="Horizontal"
+            <TextBlock Text="Тест на полученные знания"
+                       Style="{StaticResource H1}"/>
+            <StackPanel Orientation="Horizontal"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     Margin="0 0 0 20">
-            <TextBlock Text="Ваше ФИ: "
+                <TextBlock Text="Ваше ФИ: "
                        FontSize="18"
                        Margin="0 0 10 0"
                        VerticalAlignment="Center"/>
-            <TextBox Text="{Binding Username}"
+                <TextBox Text="{Binding Username}"
                      Style="{StaticResource UsernameTextBox}"/>
-        </StackPanel>
-        <Button Content="ПРОЙТИ"
+            </StackPanel>
+            <Button Content="ПРОЙТИ"
                 Style="{StaticResource TestButton}"
                 Command="{Binding OpenTest}"/>
-    </StackPanel>
+        </StackPanel>
+    </Grid>
 </Page>

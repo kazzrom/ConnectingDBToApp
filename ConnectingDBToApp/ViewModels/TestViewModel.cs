@@ -38,7 +38,7 @@ namespace ConnectingDBToApp.ViewModels
             new DelegateCommand(
                 execute: (obj) =>
                 {
-                    DoubleAnimation animation = new DoubleAnimation() 
+                    var animation = new DoubleAnimation() 
                     { 
                         To = 0,
                         Duration = TimeSpan.FromMilliseconds(200)
@@ -49,6 +49,14 @@ namespace ConnectingDBToApp.ViewModels
                     GlobalObjs.SideBar.BeginAnimation(FrameworkElement.WidthProperty, animation);
                     GlobalObjs.MainFrame.Navigate(new QuestionPage());
                     GlobalObjs.Result.Username = Username;
+                }
+            );
+
+        public ICommand OpenAllResults =>
+            new DelegateCommand(
+                execute: (obj) =>
+                {
+                    GlobalObjs.MainFrame.Navigate(new AllResultsPage());
                 }
             );
     }
