@@ -1,0 +1,62 @@
+﻿<Window x:Class="ConnectingDBToApp.Views.Windows.AboutBoxWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ConnectingDBToApp.Views.Windows"
+        mc:Ignorable="d"
+        Title="AboutBoxWindow" 
+        Height="300" Width="500"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        MouseDown="Window_MouseDown"
+        BorderThickness="1"
+        BorderBrush="{StaticResource BackgroundDarkGray}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" 
+                    Background="{StaticResource BackgroundDarkGray}"
+                    Orientation="Horizontal">
+            <Rectangle Fill="White"
+                       Width="25" Height="25"
+                       Margin="12.5 0 0 0">
+                <Rectangle.OpacityMask>
+                    <VisualBrush Stretch="Uniform" Visual="{StaticResource InfoIcon}"/>
+                </Rectangle.OpacityMask>
+            </Rectangle>
+            <TextBlock Text="О программе"
+                       FontSize="16"
+                       FontWeight="Bold"
+                       VerticalAlignment="Center"
+                       Margin="12.5 0 0 0"
+                       Foreground="White"/>
+        </StackPanel>
+
+        <Button Grid.Row="0"
+                Style="{StaticResource CloseButton}"
+                HorizontalAlignment="Right"
+                Click="CloseWindow"/>
+
+        <StackPanel Grid.Row="1" Margin="50 40 50 0">
+            <TextBlock Style="{StaticResource PlainText}" 
+                       FontSize="16"
+                       Margin="0 0 0 20">
+                <Bold>Название программы:</Bold> “Технология подключения базы данных к настольному приложению”
+            </TextBlock>
+            <TextBlock Style="{StaticResource PlainText}" 
+                       FontSize="16" 
+                       Margin="0 0 0 20">
+                <Bold>Разработчик:</Bold> Казанцев Роман Андреевич, студент группы 403 ИСП
+            </TextBlock>
+            <TextBlock Style="{StaticResource PlainText}" 
+                       FontSize="16">
+                <Bold>Версия:</Bold> 1.0
+            </TextBlock>
+        </StackPanel>
+    </Grid>
+</Window>

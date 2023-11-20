@@ -10,7 +10,8 @@
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         MinWidth="800" MinHeight="500"
-        x:Name="MainWindowApp">
+        x:Name="MainWindowApp"
+        MaxHeight="{x:Static SystemParameters.MaximizedPrimaryScreenHeight}">
     <Window.DataContext>
         <vm:MainViewModel/>
     </Window.DataContext>
@@ -27,27 +28,38 @@
                           CommandParameter="{Binding ElementName=SideBar}"/>
             <Button DockPanel.Dock="Right"
                     Style="{StaticResource CloseButton}"
-                    Command="{Binding CloseWindow}"/>
+                    Command="{Binding CloseWindow}"
+                    ToolTip="Закрыть"/>
             <Button DockPanel.Dock="Right"
                     Style="{StaticResource FullscreenButton}"
                     Command="{Binding FullScreenWindow}"/>
             <Button DockPanel.Dock="Right"
                     Style="{StaticResource MinimizeButton}"
-                    Command="{Binding MinimizeWindow}"/>
-            <TextBlock Style="{StaticResource TitleWindow}"
-                       VerticalAlignment="Center"/>
+                    Command="{Binding MinimizeWindow}"
+                    ToolTip="Свернуть"/>
+            <StackPanel Orientation="Horizontal"
+                        VerticalAlignment="Center"
+                        Margin="10 0 0 0">
+                <TextBlock Style="{StaticResource TitleWindow}"
+                           Margin="0 0 10 0"/>
+                <Button DockPanel.Dock="Right"
+                        Style="{StaticResource AboutBoxButton}"
+                        Command="{Binding OpenAboutBox}"
+                        ToolTip="О программе"/>
+            </StackPanel>
         </DockPanel>
-
+        
         <ListBox x:Name="SideBar"
                  DockPanel.Dock="Left"
-                 Style="{StaticResource SideBarApp}"
+                 Style="{StaticResource SideBar}"
                  ItemsSource="{Binding SideBarItems}"
                  SelectedItem="{Binding SideBarItem}"/>
-
+        
         <ScrollViewer HorizontalScrollBarVisibility="Disabled">
             <Frame x:Name="MainFrameApp"
                    NavigationUIVisibility="Hidden"
                    Padding="30 20 0 30"/>
         </ScrollViewer>
+        
     </DockPanel>
 </Window>

@@ -12,6 +12,7 @@ using ConnectingDBToApp.Commands;
 using ConnectingDBToApp.GlobalClasses;
 using ConnectingDBToApp.Models;
 using ConnectingDBToApp.Views.Pages;
+using ConnectingDBToApp.Views.Windows;
 
 
 namespace ConnectingDBToApp.ViewModels
@@ -99,5 +100,8 @@ namespace ConnectingDBToApp.ViewModels
 
                 sideBar.BeginAnimation(FrameworkElement.WidthProperty, animation);
             });
+
+        public ICommand OpenAboutBox =>
+            new DelegateCommand(execute: (item) => new AboutBoxWindow().Show());
     }
 }
