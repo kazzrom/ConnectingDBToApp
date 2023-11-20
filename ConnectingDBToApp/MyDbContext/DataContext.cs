@@ -1,21 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using ConnectingDBToApp.Models;
+﻿using System.Configuration;
+
 using Microsoft.EntityFrameworkCore;
+using ConnectingDBToApp.Models;
+
 
 namespace ConnectingDBToApp.MyDbContext;
 
 public partial class DataContext : DbContext
 {
-    public DataContext()
-    {
-    }
+    public DataContext() { }
 
-    public DataContext(DbContextOptions<DataContext> options)
-        : base(options)
-    {
-    }
+    public DataContext(DbContextOptions<DataContext> options) : base(options) { }
 
     public virtual DbSet<SQLiteElement> SQLiteElements { get; set; }
 

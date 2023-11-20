@@ -1,16 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
+using System.Collections.ObjectModel;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Controls;
 using System.Windows.Media.Animation;
 
+using ConnectingDBToApp.Models;
 using ConnectingDBToApp.Commands;
 using ConnectingDBToApp.GlobalClasses;
-using ConnectingDBToApp.Models;
 using ConnectingDBToApp.Views.Pages;
 using ConnectingDBToApp.Views.Windows;
 
@@ -49,57 +47,63 @@ namespace ConnectingDBToApp.ViewModels
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        private SideBarItem _sideBarItem = null!;
-        public SideBarItem SideBarItem
+        private SideBarItem _selectedSideBarItem = null!;
+        public SideBarItem SelectedSideBarItem
         {
-            get { return _sideBarItem; }
+            get { return _selectedSideBarItem; }
             set
             {
-                _sideBarItem = value;
-                OnPropertyChanged(nameof(SideBarItem));
-                
-                switch (_sideBarItem.Title) 
-                {
-                    case "SSMS":
-                        GlobalObjs.MainFrame.Navigate(new SSMSPage()); break;
-                    case "SQLite":
-                        GlobalObjs.MainFrame.Navigate(new SQLitePage()); break;
-                    case "Тест":
-                        GlobalObjs.MainFrame.Navigate(new TestPage()); break;
-                    default:
-                        GlobalObjs.MainFrame.Navigate(new TestPage()); break;
-                }
+                _selectedSideBarItem = value;
+                OnPropertyChanged(nameof(SelectedSideBarItem));
             }
         }
 
+        public ICommand SelectedChangedCommand =>
+            new DelegateCommand(
+                execute: (_) =>
+                {
+                    switch (SelectedSideBarItem.Title)
+                    {
+                        case "SSMS":
+                            GlobalObjs.MainFrame.Navigate(new SSMSPage()); break;
+                        case "SQLite":
+                            GlobalObjs.MainFrame.Navigate(new SQLitePage()); break;
+                        case "Тест":
+                            GlobalObjs.MainFrame.Navigate(new TestPage()); break;
+                    }
+                }
+            );
+
         public ICommand MinimizeWindow => 
-            new DelegateCommand(execute: (obj) => { MainWindowMethods.Minimize(); });
+            new DelegateCommand(execute: (obj) => MainWindowMethods.Minimize!());
 
         public ICommand FullScreenWindow => 
-            new DelegateCommand(execute: (obj) => { MainWindowMethods.FullScreen(); });
+            new DelegateCommand(execute: (obj) => MainWindowMethods.FullScreen!());
 
         public ICommand CloseWindow => 
-            new DelegateCommand(execute: (obj) => { MainWindowMethods.Close(); });
+            new DelegateCommand(execute: (obj) => MainWindowMethods.Close!());
 
         public ICommand ShowSideBar => 
-            new DelegateCommand(execute: (item) =>
-            {
-                var sideBar = (ListBox)item;
-
-                var animation = new DoubleAnimation();
-                animation.EasingFunction = new QuadraticEase() { EasingMode = EasingMode.EaseOut };
-                animation.Duration = TimeSpan.FromMilliseconds(200);
-
-                switch(sideBar.Width) 
+            new DelegateCommand(
+                execute: (item) =>
                 {
-                    case 230:
-                        animation.To = 0; break;
-                    case 0: 
-                        animation.To = 230; break;
-                }
+                    var sideBar = (ListBox)item;
 
-                sideBar.BeginAnimation(FrameworkElement.WidthProperty, animation);
-            });
+                    var animation = new DoubleAnimation();
+                    animation.EasingFunction = new QuadraticEase() { EasingMode = EasingMode.EaseOut };
+                    animation.Duration = TimeSpan.FromMilliseconds(200);
+
+                    switch(sideBar.Width) 
+                    {
+                        case 230:
+                            animation.To = 0; break;
+                        case 0: 
+                            animation.To = 230; break;
+                    }
+
+                    sideBar.BeginAnimation(FrameworkElement.WidthProperty, animation);
+                }
+            );
 
         public ICommand OpenAboutBox =>
             new DelegateCommand(execute: (item) => new AboutBoxWindow().Show());

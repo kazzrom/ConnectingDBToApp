@@ -25,8 +25,8 @@ namespace ConnectingDBToApp.ViewModels
                                                .ToList();
 
             EFCoreConnectingDbItems = DbContext.Tables.SQLiteElements
-                                                  .Where(item => item.Chapter == "EFCoreConnectingDB")
-                                                  .ToList();
+                                                       .Where(item => item.Chapter == "EFCoreConnectingDB")
+                                                       .ToList();
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;

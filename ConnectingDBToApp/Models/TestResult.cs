@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace ConnectingDBToApp.Models;
+﻿namespace ConnectingDBToApp.Models;
 
 public partial class TestResult
 {

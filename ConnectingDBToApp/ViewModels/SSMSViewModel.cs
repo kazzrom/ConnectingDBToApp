@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Linq;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Collections.Generic;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
+
+using ConnectingDBToApp.Models;
 using ConnectingDBToApp.Commands;
 using ConnectingDBToApp.GlobalClasses;
-using ConnectingDBToApp.Models;
 
 
 namespace ConnectingDBToApp.ViewModels
@@ -58,6 +54,6 @@ namespace ConnectingDBToApp.ViewModels
         }
 
         public static ICommand CopyText =>
-            new DelegateCommand(execute: (code) => { Clipboard.SetText((string)code); });
+            new DelegateCommand(execute: (code) => Clipboard.SetText((string)code));
     }
 }

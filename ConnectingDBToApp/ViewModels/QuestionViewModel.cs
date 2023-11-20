@@ -1,26 +1,24 @@
-﻿using ConnectingDBToApp.Commands;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
-using ConnectingDBToApp.Models;
-using ConnectingDBToApp.GlobalClasses;
-using System.Windows.Controls;
-using ConnectingDBToApp.Views.Pages;
-using ConnectingDBToApp.ViewModels;
-using System.Windows.Media.Animation;
+using System.Collections.Generic;
 using System.Windows;
+using System.Windows.Input;
+using System.Windows.Controls;
+using System.Windows.Media.Animation;
+
+using ConnectingDBToApp.Models;
+using ConnectingDBToApp.Commands;
+using ConnectingDBToApp.GlobalClasses;
+using ConnectingDBToApp.Views.Pages;
+
 
 namespace ConnectingDBToApp.ViewModels
 {
     public class QuestionViewModel : INotifyPropertyChanged
     {
-        public Queue<TestQuestion> TestQuestions;
         private int _countQuestions;
         private int _countRightAnswers;
+        public Queue<TestQuestion> TestQuestions { get; set; }
 
         public QuestionViewModel()
         {
@@ -71,10 +69,12 @@ namespace ConnectingDBToApp.ViewModels
         }
 
         public ICommand CheckedRadioButton =>
-            new DelegateCommand(execute: (radioButton) =>
-            {
-                SelectedRadioButton = (RadioButton)radioButton;
-            });
+            new DelegateCommand(
+                execute: (radioButton) =>
+                {
+                    SelectedRadioButton = (RadioButton)radioButton;
+                }
+            );
 
         public ICommand NextQuestion =>
             new DelegateCommand(
@@ -82,6 +82,7 @@ namespace ConnectingDBToApp.ViewModels
                 {
                     string selectedAnswer = SelectedRadioButton.Content.ToString()!;
                     ButtonContent = "Далее";
+
                     if (selectedAnswer == CurrentQuestion.RightAnswer)
                     {
                         _countRightAnswers++;

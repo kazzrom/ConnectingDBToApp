@@ -1,16 +1,13 @@
-﻿using ConnectingDBToApp.Commands;
-using ConnectingDBToApp.GlobalClasses;
-using ConnectingDBToApp.Models;
-using ConnectingDBToApp.Views.Pages;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media.Animation;
+
+using ConnectingDBToApp.Commands;
+using ConnectingDBToApp.GlobalClasses;
+using ConnectingDBToApp.Views.Pages;
+
 
 namespace ConnectingDBToApp.ViewModels
 {

@@ -12,7 +12,7 @@
         ResizeMode="NoResize"
         MouseDown="Window_MouseDown"
         BorderThickness="1"
-        BorderBrush="{StaticResource BackgroundDarkGray}">
+        BorderBrush="{StaticResource BackgroundHeaderColor}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="40"/>
@@ -20,7 +20,7 @@
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="0" 
-                    Background="{StaticResource BackgroundDarkGray}"
+                    Background="{StaticResource BackgroundHeaderColor}"
                     Orientation="Horizontal">
             <Rectangle Fill="White"
                        Width="25" Height="25"
