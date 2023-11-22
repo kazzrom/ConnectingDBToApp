@@ -25,26 +25,25 @@
         <UniformGrid Columns="1" Margin="30 0 0 0">
             <RadioButton Content="{Binding Variant1}"
                          Style="{StaticResource CustomRadioButton}"
-                         Command="{Binding DataContext.CheckedRadioButton, RelativeSource={RelativeSource AncestorType=Page}}"
+                         Command="{Binding DataContext.CheckedRadioButtonCommand, RelativeSource={RelativeSource AncestorType=Page}}"
                          CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}}"/>
             <RadioButton Content="{Binding Variant2}"
                          Style="{StaticResource CustomRadioButton}"
-                         Command="{Binding DataContext.CheckedRadioButton, RelativeSource={RelativeSource AncestorType=Page}}"
+                         Command="{Binding DataContext.CheckedRadioButtonCommand, RelativeSource={RelativeSource AncestorType=Page}}"
                          CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}}"/>
             <RadioButton Content="{Binding Variant3}"
                          Style="{StaticResource CustomRadioButton}"
-                         Command="{Binding DataContext.CheckedRadioButton, RelativeSource={RelativeSource AncestorType=Page}}"
+                         Command="{Binding DataContext.CheckedRadioButtonCommand, RelativeSource={RelativeSource AncestorType=Page}}"
                          CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}}"/>
             <RadioButton Content="{Binding Variant4}"
                          Style="{StaticResource CustomRadioButton}"
-                         Command="{Binding DataContext.CheckedRadioButton, RelativeSource={RelativeSource AncestorType=Page}}"
+                         Command="{Binding DataContext.CheckedRadioButtonCommand, RelativeSource={RelativeSource AncestorType=Page}}"
                          CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}}"/>
         </UniformGrid>
         <Button Content="{Binding DataContext.ButtonContent, RelativeSource={RelativeSource AncestorType=Page}}"
                 Style="{StaticResource NextQuestionButton}"
                 HorizontalAlignment="Center"
                 Margin="0 20 0 0"
-                Command="{Binding DataContext.NextQuestion, RelativeSource={RelativeSource AncestorType=Page}}"
-                CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}}"/>
+                Command="{Binding DataContext.NextQuestionCommand, RelativeSource={RelativeSource AncestorType=Page}}"/>
     </StackPanel>
 </Page>

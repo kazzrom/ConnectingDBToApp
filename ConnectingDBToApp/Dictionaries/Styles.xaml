@@ -570,7 +570,7 @@
             <Setter.Value>
                 <ControlTemplate>
                     <TextBlock>
-                        <Hyperlink Command="{Binding DataContext.NavigateLink, RelativeSource={RelativeSource AncestorType=Page}}"
+                        <Hyperlink Command="{Binding DataContext.NavigateLinkCommand, RelativeSource={RelativeSource AncestorType=Page}}"
                                    CommandParameter="{Binding Code}">
                             <TextBlock Text="{Binding Text}"/>
                         </Hyperlink>

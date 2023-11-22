@@ -1,40 +1,35 @@
-﻿using System.Windows.Input;
-using System.ComponentModel;
+﻿using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Messaging;
+using CommunityToolkit.Mvvm.ComponentModel;
 
 using ConnectingDBToApp.Models;
-using ConnectingDBToApp.Commands;
+using ConnectingDBToApp.Messages;
 using ConnectingDBToApp.GlobalClasses;
 using ConnectingDBToApp.Views.Pages;
 
 
 namespace ConnectingDBToApp.ViewModels
 {
-    public class ResultViewModel : INotifyPropertyChanged
+    public partial class ResultViewModel : ObservableObject, IRecipient<GetTestResultMessage>
     {
-        public event PropertyChangedEventHandler? PropertyChanged;
-
-        public void OnPropertyChanged(string propertyName)
+        public ResultViewModel() 
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            WeakReferenceMessenger.Default.Register(this);
         }
 
-        private TestResult _result = GlobalObjs.Result;
-        public TestResult Result
+        [ObservableProperty]
+        private TestResult _result;
+
+        public void Receive(GetTestResultMessage message)
         {
-            get => _result;
-            set
-            {
-                _result = value;
-                OnPropertyChanged(nameof(Result));
-            }
+            Result = message.Value;
+            WeakReferenceMessenger.Default.UnregisterAll(this);
         }
 
-        public ICommand NavigateTestPage =>
-            new DelegateCommand(
-                execute: (obj) => 
-                { 
-                    GlobalObjs.MainFrame.Navigate(new TestPage()); 
-                }
-            );
+        [RelayCommand]
+        private void NavigateTestPage()
+        {
+            GlobalObjs.MainFrame.Navigate(new TestPage());
+        }
     }
 }

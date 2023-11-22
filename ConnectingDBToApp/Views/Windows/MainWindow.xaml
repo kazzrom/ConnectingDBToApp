@@ -24,18 +24,18 @@
             <ToggleButton DockPanel.Dock="Left"
                           x:Name="MenuButton"
                           Style="{StaticResource MenuButton}"
-                          Command="{Binding ShowSideBar}"
+                          Command="{Binding ShowSideBarCommand}"
                           CommandParameter="{Binding ElementName=SideBar}"/>
             <Button DockPanel.Dock="Right"
                     Style="{StaticResource CloseButton}"
-                    Command="{Binding CloseWindow}"
+                    Command="{Binding CloseWindowCommand}"
                     ToolTip="Закрыть"/>
             <Button DockPanel.Dock="Right"
                     Style="{StaticResource FullscreenButton}"
-                    Command="{Binding FullScreenWindow}"/>
+                    Command="{Binding FullScreenWindowCommand}"/>
             <Button DockPanel.Dock="Right"
                     Style="{StaticResource MinimizeButton}"
-                    Command="{Binding MinimizeWindow}"
+                    Command="{Binding MinimizeWindowCommand}"
                     ToolTip="Свернуть"/>
             <StackPanel Orientation="Horizontal"
                         VerticalAlignment="Center"
@@ -44,7 +44,7 @@
                            Margin="0 0 10 0"/>
                 <Button DockPanel.Dock="Right"
                         Style="{StaticResource AboutBoxButton}"
-                        Command="{Binding OpenAboutBox}"
+                        Command="{Binding OpenAboutBoxCommand}"
                         ToolTip="О программе"/>
             </StackPanel>
         </DockPanel>

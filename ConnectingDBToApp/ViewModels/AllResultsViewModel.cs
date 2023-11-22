@@ -1,36 +1,28 @@
-﻿using System.Windows.Input;
-using System.ComponentModel;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
+
+using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.ComponentModel;
 
 using ConnectingDBToApp.Models;
-using ConnectingDBToApp.Commands;
 using ConnectingDBToApp.GlobalClasses;
 
 
 namespace ConnectingDBToApp.ViewModels
 {
-    public class AllResultsViewModel : INotifyPropertyChanged
+    public partial class AllResultsViewModel : ObservableObject
     {
-        public ObservableCollection<TestResult> Results { get; set; } = null!;
-
         public AllResultsViewModel() 
         { 
             Results = new ObservableCollection<TestResult>(DbContext.Tables.TestResults);
         }
 
-        public event PropertyChangedEventHandler? PropertyChanged;
+        [ObservableProperty]
+        private ObservableCollection<TestResult> _results;
 
-        public void OnPropertyChanged(string propertyName)
+        [RelayCommand]
+        private void BackPage()
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            GlobalObjs.MainFrame.GoBack();
         }
-
-        public ICommand BackPage =>
-            new DelegateCommand(
-                execute: (obj) =>
-                {
-                    GlobalObjs.MainFrame.GoBack();
-                }
-            );
     }
 }

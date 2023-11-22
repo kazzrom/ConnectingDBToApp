@@ -1,55 +1,49 @@
-﻿using ConnectingDBToApp.Commands;
-using ConnectingDBToApp.GlobalClasses;
-using ConnectingDBToApp.Models;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Diagnostics;
+﻿using System;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Input;
+using System.Diagnostics;
+using System.Collections.ObjectModel;
+
+using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.ComponentModel;
+
+using ConnectingDBToApp.Models;
+using ConnectingDBToApp.GlobalClasses;
+
 
 namespace ConnectingDBToApp.ViewModels
 {
-    public class SQLiteViewModel : INotifyPropertyChanged
+    public partial class SQLiteViewModel : ObservableObject
     {
-        public List<SQLiteElement> CreatingDbItems { get; set; }
-        public List<SQLiteElement> EFCoreConnectingDbItems { get; set; }
+        [ObservableProperty]
+        private ObservableCollection<SQLiteElement> _creatingDbItems;
+
+        [ObservableProperty]
+        private ObservableCollection<SQLiteElement> _EFCoreConnectingDbItems;
         public SQLiteViewModel()
         {
-            CreatingDbItems = DbContext.Tables.SQLiteElements
-                                               .Where(item => item.Chapter == "CreatingDB")
-                                               .ToList();
-
-            EFCoreConnectingDbItems = DbContext.Tables.SQLiteElements
-                                                       .Where(item => item.Chapter == "EFCoreConnectingDB")
-                                                       .ToList();
+            CreatingDbItems = new ObservableCollection<SQLiteElement>(DbContext.Tables.SQLiteElements.Where(item => item.Chapter == "CreatingDB"));
+            EFCoreConnectingDbItems = new ObservableCollection<SQLiteElement>(DbContext.Tables.SQLiteElements.Where(item => item.Chapter == "EFCoreConnectingDB"));
         }
 
-        public event PropertyChangedEventHandler? PropertyChanged;
-
-        public void OnPropertyChanged(string propertyName)
+        [RelayCommand]
+        private void CopyText(string code)
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            Clipboard.SetText(code);
         }
 
-        public static ICommand CopyText => 
-            new DelegateCommand(execute: (code) => { Clipboard.SetText((string)code); });
+        [RelayCommand]
+        private void NavigateLink(string link)
+        {
+            Process.Start(new ProcessStartInfo(link) { UseShellExecute = true });
+        }
 
-        public static ICommand NavigateLink =>
-            new DelegateCommand(execute: (link) => { Process.Start(new ProcessStartInfo((string)link) { UseShellExecute = true }); });
-
-        public ICommand NavigatePartCommand =>
-            new DelegateCommand(
-                execute: (index) =>
-                {
-                    var i = Convert.ToInt32(index);
-                    GlobalObjs.SQLiteTabControl.SelectedIndex = i;
-                    GlobalObjs.MainScrollViewer.ScrollToHome();
-                }
-            );
+        [RelayCommand]
+        private void NavigatePart(object i)
+        {
+            var index = Convert.ToInt32(i);
+            GlobalObjs.SQLiteTabControl.SelectedIndex = index;
+            GlobalObjs.MainScrollViewer.ScrollToHome();
+        }
     }
 }

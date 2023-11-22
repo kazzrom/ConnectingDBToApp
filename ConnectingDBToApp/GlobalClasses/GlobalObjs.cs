@@ -13,8 +13,6 @@ namespace ConnectingDBToApp.GlobalClasses
         public static ScrollViewer MainScrollViewer { get; set; }
         public static Button SideBarButton { get; set; }
         public static ToggleButton MenuButton { get; set; }
-        public static TestResult Result { get; set; } = new TestResult();
-
         public static TabControl SMMSTabControl { get; set; }
         public static TabControl SMMSSubTabControl { get; set; }
         public static TabControl SQLiteTabControl { get; set; }

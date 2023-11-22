@@ -18,7 +18,7 @@
         </Grid.RowDefinitions>
         <Button Grid.Row="0"
                 Style="{StaticResource ArrowBackButton}"
-                Command="{Binding BackPage}"
+                Command="{Binding BackPageCommand}"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Center"
                 FontSize="20"

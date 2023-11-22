@@ -1,80 +1,67 @@
-﻿using System.Linq;
-using System.ComponentModel;
-using System.Collections.Generic;
+﻿using System;
+using System.Linq;
 using System.Windows;
-using System.Windows.Input;
+using System.Collections.ObjectModel;
+
+using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.ComponentModel;
 
 using ConnectingDBToApp.Models;
-using ConnectingDBToApp.Commands;
 using ConnectingDBToApp.GlobalClasses;
-using System;
 
 
 namespace ConnectingDBToApp.ViewModels
 {
-    public class SSMSViewModel : INotifyPropertyChanged
+    public partial class SSMSViewModel : ObservableObject
     {
-        public List<SSMSElement> CreatingDbItems { get; set; }
-        public List<SSMSElement> ConnectionDBItems { get; set; }
-        public List<SSMSElement> SQLClientDownloadItems { get; set; }
-        public List<SSMSElement> SQLClientConnectionDBItems { get; set; }
-        public List<SSMSElement> SQLClientQueryExecutionItems { get; set; }
-        public List<SSMSElement> EFCore7Items { get; set; }
+        [ObservableProperty]
+        private ObservableCollection<SSMSElement> _creatingDbItems;
+
+        [ObservableProperty]
+        private ObservableCollection<SSMSElement> _connectionDBItems;
+
+        [ObservableProperty]
+        private ObservableCollection<SSMSElement> _SQLClientDownloadItems;
+
+        [ObservableProperty]
+        private ObservableCollection<SSMSElement> _SQLClientConnectionDBItems;
+
+        [ObservableProperty]
+        private ObservableCollection<SSMSElement> _SQLClientQueryExecutionItems;
+
+        [ObservableProperty]
+        private ObservableCollection<SSMSElement> _EFCore7Items;
+
         public SSMSViewModel()
         {
-            CreatingDbItems = DbContext.Tables.SSMSElements
-                                               .Where(item => item.Chapter == "CreatingDB")
-                                               .ToList();
-
-            ConnectionDBItems = DbContext.Tables.SSMSElements
-                                                 .Where(item => item.Chapter == "ConnectionDB")
-                                                 .ToList();
-
-            SQLClientDownloadItems = DbContext.Tables.SSMSElements
-                                                      .Where(item => item.Chapter == "SQLClientDownload")
-                                                      .ToList();
-
-            SQLClientConnectionDBItems = DbContext.Tables.SSMSElements
-                                                          .Where(item => item.Chapter == "SQLClientConnectionDB")
-                                                          .ToList();
-
-            SQLClientQueryExecutionItems = DbContext.Tables.SSMSElements
-                                                            .Where(item => item.Chapter == "SQLClientQueryExecution")
-                                                            .ToList();
-
-            EFCore7Items = DbContext.Tables.SSMSElements
-                                            .Where(item => item.Chapter == "EFCore7")
-                                            .ToList();
+            CreatingDbItems = new ObservableCollection<SSMSElement>(DbContext.Tables.SSMSElements.Where(item => item.Chapter == "CreatingDB"));
+            ConnectionDBItems = new ObservableCollection<SSMSElement>(DbContext.Tables.SSMSElements.Where(item => item.Chapter == "ConnectionDB"));
+            SQLClientDownloadItems = new ObservableCollection<SSMSElement>(DbContext.Tables.SSMSElements.Where(item => item.Chapter == "SQLClientDownload"));
+            SQLClientConnectionDBItems = new ObservableCollection<SSMSElement>(DbContext.Tables.SSMSElements.Where(item => item.Chapter == "SQLClientConnectionDB"));
+            SQLClientQueryExecutionItems = new ObservableCollection<SSMSElement>(DbContext.Tables.SSMSElements.Where(item => item.Chapter == "SQLClientQueryExecution"));
+            EFCore7Items = new ObservableCollection<SSMSElement>(DbContext.Tables.SSMSElements.Where(item => item.Chapter == "EFCore7"));
         }
 
-        public event PropertyChangedEventHandler? PropertyChanged;
-
-        public void OnPropertyChanged(string propertyName)
+        [RelayCommand]
+        private void CopyText(string code)
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            Clipboard.SetText(code);
         }
 
-        public static ICommand CopyText =>
-            new DelegateCommand(execute: (code) => Clipboard.SetText((string)code));
+        [RelayCommand]
+        private void NavigatePart(object i)
+        {
+            var index = Convert.ToInt32(i);
+            GlobalObjs.SMMSTabControl.SelectedIndex = index;
+            GlobalObjs.MainScrollViewer.ScrollToHome();
+        }
 
-        public ICommand NavigatePartCommand =>
-            new DelegateCommand(
-                execute: (index) =>
-                {
-                    var i = Convert.ToInt32(index);
-                    GlobalObjs.SMMSTabControl.SelectedIndex = i;
-                    GlobalObjs.MainScrollViewer.ScrollToHome();
-                }
-            );
-
-        public ICommand NavigateSubPartCommand =>
-            new DelegateCommand(
-                execute: (index) =>
-                {
-                    var i = Convert.ToInt32(index);
-                    GlobalObjs.SMMSSubTabControl.SelectedIndex = i;
-                    GlobalObjs.MainScrollViewer.ScrollToHome();
-                }
-            );
+        [RelayCommand]
+        private void NavigateSubPart(object i)
+        {
+            var index = Convert.ToInt32(i);
+            GlobalObjs.SMMSSubTabControl.SelectedIndex = index;
+            GlobalObjs.MainScrollViewer.ScrollToHome();
+        }
     }
 }

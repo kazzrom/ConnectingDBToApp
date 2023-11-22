@@ -30,7 +30,7 @@
                  FontWeight="Bold"/>
         </TextBlock>
         <Button Content="Перейти на начальную страницу" 
-                Command="{Binding NavigateTestPage}"
+                Command="{Binding NavigateTestPageCommand}"
                 Style="{StaticResource TestButton}"/>
     </UniformGrid>
 </Page>
