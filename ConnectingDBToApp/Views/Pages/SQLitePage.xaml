@@ -15,14 +15,46 @@
     <StackPanel>
         <TextBlock Text="SQLite"
                    Style="{StaticResource H1}"/>
-        <TabControl>
+        <TabControl x:Name="SQLiteTabControl">
             <TabItem Header="Создание БД">
-                <ListBox ItemsSource="{Binding CreatingDbItems}"
-                         Style="{StaticResource DataListBox}"/>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <ListBox Grid.Row="0"
+                             ItemsSource="{Binding CreatingDbItems}"
+                             Style="{StaticResource DataListBox}"/>
+                    <TextBlock Grid.Row="1"
+                               HorizontalAlignment="Right"
+                               Margin="0 50 50 10">
+                        <Hyperlink Command="{Binding NavigatePartCommand}"
+                                   CommandParameter="1"
+                                   Style="{StaticResource NextPartHyperlink}">
+                            <TextBlock Text="Подключение к БД →"/>
+                        </Hyperlink>
+                    </TextBlock>
+                </Grid>
             </TabItem>
             <TabItem Header="Подключение БД">
-                <ListBox ItemsSource="{Binding EFCoreConnectingDbItems}"
-                         Style="{StaticResource DataListBox}"/>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <ListBox Grid.Row="0"
+                             ItemsSource="{Binding EFCoreConnectingDbItems}"
+                             Style="{StaticResource DataListBox}"/>
+                    <TextBlock Grid.Row="1"
+                               HorizontalAlignment="Left"
+                               Margin="20 50 50 0">
+                        <Hyperlink Command="{Binding NavigatePartCommand}"
+                                   CommandParameter="0"
+                                   Style="{StaticResource NextPartHyperlink}">
+                            <TextBlock Text="← Создание БД"/>
+                        </Hyperlink>
+                    </TextBlock>
+                </Grid>
             </TabItem>
         </TabControl>
     </StackPanel>

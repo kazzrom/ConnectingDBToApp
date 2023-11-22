@@ -41,5 +41,15 @@ namespace ConnectingDBToApp.ViewModels
 
         public static ICommand NavigateLink =>
             new DelegateCommand(execute: (link) => { Process.Start(new ProcessStartInfo((string)link) { UseShellExecute = true }); });
+
+        public ICommand NavigatePartCommand =>
+            new DelegateCommand(
+                execute: (index) =>
+                {
+                    var i = Convert.ToInt32(index);
+                    GlobalObjs.SQLiteTabControl.SelectedIndex = i;
+                    GlobalObjs.MainScrollViewer.ScrollToHome();
+                }
+            );
     }
 }

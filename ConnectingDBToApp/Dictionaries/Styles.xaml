@@ -73,7 +73,6 @@
                 <ControlTemplate TargetType="Thumb">
                     <Border CornerRadius="5"
                             Background="{TemplateBinding Background}"
-                            Width="10"
                             Margin="3 5"/>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">

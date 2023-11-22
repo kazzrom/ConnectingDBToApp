@@ -14,35 +14,167 @@
     <StackPanel Orientation="Vertical">
         <TextBlock Text="SQL Server Management Studio"
                    Style="{StaticResource H1}"/>
-        <TabControl>
+        <TabControl x:Name="SMMSTabControl">
             <TabItem Header="Создание БД"
                      IsSelected="True">
-                <ListBox ItemsSource="{Binding CreatingDbItems}"
-                         Style="{StaticResource DataListBox}"/>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <ListBox Grid.Row="0"
+                             ItemsSource="{Binding CreatingDbItems}"
+                             Style="{StaticResource DataListBox}"/>
+                    <TextBlock Grid.Row="1"
+                               HorizontalAlignment="Right"
+                               Margin="0 50 50 10">
+                        <Hyperlink Command="{Binding NavigatePartCommand}"
+                                   CommandParameter="1"
+                                   Style="{StaticResource NextPartHyperlink}">
+                            <TextBlock Text="Cоединение БД в VS →"/>
+                        </Hyperlink>
+                    </TextBlock>
+                </Grid>
             </TabItem>
             <TabItem Header="Cоединение БД в VS">
-                <ListBox ItemsSource="{Binding ConnectionDBItems}"
-                         Style="{StaticResource DataListBox}"/>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <ListBox Grid.Row="0"
+                             ItemsSource="{Binding ConnectionDBItems}"
+                             Style="{StaticResource DataListBox}"/>
+                    <TextBlock Grid.Row="1"
+                               HorizontalAlignment="Left"
+                               Margin="20 50 0 10">
+                        <Hyperlink Command="{Binding NavigatePartCommand}"
+                                   CommandParameter="0"
+                                   Style="{StaticResource NextPartHyperlink}">
+                            <TextBlock Text="← Создание БД"/>
+                        </Hyperlink>
+                    </TextBlock>
+                    <TextBlock Grid.Row="1"
+                               HorizontalAlignment="Right"
+                               Margin="0 50 50 10">
+                        <Hyperlink Command="{Binding NavigatePartCommand}"
+                                   CommandParameter="2"
+                                   Style="{StaticResource NextPartHyperlink}">
+                            <TextBlock Text="Работа с SqlClient →"/>
+                        </Hyperlink>
+                    </TextBlock>
+                </Grid>
             </TabItem>
             <TabItem Header="Работа с SqlClient">
-                <TabControl>
+                <TabControl x:Name="SMMSSubTabControl">
                     <TabItem Header="Установка SqlClient">
-                        <ListBox ItemsSource="{Binding SQLClientDownloadItems}"
-                                 Style="{StaticResource DataListBox}"/>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <ListBox Grid.Row="0"
+                                     ItemsSource="{Binding SQLClientDownloadItems}"
+                                     Style="{StaticResource DataListBox}"/>
+                            <TextBlock Grid.Row="1"
+                                       HorizontalAlignment="Left"
+                                       Margin="20 50 0 10">
+                                <Hyperlink Command="{Binding NavigatePartCommand}"
+                                           CommandParameter="1"
+                                           Style="{StaticResource NextPartHyperlink}">
+                                    <TextBlock Text="← Соединение БД в VS"/>
+                                </Hyperlink>
+                            </TextBlock>
+                            <TextBlock Grid.Row="1"
+                                       HorizontalAlignment="Right"
+                                       Margin="0 50 50 10">
+                                <Hyperlink Command="{Binding NavigateSubPartCommand}"
+                                           CommandParameter="1"
+                                           Style="{StaticResource NextPartHyperlink}">
+                                    <TextBlock Text="Подключение БД →"/>
+                                </Hyperlink>
+                            </TextBlock>
+                        </Grid>
                     </TabItem>
                     <TabItem Header="Подключение БД">
-                        <ListBox ItemsSource="{Binding SQLClientConnectionDBItems}"
-                                 Style="{StaticResource DataListBox}"/>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <ListBox Grid.Row="0"
+                                     ItemsSource="{Binding SQLClientConnectionDBItems}"
+                                     Style="{StaticResource DataListBox}"/>
+                            <TextBlock Grid.Row="1"
+                                       HorizontalAlignment="Left"
+                                       Margin="20 50 0 10">
+                                <Hyperlink Command="{Binding NavigateSubPartCommand}"
+                                           CommandParameter="0"
+                                           Style="{StaticResource NextPartHyperlink}">
+                                    <TextBlock Text="← Установка SqlClient"/>
+                                </Hyperlink>
+                            </TextBlock>
+                            <TextBlock Grid.Row="1"
+                                       HorizontalAlignment="Right"
+                                       Margin="0 50 50 10">
+                                <Hyperlink Command="{Binding NavigateSubPartCommand}"
+                                           CommandParameter="2"
+                                           Style="{StaticResource NextPartHyperlink}">
+                                    <TextBlock Text="Выполнение запросов →"/>
+                                </Hyperlink>
+                            </TextBlock>
+                        </Grid>
                     </TabItem>
                     <TabItem Header="Выполнение запросов">
-                        <ListBox ItemsSource="{Binding SQLClientQueryExecutionItems}"
-                                 Style="{StaticResource DataListBox}"/>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <ListBox Grid.Row="0"
+                                     ItemsSource="{Binding SQLClientQueryExecutionItems}"
+                                     Style="{StaticResource DataListBox}"/>
+                            <TextBlock Grid.Row="1"
+                                       HorizontalAlignment="Left"
+                                       Margin="20 50 0 10">
+                                <Hyperlink Command="{Binding NavigateSubPartCommand}"
+                                           CommandParameter="1"
+                                           Style="{StaticResource NextPartHyperlink}">
+                                    <TextBlock Text="← Подключение БД"/>
+                                </Hyperlink>
+                            </TextBlock>
+                            <TextBlock Grid.Row="1"
+                                       HorizontalAlignment="Right"
+                                       Margin="0 50 50 10">
+                                <Hyperlink Command="{Binding NavigatePartCommand}"
+                                           CommandParameter="3"
+                                           Style="{StaticResource NextPartHyperlink}">
+                                    <TextBlock Text="Работа с EF Core 7 →"/>
+                                </Hyperlink>
+                            </TextBlock>
+                        </Grid>
                     </TabItem>
                 </TabControl>
             </TabItem>
             <TabItem Header="Работа EF Core 7">
-                <ListBox ItemsSource="{Binding EFCore7Items}"
-                         Style="{StaticResource DataListBox}"/>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <ListBox Grid.Row="0"
+                             ItemsSource="{Binding EFCore7Items}"
+                             Style="{StaticResource DataListBox}"/>
+                    <TextBlock Grid.Row="1"
+                               HorizontalAlignment="Left"
+                               Margin="20 50 0 10">
+                        <Hyperlink Command="{Binding NavigatePartCommand}"
+                                   CommandParameter="2"
+                                   Style="{StaticResource NextPartHyperlink}">
+                            <TextBlock Text="← Работа с SqlClient"/>
+                        </Hyperlink>
+                    </TextBlock>
+                </Grid>
             </TabItem>
         </TabControl>
     </StackPanel>

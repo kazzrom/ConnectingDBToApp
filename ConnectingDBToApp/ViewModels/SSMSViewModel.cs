@@ -7,6 +7,7 @@ using System.Windows.Input;
 using ConnectingDBToApp.Models;
 using ConnectingDBToApp.Commands;
 using ConnectingDBToApp.GlobalClasses;
+using System;
 
 
 namespace ConnectingDBToApp.ViewModels
@@ -55,5 +56,25 @@ namespace ConnectingDBToApp.ViewModels
 
         public static ICommand CopyText =>
             new DelegateCommand(execute: (code) => Clipboard.SetText((string)code));
+
+        public ICommand NavigatePartCommand =>
+            new DelegateCommand(
+                execute: (index) =>
+                {
+                    var i = Convert.ToInt32(index);
+                    GlobalObjs.SMMSTabControl.SelectedIndex = i;
+                    GlobalObjs.MainScrollViewer.ScrollToHome();
+                }
+            );
+
+        public ICommand NavigateSubPartCommand =>
+            new DelegateCommand(
+                execute: (index) =>
+                {
+                    var i = Convert.ToInt32(index);
+                    GlobalObjs.SMMSSubTabControl.SelectedIndex = i;
+                    GlobalObjs.MainScrollViewer.ScrollToHome();
+                }
+            );
     }
 }

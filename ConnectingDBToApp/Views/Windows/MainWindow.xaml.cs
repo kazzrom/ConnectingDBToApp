@@ -29,6 +29,7 @@ namespace ConnectingDBToApp
             GlobalObjs.MainFrame = MainFrameApp;
             GlobalObjs.SideBar = SideBar;
             GlobalObjs.MenuButton = MenuButton;
+            GlobalObjs.MainScrollViewer = MainScrollViewer;
 
             MainWindowMethods.Minimize = () => { WindowState = WindowState.Minimized; };
             MainWindowMethods.Close = () => { Close(); };

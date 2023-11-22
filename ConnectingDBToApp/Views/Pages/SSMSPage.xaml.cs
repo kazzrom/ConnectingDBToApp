@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ConnectingDBToApp.GlobalClasses;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,9 @@ namespace ConnectingDBToApp.Views.Pages
         public SSMSPage()
         {
             InitializeComponent();
+
+            GlobalObjs.SMMSTabControl = SMMSTabControl;
+            GlobalObjs.SMMSSubTabControl = SMMSSubTabControl;
         }
     }
 }

@@ -61,7 +61,8 @@
             </i:Interaction.Triggers>
         </ListBox>
 
-        <ScrollViewer HorizontalScrollBarVisibility="Disabled">
+        <ScrollViewer x:Name="MainScrollViewer" 
+                      HorizontalScrollBarVisibility="Disabled">
             <Frame x:Name="MainFrameApp"
                    NavigationUIVisibility="Hidden"
                    Padding="30 20 0 30"/>
