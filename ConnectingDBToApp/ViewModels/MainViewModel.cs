@@ -41,19 +41,17 @@ namespace ConnectingDBToApp.ViewModels
             };
         }
 
-        [ObservableProperty]
-        private SideBarItem _selectedSideBarItem;
 
         [RelayCommand]
-        private void SelectedChanged()
+        private void SelectedChanged(ListBox listBox)
         {
-            switch (SelectedSideBarItem.Title)
+            switch (listBox.SelectedIndex)
             {
-                case "SSMS":
+                case 0:
                     GlobalObjs.MainFrame.Navigate(new SSMSPage()); break;
-                case "SQLite":
+                case 1:
                     GlobalObjs.MainFrame.Navigate(new SQLitePage()); break;
-                case "Тест":
+                case 2:
                     GlobalObjs.MainFrame.Navigate(new TestPage()); break;
             }
         }
@@ -97,7 +95,7 @@ namespace ConnectingDBToApp.ViewModels
         [RelayCommand]
         private void OpenAboutBox()
         {
-            new AboutBoxWindow().Show();
+            new AboutBoxWindow().ShowDialog();
         }
     }
 }

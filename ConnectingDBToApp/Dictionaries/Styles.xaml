@@ -262,42 +262,6 @@
         </Setter>
     </Style>
 
-    <Style x:Key="AboutBoxButton" TargetType="Button">
-        <Setter Property="Background" Value="{StaticResource BackgroundHeaderColor}"/>
-        <Setter Property="FontSize" Value="16"/>
-        <Setter Property="FontWeight" Value="Bold"/>
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="Button">
-                    <Border Background="{TemplateBinding Background}">
-                        <StackPanel Orientation="Horizontal"
-                                    HorizontalAlignment="Center">
-                            <Rectangle x:Name="Icon"
-                                       Fill="White"
-                                       Width="20" Height="20"
-                                       VerticalAlignment="Center">
-                                <Rectangle.OpacityMask>
-                                    <VisualBrush Stretch="Uniform" Visual="{StaticResource InfoIcon}"/>
-                                </Rectangle.OpacityMask>
-                            </Rectangle>
-                        </StackPanel>
-                    </Border>
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="Icon"
-                                    Property="Fill" Value="{StaticResource MouseOverColor}"/>
-                            <Setter Property="Cursor" Value="Hand"/>
-                        </Trigger>
-                        <Trigger Property="IsPressed" Value="True">
-                            <Setter TargetName="Icon"
-                                    Property="Fill" Value="{StaticResource BackgroundMenuColor}"/>
-                        </Trigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-
     <!--End: Header window-->
     
     
@@ -312,17 +276,14 @@
                     <Border x:Name="BackgroundElement"
                             CornerRadius="5"
                             Padding="15 15 0 15"
-                            Margin="0 0 0 10"
-                            Background="Transparent">
+                            Margin="0 0 0 10">
                         <StackPanel Orientation="Horizontal">
                             <Border x:Name="Icon"
                                     Width="25" Height="25"
-                                    Margin="0 0 10 0">
-                                <Border.Background>
-                                    <ImageBrush ImageSource="{Binding PathImage}"/>
-                                </Border.Background>
+                                    Margin="0 0 10 0"
+                                    Background="{TemplateBinding Background}">
                             </Border>
-                            <TextBlock Text="{Binding Title}"/>
+                            <ContentPresenter/>
                         </StackPanel>
                     </Border>
                     <ControlTemplate.Triggers>
@@ -340,11 +301,68 @@
         </Setter>
     </Style>
 
+    <Style x:Key="AboutBoxButton" TargetType="Button">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}">
+                        <StackPanel Orientation="Horizontal"
+                                    HorizontalAlignment="Center">
+                            <Rectangle x:Name="Icon"
+                                       Fill="Black"
+                                       Width="20" Height="20"
+                                       VerticalAlignment="Center"
+                                       Margin="0 0 10 0">
+                                <Rectangle.OpacityMask>
+                                    <VisualBrush Stretch="Uniform" Visual="{StaticResource InfoIcon}"/>
+                                </Rectangle.OpacityMask>
+                            </Rectangle>
+                            <TextBlock Text="О программе" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="Icon"
+                                    Property="Fill" Value="{StaticResource MouseOverColor}"/>
+                            <Setter Property="Foreground" Value="{StaticResource MouseOverColor}"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="Icon"
+                                    Property="Fill" Value="{StaticResource ActiveStateColor}"/>
+                            <Setter Property="Foreground" Value="{StaticResource ActiveStateColor}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="AboutBoxListBoxItem" TargetType="ListBoxItem">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ListBoxItem">
+                    <Button Style="{StaticResource AboutBoxButton}" Command="{Binding DataContext.OpenAboutBoxCommand, RelativeSource={RelativeSource AncestorType=Window}}"/>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+     
     <Style x:Key="SideBar" TargetType="ListBox">
         <Setter Property="Width" Value="230"/>
         <Setter Property="Background" Value="{DynamicResource BackgroundMenuColor}"/>
         <Setter Property="Padding" Value="10 30 10 0"/>
         <Setter Property="ItemContainerStyle" Value="{StaticResource SideBarItem}"/>
+        <Setter Property="ItemsPanel">
+            <Setter.Value>
+                <ItemsPanelTemplate>
+                    <DockPanel LastChildFill="False"/>
+                </ItemsPanelTemplate>
+            </Setter.Value>
+        </Setter>
     </Style>
 
     <!--End: Style sidebar-->

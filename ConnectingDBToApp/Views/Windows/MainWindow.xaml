@@ -42,21 +42,43 @@
                         Margin="10 0 0 0">
                 <TextBlock Style="{StaticResource TitleWindow}"
                            Margin="0 0 10 0"/>
-                <Button DockPanel.Dock="Right"
-                        Style="{StaticResource AboutBoxButton}"
-                        Command="{Binding OpenAboutBoxCommand}"
-                        ToolTip="О программе"/>
             </StackPanel>
         </DockPanel>
 
         <ListBox x:Name="SideBar"
                  DockPanel.Dock="Left"
-                 Style="{StaticResource SideBar}"
-                 ItemsSource="{Binding SideBarItems}"
-                 SelectedItem="{Binding SelectedSideBarItem}">
+                 Style="{StaticResource SideBar}">
+            <ListBoxItem DockPanel.Dock="Top">
+                <ListBoxItem.Background>
+                    <ImageBrush ImageSource="\Images\Icons\SSMS.png"/>
+                </ListBoxItem.Background>
+                <ListBoxItem.Content>
+                    <TextBlock Text="SSMS"/>
+                </ListBoxItem.Content>
+            </ListBoxItem>
+            <ListBoxItem DockPanel.Dock="Top">
+                <ListBoxItem.Background>
+                    <ImageBrush ImageSource="\Images\Icons\SQLite.png"/>
+                </ListBoxItem.Background>
+                <ListBoxItem.Content>
+                    <TextBlock Text="SQLite"/>
+                </ListBoxItem.Content>
+            </ListBoxItem>
+            <ListBoxItem DockPanel.Dock="Top">
+                <ListBoxItem.Background>
+                    <ImageBrush ImageSource="\Images\Icons\Test.png"/>
+                </ListBoxItem.Background>
+                <ListBoxItem.Content>
+                    <TextBlock Text="Тест"/>
+                </ListBoxItem.Content>
+            </ListBoxItem>
+            <ListBoxItem DockPanel.Dock="Bottom" 
+                         Style="{StaticResource AboutBoxListBoxItem}"
+                         Margin="0 0 0 20"/>
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="SelectionChanged">
-                    <i:InvokeCommandAction Command="{Binding SelectedChangedCommand}"/>
+                    <i:InvokeCommandAction Command="{Binding SelectedChangedCommand}"
+                                           CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=ListBox}}"/>
                 </i:EventTrigger>
             </i:Interaction.Triggers>
         </ListBox>
