@@ -15,30 +15,17 @@ using ConnectingDBToApp.Views.Windows;
 
 namespace ConnectingDBToApp.ViewModels
 {
+    public enum Chapters
+    {
+        SSMS,
+        SQLite,
+        Test
+    }
+
     public partial class MainViewModel : ObservableObject
     {
-        public ObservableCollection<SideBarItem> SideBarItems { get; set; }
-
         public MainViewModel()
         {
-            SideBarItems = new ObservableCollection<SideBarItem>()
-            {
-                new SideBarItem()
-                {
-                    Title = "SSMS",
-                    PathImage = "/Images/Icons/SSMS.png"
-                },
-                new SideBarItem()
-                {
-                    Title = "SQLite",
-                    PathImage = "/Images/Icons/SQLite.png"
-                },
-                new SideBarItem()
-                {
-                    Title = "Тест",
-                    PathImage = "/Images/Icons/Test.png"
-                },
-            };
         }
 
 
@@ -47,32 +34,23 @@ namespace ConnectingDBToApp.ViewModels
         {
             switch (listBox.SelectedIndex)
             {
-                case 0:
+                case (int)Chapters.SSMS:
                     GlobalObjs.MainFrame.Navigate(new SSMSPage()); break;
-                case 1:
+                case (int)Chapters.SQLite:
                     GlobalObjs.MainFrame.Navigate(new SQLitePage()); break;
-                case 2:
+                case (int)Chapters.Test:
                     GlobalObjs.MainFrame.Navigate(new TestPage()); break;
             }
         }
 
         [RelayCommand]
-        private void MinimizeWindow()
-        {
-            MainWindowMethods.Minimize!();
-        }
+        private void MinimizeWindow() => MainWindowMethods.Minimize!();
 
         [RelayCommand]
-        private void FullScreenWindow()
-        {
-            MainWindowMethods.FullScreen!();
-        }
+        private void FullScreenWindow() => MainWindowMethods.FullScreen!();
 
         [RelayCommand]
-        private void CloseWindow()
-        {
-            MainWindowMethods.Close!();
-        }
+        private void CloseWindow() => MainWindowMethods.Close!();
 
         [RelayCommand]
         private void ShowSideBar(ListBox sideBar)
@@ -93,9 +71,6 @@ namespace ConnectingDBToApp.ViewModels
         }
 
         [RelayCommand]
-        private void OpenAboutBox()
-        {
-            new AboutBoxWindow().ShowDialog();
-        }
+        private void OpenAboutBox() => new AboutBoxWindow().ShowDialog();
     }
 }

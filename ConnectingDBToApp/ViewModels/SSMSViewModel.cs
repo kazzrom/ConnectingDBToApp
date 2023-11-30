@@ -8,6 +8,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 
 using ConnectingDBToApp.Models;
 using ConnectingDBToApp.GlobalClasses;
+using ConnectingDBToApp.Views.Windows;
 
 
 namespace ConnectingDBToApp.ViewModels
@@ -46,6 +47,7 @@ namespace ConnectingDBToApp.ViewModels
         private void CopyText(string code)
         {
             Clipboard.SetText(code);
+            new MessageWindow().ShowDialog();
         }
 
         [RelayCommand]

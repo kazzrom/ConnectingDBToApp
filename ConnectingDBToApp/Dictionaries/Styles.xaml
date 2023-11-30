@@ -276,7 +276,8 @@
                     <Border x:Name="BackgroundElement"
                             CornerRadius="5"
                             Padding="15 15 0 15"
-                            Margin="0 0 0 10">
+                            Margin="0 0 0 10"
+                            Background="Transparent">
                         <StackPanel Orientation="Horizontal">
                             <Border x:Name="Icon"
                                     Width="25" Height="25"
@@ -355,7 +356,6 @@
         <Setter Property="Width" Value="230"/>
         <Setter Property="Background" Value="{DynamicResource BackgroundMenuColor}"/>
         <Setter Property="Padding" Value="10 30 10 0"/>
-        <Setter Property="ItemContainerStyle" Value="{StaticResource SideBarItem}"/>
         <Setter Property="ItemsPanel">
             <Setter.Value>
                 <ItemsPanelTemplate>
@@ -548,7 +548,7 @@
                         <Button Grid.Column="0"
                                 Style="{StaticResource CopyButton}"
                                 Content="Скопировать" 
-                                Command="{Binding DataContext.CopyText, RelativeSource={RelativeSource AncestorType=Page}}"
+                                Command="{Binding DataContext.CopyTextCommand, RelativeSource={RelativeSource AncestorType=Page}}"
                                 CommandParameter="{Binding Code}"
                                 Margin="10 0 5 0"/>
                         <TextBlock Grid.Column="1"
@@ -570,7 +570,7 @@
                         <Grid>
                             <Image Source="{Binding Text}"/>
                             <Button Content="Скопировать код"
-                                    Command="{Binding DataContext.CopyText, RelativeSource={RelativeSource AncestorType=Page}}"
+                                    Command="{Binding DataContext.CopyTextCommand, RelativeSource={RelativeSource AncestorType=Page}}"
                                     CommandParameter="{Binding Code}"
                                     Style="{StaticResource CopyButtonForImage}"
                                     VerticalAlignment="Top"

@@ -47,7 +47,8 @@
 
         <ListBox x:Name="SideBar"
                  DockPanel.Dock="Left"
-                 Style="{StaticResource SideBar}">
+                 Style="{StaticResource SideBar}"
+                 ItemContainerStyle="{StaticResource SideBarItem}">
             <ListBoxItem DockPanel.Dock="Top">
                 <ListBoxItem.Background>
                     <ImageBrush ImageSource="\Images\Icons\SSMS.png"/>
@@ -86,6 +87,7 @@
         <ScrollViewer x:Name="MainScrollViewer" 
                       HorizontalScrollBarVisibility="Disabled">
             <Frame x:Name="MainFrameApp"
+                   Source="../Pages/StartPage.xaml"
                    NavigationUIVisibility="Hidden"
                    Padding="30 20 0 30"/>
         </ScrollViewer>
