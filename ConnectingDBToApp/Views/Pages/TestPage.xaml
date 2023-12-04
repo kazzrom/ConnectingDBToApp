@@ -16,7 +16,7 @@
         <StackPanel Orientation="Vertical"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center">
-            <TextBlock Text="Тест на полученные знания" 
+            <TextBlock Text="Проверка знаний" 
                        Style="{StaticResource H1}"/>
             <StackPanel Orientation="Horizontal"
                         HorizontalAlignment="Center"

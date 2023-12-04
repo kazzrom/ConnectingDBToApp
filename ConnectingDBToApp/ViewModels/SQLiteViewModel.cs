@@ -31,7 +31,7 @@ namespace ConnectingDBToApp.ViewModels
         private void CopyText(string code)
         {
             Clipboard.SetText(code);
-            new MessageWindow().ShowDialog();
+            new MessageWindow("Скопировано!").ShowDialog();
         }
 
         [RelayCommand]

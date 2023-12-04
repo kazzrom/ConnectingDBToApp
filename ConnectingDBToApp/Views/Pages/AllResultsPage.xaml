@@ -29,17 +29,16 @@
                    VerticalAlignment="Center"
                    Margin="0 0 0 30"/>
         <ListView Grid.Row="1"
+                  Style="{StaticResource ResultListView}"
                   ItemsSource="{Binding Results}" 
                   AlternationCount="2"
                   SelectionMode="Single"
-                  BorderThickness="0"
-                  ItemContainerStyle="{StaticResource ResultListViewItem}">
+                  BorderThickness="0">
             <ListView.View>
                 <GridView ColumnHeaderContainerStyle="{StaticResource HeaderListView}">
-                    <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Id}"/>
                     <GridViewColumn Header="Имя пользователя" DisplayMemberBinding="{Binding Username}"/>
                     <GridViewColumn Header="Количество правильных ответов" DisplayMemberBinding="{Binding CountRightAnswer}"/>
-                    <GridViewColumn Header="Результат в процентах" DisplayMemberBinding="{Binding StringFormat={}{0:P}, Path=Percentages}"/>
+                    <GridViewColumn Header="Результат в процентах" DisplayMemberBinding="{Binding StringFormat={}{0:P1}, Path=Percentages}"/>
                 </GridView>
             </ListView.View>
         </ListView>

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ConnectingDBToApp.Views.Windows"
         mc:Ignorable="d"
         Title="MessageWindow" 
-        Height="150" Width="300"
+        Height="150" Width="250"
         WindowStyle="None"
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
@@ -15,7 +15,7 @@
         BorderBrush="{StaticResource BackgroundHeaderColor}">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="40"/>
+            <RowDefinition Height="30"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
@@ -31,15 +31,23 @@
         </StackPanel>
 
         <Button Grid.Row="0"
-            Style="{StaticResource CloseButton}"
-            HorizontalAlignment="Right"
-            Click="CloseWindow"/>
-
+                Style="{StaticResource CloseButton}"
+                Width="30" Height="30"
+                HorizontalAlignment="Right"
+                Click="CloseWindow"/>
+        
         <StackPanel Grid.Row="1" 
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center">
-            <TextBlock Text="Текст был скопирован!"
-                       Style="{StaticResource PlainText}"/>
+            <TextBlock Text="{Binding}"
+                       Style="{StaticResource PlainText}"
+                       FontSize="16"
+                       Margin="0 15"/>
+            <Button Content="OK" 
+                    Style="{StaticResource NextQuestionButton}"
+                    Click="CloseWindow"
+                    FontSize="14"
+                    Padding="10 5"/>
         </StackPanel>
     </Grid>
 </Window>

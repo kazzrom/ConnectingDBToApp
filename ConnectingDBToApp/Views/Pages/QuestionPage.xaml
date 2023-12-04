@@ -24,19 +24,19 @@
                    Margin="0 0 0 30"/>
         <UniformGrid Columns="1" Margin="30 0 0 0">
             <RadioButton Content="{Binding Variant1}"
-                         Style="{StaticResource CustomRadioButton}"
+                         Style="{StaticResource VariantRadioButton}"
                          Command="{Binding DataContext.CheckedRadioButtonCommand, RelativeSource={RelativeSource AncestorType=Page}}"
                          CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}}"/>
             <RadioButton Content="{Binding Variant2}"
-                         Style="{StaticResource CustomRadioButton}"
+                         Style="{StaticResource VariantRadioButton}"
                          Command="{Binding DataContext.CheckedRadioButtonCommand, RelativeSource={RelativeSource AncestorType=Page}}"
                          CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}}"/>
             <RadioButton Content="{Binding Variant3}"
-                         Style="{StaticResource CustomRadioButton}"
+                         Style="{StaticResource VariantRadioButton}"
                          Command="{Binding DataContext.CheckedRadioButtonCommand, RelativeSource={RelativeSource AncestorType=Page}}"
                          CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}}"/>
             <RadioButton Content="{Binding Variant4}"
-                         Style="{StaticResource CustomRadioButton}"
+                         Style="{StaticResource VariantRadioButton}"
                          Command="{Binding DataContext.CheckedRadioButtonCommand, RelativeSource={RelativeSource AncestorType=Page}}"
                          CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}}"/>
         </UniformGrid>

@@ -9,6 +9,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using ConnectingDBToApp.Messages;
 using ConnectingDBToApp.GlobalClasses;
 using ConnectingDBToApp.Views.Pages;
+using ConnectingDBToApp.Views.Windows;
 
 
 namespace ConnectingDBToApp.ViewModels
@@ -21,6 +22,12 @@ namespace ConnectingDBToApp.ViewModels
         [RelayCommand]
         private void OpenTest()
         {
+            if (string.IsNullOrEmpty(Username)) 
+            {
+                new MessageWindow("Введите имя!").ShowDialog();
+                return;
+            }
+
             var animation = new DoubleAnimation()
             {
                 To = 0,

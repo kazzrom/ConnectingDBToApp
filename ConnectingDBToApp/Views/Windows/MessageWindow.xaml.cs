@@ -19,9 +19,10 @@ namespace ConnectingDBToApp.Views.Windows
     /// </summary>
     public partial class MessageWindow : Window
     {
-        public MessageWindow()
+        public MessageWindow(string message)
         {
             InitializeComponent();
+            DataContext = message;
         }
 
         private void CloseWindow(object sender, RoutedEventArgs e)

@@ -671,7 +671,7 @@
         </Setter>
     </Style>
 
-    <Style x:Key="CustomRadioButton" TargetType="RadioButton">
+    <Style x:Key="VariantRadioButton" TargetType="RadioButton">
         <Setter Property="FontSize" Value="20"/>
         <Setter Property="Margin" Value="0 0 0 20"/>
         <Setter Property="Template">
@@ -696,6 +696,9 @@
                         <Trigger Property="IsChecked" Value="True">
                             <Setter Property="Fill" Value="Transparent"
                                     TargetName="CheckMark"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Cursor" Value="Hand"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -725,6 +728,12 @@
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter Property="BorderBrush" Value="{StaticResource MouseOverColor}" TargetName="BackgroundElement"/>
                             <Setter Property="Foreground" Value="{StaticResource MouseOverColor}"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Cursor" Value="Hand"/>
+                            <Setter TargetName="BackgroundElement" 
+                                    Property="BorderBrush" Value="{StaticResource BackgroundMenuColor}"/>
+                            <Setter Property="Foreground" Value="{StaticResource BackgroundMenuColor}"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -837,6 +846,24 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+    </Style>
+
+    <Style x:Key="ResultListView" TargetType="ListView">
+        <Setter Property="ItemContainerStyle" Value="{StaticResource ResultListViewItem}"/>
+        <Style.Triggers>
+            <Trigger Property="HasItems" Value="False">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="ListView">
+                            <TextBlock Text="Нет результатов"
+                                       Style="{StaticResource PlainText}"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"/>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+        </Style.Triggers>
     </Style>
 
     <Style x:Key="HeaderListView" TargetType="GridViewColumnHeader">

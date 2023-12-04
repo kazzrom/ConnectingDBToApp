@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Animation;
@@ -7,28 +6,16 @@ using System.Windows.Media.Animation;
 using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.ComponentModel;
 
-using ConnectingDBToApp.Models;
-using ConnectingDBToApp.GlobalClasses;
+using ConnectingDBToApp.Enums;
 using ConnectingDBToApp.Views.Pages;
 using ConnectingDBToApp.Views.Windows;
+using ConnectingDBToApp.GlobalClasses;
 
 
 namespace ConnectingDBToApp.ViewModels
 {
-    public enum Chapters
-    {
-        SSMS,
-        SQLite,
-        Test
-    }
-
     public partial class MainViewModel : ObservableObject
     {
-        public MainViewModel()
-        {
-        }
-
-
         [RelayCommand]
         private void SelectedChanged(ListBox listBox)
         {
