@@ -18,7 +18,7 @@ namespace ConnectingDBToApp.ViewModels
         }
 
         [ObservableProperty]
-        private TestResult _result;
+        private TestResult _result = null!;
 
         public void Receive(GetTestResultMessage message)
         {

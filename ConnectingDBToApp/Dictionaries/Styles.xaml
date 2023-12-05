@@ -2,7 +2,7 @@
                      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                      xmlns:gc="clr-namespace:ConnectingDBToApp.GlobalClasses">
      
-    <!--Global Styles-->
+    <!--Global styles-->
     
     <Style TargetType="TextBlock">
         <Setter Property="FontFamily" Value="{StaticResource Mulish}"/>
@@ -87,10 +87,10 @@
         </Setter>
     </Style>
 
-    <Style TargetType="{x:Type ScrollBar}">
+    <Style TargetType="ScrollBar">
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="{x:Type ScrollBar}">
+                <ControlTemplate TargetType="ScrollBar">
                     <Track x:Name="PART_Track" IsDirectionReversed="True" Grid.Row="1">
                         <Track.Thumb>
                             <Thumb Style="{StaticResource ScrollBarThumbStyle}"/>
@@ -101,10 +101,77 @@
         </Setter>
     </Style>
 
-    <!--End: Global Styles-->
+    <Style x:Key="PrimaryButton" TargetType="Button">
+        <Setter Property="Background" Value="{DynamicResource BackgroundHeaderColor}"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="FontWeight" Value="Black"/>
+        <Setter Property="Padding" Value="30 15"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="BackgroundElement"
+                        CornerRadius="5"
+                        Background="{TemplateBinding Background}"
+                        Padding="{TemplateBinding Padding}">
+                        <ContentPresenter HorizontalAlignment="Center"
+                                      VerticalAlignment="Center"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="{DynamicResource TestButtonHoverColor}"
+                                TargetName="BackgroundElement"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" Value="{DynamicResource TestButtonPressColor}"
+                                TargetName="BackgroundElement"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="SecondaryButton" TargetType="Button">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Foreground" Value="{StaticResource BackgroundHeaderColor}"/>
+        <Setter Property="Padding" Value="30 15"/>
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="BackgroundElement"
+                        BorderThickness="2"
+                        CornerRadius="5"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding Foreground}"
+                        Padding="{TemplateBinding Padding}">
+                        <ContentPresenter HorizontalAlignment="Center"
+                                      VerticalAlignment="Center"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="BorderBrush" Value="{StaticResource MouseOverColor}" TargetName="BackgroundElement"/>
+                            <Setter Property="Foreground" Value="{StaticResource MouseOverColor}"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Cursor" Value="Hand"/>
+                            <Setter TargetName="BackgroundElement" 
+                                Property="BorderBrush" Value="{StaticResource BackgroundMenuColor}"/>
+                            <Setter Property="Foreground" Value="{StaticResource BackgroundMenuColor}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--End: Global styles-->
     
     
-    <!--Header window-->
+    <!--Header style-->
     
     <Style x:Key="TitleWindow" TargetType="TextBlock">
         <Setter Property="FontFamily" Value="{StaticResource Mulish}"/>
@@ -262,10 +329,10 @@
         </Setter>
     </Style>
 
-    <!--End: Header window-->
-    
-    
-    <!--Style sidebar-->
+    <!--End: Header style-->
+
+
+    <!--Sidebar style-->
 
     <Style x:Key="SideBarItem" TargetType="ListBoxItem">
         <Setter Property="FontSize" Value="18"/>
@@ -302,7 +369,7 @@
         </Setter>
     </Style>
 
-    <Style x:Key="AboutBoxButton" TargetType="Button">
+    <Style x:Key="AboutBoxStyle" TargetType="Button">
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="FontSize" Value="16"/>
         <Setter Property="FontWeight" Value="Bold"/>
@@ -342,11 +409,11 @@
         </Setter>
     </Style>
 
-    <Style x:Key="AboutBoxListBoxItem" TargetType="ListBoxItem">
+    <Style x:Key="AboutBoxButton" TargetType="ListBoxItem">
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ListBoxItem">
-                    <Button Style="{StaticResource AboutBoxButton}" Command="{Binding DataContext.OpenAboutBoxCommand, RelativeSource={RelativeSource AncestorType=Window}}"/>
+                    <Button Style="{StaticResource AboutBoxStyle}" Command="{Binding DataContext.OpenAboutBoxCommand, RelativeSource={RelativeSource AncestorType=Window}}"/>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -365,10 +432,10 @@
         </Setter>
     </Style>
 
-    <!--End: Style sidebar-->
+    <!--End: Sidebar style-->
         
     
-    <!--Styles for ListBoxItem-->
+    <!--Styles of items for style selector-->
 
     <Style x:Key="H1" TargetType="TextBlock">
         <Setter Property="FontFamily" Value="{StaticResource Mulish}"/>
@@ -459,7 +526,7 @@
         </Setter>
     </Style>
 
-    <Style x:Key="CopyButton" TargetType="Button">
+    <Style x:Key="CopyButtonStyle" TargetType="Button">
         <Style.Resources>
             <Style x:Key="BackgroundElement" TargetType="Border">
                 <Setter Property="Background" Value="Transparent"/>
@@ -499,7 +566,7 @@
         </Setter>
     </Style>
 
-    <Style x:Key="CopyButtonForImage" TargetType="Button">
+    <Style x:Key="CopyButtonForImageStyle" TargetType="Button">
         <Setter Property="Width" Value="30"/>
         <Setter Property="Height" Value="30"/>
         <Setter Property="ToolTip" Value="Скопировать код"/>
@@ -546,7 +613,7 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <Button Grid.Column="0"
-                                Style="{StaticResource CopyButton}"
+                                Style="{StaticResource CopyButtonStyle}"
                                 Content="Скопировать" 
                                 Command="{Binding DataContext.CopyTextCommand, RelativeSource={RelativeSource AncestorType=Page}}"
                                 CommandParameter="{Binding Code}"
@@ -572,7 +639,7 @@
                             <Button Content="Скопировать код"
                                     Command="{Binding DataContext.CopyTextCommand, RelativeSource={RelativeSource AncestorType=Page}}"
                                     CommandParameter="{Binding Code}"
-                                    Style="{StaticResource CopyButtonForImage}"
+                                    Style="{StaticResource CopyButtonForImageStyle}"
                                     VerticalAlignment="Top"
                                     HorizontalAlignment="Right"
                                     Margin="0 30 30 0"/>
@@ -598,10 +665,10 @@
         </Setter>
     </Style>
 
-    <!--End: Styles for ListBoxItem-->
+    <!--End: Styles of items for style selector-->
     
      
-     <!--Style DataListBox-->
+     <!--Data page style-->
 
     <Style x:Key="DataListBox" TargetType="ListBox">
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled"/>
@@ -633,43 +700,11 @@
             </Trigger>
         </Style.Triggers>
     </Style>
-     
-     <!--End: Style DataListBox-->
-     
-     
-     <!--Style for test-->
-     
-    <Style x:Key="TestButton" TargetType="Button">
-        <Setter Property="Background" Value="{DynamicResource BackgroundHeaderColor}"/>
-        <Setter Property="Foreground" Value="White"/>
-        <Setter Property="FontSize" Value="18"/>
-        <Setter Property="FontWeight" Value="Black"/>
-        <Setter Property="Padding" Value="30 15"/>
-        <Setter Property="HorizontalAlignment" Value="Center"/>
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="Button">
-                    <Border x:Name="BackgroundElement"
-                            CornerRadius="5"
-                            Background="{TemplateBinding Background}"
-                            Padding="{TemplateBinding Padding}">
-                        <ContentPresenter HorizontalAlignment="Center"
-                                          VerticalAlignment="Center"/>
-                    </Border>
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" Value="{DynamicResource TestButtonHoverColor}"
-                                    TargetName="BackgroundElement"/>
-                        </Trigger>
-                        <Trigger Property="IsPressed" Value="True">
-                            <Setter Property="Background" Value="{DynamicResource TestButtonPressColor}"
-                                    TargetName="BackgroundElement"/>
-                        </Trigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
+
+    <!--End: Data page style-->
+
+
+    <!--Styles of the test section-->
 
     <Style x:Key="VariantRadioButton" TargetType="RadioButton">
         <Setter Property="FontSize" Value="20"/>
@@ -699,41 +734,6 @@
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter Property="Cursor" Value="Hand"/>
-                        </Trigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-
-    <Style x:Key="NextQuestionButton" TargetType="Button">
-        <Setter Property="Background" Value="Transparent"/>
-        <Setter Property="Padding" Value="30 15"/>
-        <Setter Property="FontSize" Value="18"/>
-        <Setter Property="FontWeight" Value="Bold"/>
-        <Setter Property="Foreground" Value="{StaticResource BackgroundHeaderColor}"/>
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="Button">
-                    <Border x:Name="BackgroundElement"
-                            BorderThickness="2"
-                            CornerRadius="5"
-                            Background="{TemplateBinding Background}"
-                            BorderBrush="{TemplateBinding Foreground}"
-                            Padding="{TemplateBinding Padding}">
-                        <ContentPresenter HorizontalAlignment="Center"
-                                          VerticalAlignment="Center"/>
-                    </Border>
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="IsEnabled" Value="False">
-                            <Setter Property="BorderBrush" Value="{StaticResource MouseOverColor}" TargetName="BackgroundElement"/>
-                            <Setter Property="Foreground" Value="{StaticResource MouseOverColor}"/>
-                        </Trigger>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Cursor" Value="Hand"/>
-                            <Setter TargetName="BackgroundElement" 
-                                    Property="BorderBrush" Value="{StaticResource BackgroundMenuColor}"/>
-                            <Setter Property="Foreground" Value="{StaticResource BackgroundMenuColor}"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -887,7 +887,7 @@
             </Setter.Value>
         </Setter>
     </Style>
-     
-    <!--End: Style for test-->
+
+    <!--End: Styles of the test section-->
      
 </ResourceDictionary>

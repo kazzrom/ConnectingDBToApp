@@ -19,6 +19,7 @@ namespace ConnectingDBToApp.ViewModels
         [RelayCommand]
         private void SelectedChanged(ListBox listBox)
         {
+            GlobalObjs.MainScrollViewer.ScrollToHome();
             switch (listBox.SelectedIndex)
             {
                 case (int)Chapters.SSMS:

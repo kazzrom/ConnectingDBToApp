@@ -26,10 +26,11 @@ namespace ConnectingDBToApp.ViewModels
 
         public QuestionViewModel()
         {
+            _countRightAnswers = 0;
+            _username = string.Empty;
             WeakReferenceMessenger.Default.Register(this);
             TestQuestions = new Queue<TestQuestion>(DbContext.Tables.TestQuestions);
             _countQuestions = TestQuestions.Count;
-            _countRightAnswers = 0;
             CurrentQuestion = TestQuestions.Dequeue();
         }
 
@@ -44,7 +45,7 @@ namespace ConnectingDBToApp.ViewModels
 
         [ObservableProperty]
         [NotifyCanExecuteChangedFor(nameof(NextQuestionCommand))]
-        private RadioButton _selectedRadioButton;
+        private RadioButton _selectedRadioButton = null!;
 
         [ObservableProperty]
         private string _buttonContent = "Далее";

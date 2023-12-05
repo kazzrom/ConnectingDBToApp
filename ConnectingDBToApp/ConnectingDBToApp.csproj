@@ -9,7 +9,6 @@
 
   <ItemGroup>
     <None Remove="Fonts\Mulish.ttf" />
-    <None Remove="Images\Icons\HorizontalLines.png" />
     <None Remove="Images\Icons\SQLite.png" />
     <None Remove="Images\Icons\SSMS.png" />
     <None Remove="Images\Icons\Test.png" />
@@ -110,7 +109,6 @@
 
   <ItemGroup>
     <Resource Include="Fonts\Mulish.ttf" />
-    <Resource Include="Images\Icons\HorizontalLines.png" />
     <Resource Include="Images\Icons\SQLite.png" />
     <Resource Include="Images\Icons\SSMS.png" />
     <Resource Include="Images\Icons\Test.png" />

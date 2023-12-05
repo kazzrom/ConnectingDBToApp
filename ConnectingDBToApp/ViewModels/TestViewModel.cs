@@ -17,7 +17,7 @@ namespace ConnectingDBToApp.ViewModels
     public partial class TestViewModel : ObservableObject
     {
         [ObservableProperty]
-        private string _username;
+        private string _username = string.Empty;
 
         [RelayCommand]
         private void OpenTest()

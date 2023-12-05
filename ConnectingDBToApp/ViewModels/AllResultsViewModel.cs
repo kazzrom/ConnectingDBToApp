@@ -5,7 +5,6 @@ using CommunityToolkit.Mvvm.ComponentModel;
 
 using ConnectingDBToApp.Models;
 using ConnectingDBToApp.GlobalClasses;
-using System.Windows.Navigation;
 
 
 namespace ConnectingDBToApp.ViewModels

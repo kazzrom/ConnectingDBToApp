@@ -3,7 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ConnectingDBToApp.Views.Windows"
         mc:Ignorable="d"
         Title="MessageWindow" 
         Height="150" Width="250"
@@ -13,6 +12,7 @@
         MouseDown="Window_MouseDown"
         BorderThickness="1"
         BorderBrush="{StaticResource BackgroundHeaderColor}">
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
@@ -44,10 +44,11 @@
                        FontSize="16"
                        Margin="0 15"/>
             <Button Content="OK" 
-                    Style="{StaticResource NextQuestionButton}"
+                    Style="{StaticResource SecondaryButton}"
                     Click="CloseWindow"
                     FontSize="14"
                     Padding="10 5"/>
         </StackPanel>
     </Grid>
+    
 </Window>
