@@ -17,12 +17,26 @@ namespace ConnectingDBToApp.ViewModels
         }
 
         [ObservableProperty]
+        [NotifyCanExecuteChangedFor(nameof(ClearResultsCommand))]
         private ObservableCollection<TestResult> _results;
 
         [RelayCommand]
         private void BackPage()
         {
             GlobalObjs.MainFrame.GoBack();
+        }
+
+        [RelayCommand(CanExecute = nameof(CanClearResults))]
+        private void ClearResults()
+        {
+            DbContext.Tables.TestResults.RemoveRange(Results);
+            DbContext.Tables.SaveChanges();
+            Results.Clear();
+        }
+
+        private bool CanClearResults()
+        {
+            return Results.Count > 0;
         }
     }
 }

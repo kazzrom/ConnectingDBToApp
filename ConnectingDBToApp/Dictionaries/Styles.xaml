@@ -120,12 +120,15 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" Value="{DynamicResource TestButtonHoverColor}"
-                                TargetName="BackgroundElement"/>
+                            <Setter TargetName="BackgroundElement"
+                                    Property="Background" 
+                                    Value="{DynamicResource TestButtonHoverColor}"/>
+                            <Setter Property="Cursor" Value="Hand"/>
                         </Trigger>
                         <Trigger Property="IsPressed" Value="True">
-                            <Setter Property="Background" Value="{DynamicResource TestButtonPressColor}"
-                                TargetName="BackgroundElement"/>
+                            <Setter TargetName="BackgroundElement" 
+                                    Property="Background" 
+                                    Value="{DynamicResource TestButtonPressColor}"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -554,6 +557,7 @@
                             <Setter TargetName="BackgroundElement"
                                     Property="Background" 
                                     Value="{DynamicResource MouseOverColor}"/>
+                            <Setter Property="Cursor" Value="Hand"/>
                         </Trigger>
                         <Trigger Property="IsPressed" Value="True">
                             <Setter TargetName="BackgroundElement" 
@@ -590,6 +594,7 @@
                                     Property="Background" Value="White"/>
                             <Setter TargetName="Icon"
                                     Property="Fill" Value="Black"/>
+                            <Setter Property="Cursor" Value="Hand"/>
                         </Trigger>
                         <Trigger Property="IsPressed" Value="True">
                             <Setter TargetName="BackgroundElement"
