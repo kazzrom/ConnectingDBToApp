@@ -24,7 +24,12 @@ namespace ConnectingDBToApp.ViewModels
         {
             if (string.IsNullOrEmpty(Username)) 
             {
-                new MessageWindow("Введите имя!").ShowDialog();
+                new MessageWindow("Пустое поле ввода.\nВведите имя!").ShowDialog();
+                return;
+            }
+            else if (Username.Length > 16)
+            {
+                new MessageWindow("Слишком длинное имя!").ShowDialog();
                 return;
             }
 
