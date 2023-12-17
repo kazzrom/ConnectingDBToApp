@@ -2,7 +2,7 @@
 
 public partial class SSMSElement : ElementItem
 {
-    public long Id { get; set; }
+    public int Id { get; set; }
 
     public string ObjectType { get; set; } = null!;
 

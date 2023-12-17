@@ -2,7 +2,7 @@
 
 public partial class TestQuestion
 {
-    public long Id { get; set; }
+    public int Id { get; set; }
 
     public string Question { get; set; } = null!;
 
