@@ -7,11 +7,16 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="SSMSPage">
-    
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="\Dictionaries\Styles\TheoryPageStyles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
     <Page.DataContext>
         <vm:SSMSViewModel/>
     </Page.DataContext>
-    
     <StackPanel Orientation="Vertical">
         <TextBlock Text="SQL Server Management Studio"
                    Style="{StaticResource H1}"/>
@@ -179,5 +184,4 @@
             </TabItem>
         </TabControl>
     </StackPanel>
-    
 </Page>

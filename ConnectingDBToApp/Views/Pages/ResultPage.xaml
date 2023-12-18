@@ -7,11 +7,9 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ResultPage">
-    
     <Page.DataContext>
         <vm:ResultViewModel/>
     </Page.DataContext>
-    
     <UniformGrid Columns="1" 
                  HorizontalAlignment="Center"
                  VerticalAlignment="Center">
@@ -26,7 +24,7 @@
         </TextBlock>
         <TextBlock Style="{StaticResource PlainText}"
                    HorizontalAlignment="Center">
-            <Run Text="Процентное соотношение: "/>
+            <Run Text="Процент правильных ответов: "/>
             <Run Text="{Binding StringFormat={}{0:P1}, Path=Result.Percentages}"
                  FontWeight="Bold"/>
         </TextBlock>
@@ -34,5 +32,4 @@
                 Command="{Binding NavigateTestPageCommand}"
                 Style="{StaticResource PrimaryButton}"/>
     </UniformGrid>
-    
 </Page>

@@ -6,7 +6,6 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="StartPage">
-
     <StackPanel Orientation="Vertical"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center">
@@ -20,5 +19,4 @@
                    Style="{StaticResource H2}"
                    Foreground="{StaticResource MouseOverColor}"/>
     </StackPanel>
-    
 </Page>

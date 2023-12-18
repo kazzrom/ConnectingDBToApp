@@ -16,17 +16,22 @@ namespace ConnectingDBToApp.ViewModels
 {
     public partial class SQLiteViewModel : ObservableObject
     {
-        [ObservableProperty]
-        private ObservableCollection<SQLiteElement> _creatingDbItems;
-
-        [ObservableProperty]
-        private ObservableCollection<SQLiteElement> _EFCoreConnectingDbItems;
         public SQLiteViewModel()
         {
+            // Получение данных из базы данных
             CreatingDbItems = new ObservableCollection<SQLiteElement>(DbContext.Tables.SQLiteElements.Where(item => item.Chapter == "CreatingDB"));
             EFCoreConnectingDbItems = new ObservableCollection<SQLiteElement>(DbContext.Tables.SQLiteElements.Where(item => item.Chapter == "EFCoreConnectingDB"));
         }
 
+        // Поле с элементами раздела "Создание БД"
+        [ObservableProperty]
+        private ObservableCollection<SQLiteElement> _creatingDbItems;
+
+        // Поле с элементами раздела "Подключение БД"
+        [ObservableProperty]
+        private ObservableCollection<SQLiteElement> _EFCoreConnectingDbItems;
+
+        // Команда для копирования текста
         [RelayCommand]
         private void CopyText(string code)
         {
@@ -34,12 +39,14 @@ namespace ConnectingDBToApp.ViewModels
             new MessageWindow("Скопировано!").ShowDialog();
         }
 
+        // Команда для открытия ссылки
         [RelayCommand]
         private void NavigateLink(string link)
         {
             Process.Start(new ProcessStartInfo(link) { UseShellExecute = true });
         }
 
+        // Команда для перехода к другой вкладке
         [RelayCommand]
         private void NavigatePart(object i)
         {

@@ -8,11 +8,16 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Background="White"
       Title="QuestionPage">
-    
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="\Dictionaries\Styles\QuestionPageStyles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
     <Page.DataContext>
         <vm:QuestionViewModel/>
     </Page.DataContext>
-    
     <StackPanel Orientation="Vertical"
                 DataContext="{Binding CurrentQuestion}"
                 MaxWidth="850"

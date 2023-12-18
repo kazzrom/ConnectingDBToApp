@@ -12,17 +12,23 @@ public partial class DataContext : DbContext
 
     public DataContext(DbContextOptions<DataContext> options) : base(options) { }
 
+    // Объект таблицы SQLiteElements
     public virtual DbSet<SQLiteElement> SQLiteElements { get; set; }
 
+    // Объект таблицы SSMSElements
     public virtual DbSet<SSMSElement> SSMSElements { get; set; }
 
+    // Объект таблицы TestQuestions
     public virtual DbSet<TestQuestion> TestQuestions { get; set; }
 
+    // Объект таблицы TestResults
     public virtual DbSet<TestResult> TestResults { get; set; }
 
+    // Конфигурация подключения базы данных
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         => optionsBuilder.UseSqlite(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
 
+    // Настройка свойств для столбцов (полей) таблиц
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<SQLiteElement>(entity =>

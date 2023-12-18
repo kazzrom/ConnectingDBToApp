@@ -13,19 +13,23 @@ namespace ConnectingDBToApp.ViewModels
     {
         public AllResultsViewModel() 
         { 
+            // Получение всех результатов из базы данных
             Results = new ObservableCollection<TestResult>(DbContext.Tables.TestResults);
         }
 
+        // Поле всех результатов
         [ObservableProperty]
         [NotifyCanExecuteChangedFor(nameof(ClearResultsCommand))]
         private ObservableCollection<TestResult> _results;
 
+        // Команда возвращения на начальную страницу теста
         [RelayCommand]
         private void BackPage()
         {
             GlobalObjs.MainFrame.GoBack();
         }
 
+        // Команда для удаления всех результатов пользователей
         [RelayCommand(CanExecute = nameof(CanClearResults))]
         private void ClearResults()
         {
@@ -34,6 +38,7 @@ namespace ConnectingDBToApp.ViewModels
             Results.Clear();
         }
 
+        // Метод, отвечающий за активность кнопки для удаления всех результатов
         private bool CanClearResults()
         {
             return Results.Count > 0;

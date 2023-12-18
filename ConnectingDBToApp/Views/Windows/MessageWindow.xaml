@@ -12,7 +12,13 @@
         MouseDown="Window_MouseDown"
         BorderThickness="1"
         BorderBrush="{StaticResource BackgroundHeaderColor}">
-    
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="\Dictionaries\Styles\HeaderStyles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>

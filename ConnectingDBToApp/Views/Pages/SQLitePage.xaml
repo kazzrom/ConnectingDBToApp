@@ -7,11 +7,16 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="SQLitePage">
-    
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="\Dictionaries\Styles\TheoryPageStyles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
     <Page.DataContext>
         <vm:SQLiteViewModel/>
     </Page.DataContext>
-    
     <StackPanel>
         <TextBlock Text="SQLite"
                    Style="{StaticResource H1}"/>
@@ -58,5 +63,4 @@
             </TabItem>
         </TabControl>
     </StackPanel>
-    
 </Page>

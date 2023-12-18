@@ -1,0 +1,232 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Style x:Key="H1" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="{StaticResource Mulish}"/>
+        <Setter Property="FontSize" Value="36"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Margin" Value="0 10 0 30"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+    </Style>
+
+    <Style x:Key="H2" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="{StaticResource Mulish}"/>
+        <Setter Property="FontSize" Value="24"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Margin" Value="0 15 0 15"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+    </Style>
+
+    <Style x:Key="PlainText" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="{StaticResource Mulish}"/>
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="FontWeight" Value="Regular"/>
+        <Setter Property="Margin" Value="0 10"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+    </Style>
+
+    <Style x:Key="H1Item" TargetType="ListBoxItem">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <TextBlock x:Name="TextBlockContent"
+                               Text="{Binding Text}"
+                               Style="{StaticResource H1}"/>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="H2Item" TargetType="ListBoxItem">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <TextBlock x:Name="TextBlockContent"
+                               Text="{Binding Text}"
+                               Style="{StaticResource H2}"/>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="PlainTextItem" TargetType="ListBoxItem">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Border>
+                        <TextBlock x:Name="TextBlockContent"
+                                   Text="{Binding Text}"
+                                   Style="{StaticResource PlainText}"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="ImageItem" TargetType="ListBoxItem">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Image Source="{Binding Text}"
+                           Margin="0 5"
+                           MaxWidth="600"/>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="DoubleImageItem" TargetType="ListBoxItem">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <UniformGrid Columns="2"
+                                 Margin="0 5">
+                        <Image Source="{Binding Text}"
+                               Margin="0 0 5 0"/>
+                        <Image Source="{Binding AdditionalText}"/>
+                    </UniformGrid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="CopyButtonStyle" TargetType="Button">
+        <Style.Resources>
+            <Style x:Key="BackgroundElement" TargetType="Border">
+                <Setter Property="Background" Value="Transparent"/>
+                <Setter Property="CornerRadius" Value="5"/>
+            </Style>
+        </Style.Resources>
+        <Setter Property="Width" Value="30"/>
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="ToolTip" Value="Скопировать текст"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="BackgroundElement" 
+                            Style="{StaticResource BackgroundElement}">
+                        <Rectangle x:Name="Icon" 
+                                   Width="22.5" Height="22.5"
+                                   Fill="Black">
+                            <Rectangle.OpacityMask>
+                                <VisualBrush Stretch="Uniform" Visual="{StaticResource ContentCopyIcon}"/>
+                            </Rectangle.OpacityMask>
+                        </Rectangle>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="BackgroundElement"
+                                    Property="Background" 
+                                    Value="{DynamicResource MouseOverColor}"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="BackgroundElement" 
+                                    Property="Background" 
+                                    Value="{DynamicResource BackgroundHeaderColor}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="CopyButtonForImageStyle" TargetType="Button">
+        <Setter Property="Width" Value="30"/>
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="ToolTip" Value="Скопировать код"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="BackgroundElement"
+                        Background="Transparent"
+                        CornerRadius="5">
+                        <Rectangle x:Name="Icon" 
+                               Width="22.5" Height="22.5"
+                               Fill="White">
+                            <Rectangle.OpacityMask>
+                                <VisualBrush Stretch="Uniform" Visual="{StaticResource ContentCopyIcon}"/>
+                            </Rectangle.OpacityMask>
+                        </Rectangle>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="BackgroundElement"
+                                    Property="Background" Value="White"/>
+                            <Setter TargetName="Icon"
+                                    Property="Fill" Value="Black"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="BackgroundElement"
+                                    Property="Background" Value="Black"/>
+                            <Setter TargetName="Icon"
+                                    Property="Fill" Value="White"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="CopyButtonItem" TargetType="ListBoxItem">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Button Grid.Column="0"
+                                Style="{StaticResource CopyButtonStyle}"
+                                Content="Скопировать" 
+                                Command="{Binding DataContext.CopyTextCommand, RelativeSource={RelativeSource AncestorType=Page}}"
+                                CommandParameter="{Binding Code}"
+                                Margin="10 0 5 0"/>
+                        <TextBlock Grid.Column="1"
+                                   Style="{StaticResource PlainText}"
+                                   Text="{Binding Text}"
+                                   VerticalAlignment="Center"/>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="CodeImageItem" TargetType="ListBoxItem">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Border Margin="0 5"
+                            MaxWidth="600">
+                        <Grid>
+                            <Image Source="{Binding Text}"/>
+                            <Button Content="Скопировать код"
+                                    Command="{Binding DataContext.CopyTextCommand, RelativeSource={RelativeSource AncestorType=Page}}"
+                                    CommandParameter="{Binding Code}"
+                                    Style="{StaticResource CopyButtonForImageStyle}"
+                                    VerticalAlignment="Top"
+                                    HorizontalAlignment="Right"
+                                    Margin="0 30 30 0"/>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="HyperLinkItem" TargetType="ListBoxItem">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <TextBlock>
+                        <Hyperlink Command="{Binding DataContext.NavigateLinkCommand, RelativeSource={RelativeSource AncestorType=Page}}"
+                                   CommandParameter="{Binding Code}">
+                            <TextBlock Text="{Binding Text}"/>
+                        </Hyperlink>
+                    </TextBlock>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

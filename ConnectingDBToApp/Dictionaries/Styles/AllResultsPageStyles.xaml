@@ -1,0 +1,107 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Style x:Key="ArrowBackButton" TargetType="Button">
+        <Setter Property="Width" Value="40"/>
+        <Setter Property="Height" Value="40"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="BorderBrush" Value="Black"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="BackgroundElement"
+                            Background="White"
+                            CornerRadius="200"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            BorderBrush="{TemplateBinding BorderBrush}">
+                        <Rectangle x:Name="Icon" 
+                                   Width="20" Height="20"
+                                   Fill="Black">
+                            <Rectangle.OpacityMask>
+                                <VisualBrush Stretch="Uniform" 
+                                             Visual="{StaticResource ArrowBackIcon}"/>
+                            </Rectangle.OpacityMask>
+                        </Rectangle>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="BackgroundElement"
+                                    Property="Background" Value="{DynamicResource MouseOverColor}"/>
+                            <Setter TargetName="Icon"
+                                    Property="Fill" Value="Black"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="BackgroundElement"
+                                    Property="Background" Value="{DynamicResource BackgroundHeaderColor}"/>
+                            <Setter TargetName="Icon"
+                                    Property="Fill" Value="White"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="ResultListViewItem" TargetType="ListViewItem">
+        <Setter Property="Background" Value="{DynamicResource MouseOverColor}"/>
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ListViewItem">
+                    <Border Background="{TemplateBinding Background}"
+                            Padding="15 10"
+                            CornerRadius="5">
+                        <GridViewRowPresenter VerticalAlignment="Center"
+                                              Columns="{TemplateBinding GridView.ColumnCollection}" 
+                                              Content="{TemplateBinding Content}"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="ItemsControl.AlternationIndex" Value="1">
+                            <Setter Property="Background" Value="{DynamicResource BackgroundMenuColor}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="ResultListView" TargetType="ListView">
+        <Setter Property="ItemContainerStyle" Value="{StaticResource ResultListViewItem}"/>
+        <Style.Triggers>
+            <Trigger Property="HasItems" Value="False">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="ListView">
+                            <TextBlock Text="Нет результатов"
+                                       Style="{StaticResource PlainText}"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"/>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="HeaderListView" TargetType="GridViewColumnHeader">
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="Background" Value="{DynamicResource BackgroundHeaderColor}"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="GridViewColumnHeader">
+                    <Grid>
+                        <Border Background="{TemplateBinding Background}"
+                                BorderThickness="0 0 0 1"
+                                BorderBrush="White"
+                                Padding="15 10"
+                                CornerRadius="5"
+                                Margin="0 0 1 0">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

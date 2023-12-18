@@ -8,13 +8,21 @@ namespace ConnectingDBToApp.GlobalClasses
 {
     public class CustomStyleSelector : StyleSelector
     {
+        // Стиль для обычного текста
         public Style PlainTextItem { get; set; } = null!;
+        // Стиль для заголовка первого уровня
         public Style H1Item { get; set; } = null!;
+        // Стиль для заголовка второго уровня
         public Style H2Item { get; set; } = null!;
+        // Стиль для изображения
         public Style ImageItem { get; set; } = null!;
+        // Стиль для двух изображений вместе
         public Style DoubleImageItem { get; set; } = null!;
+        // Стиль для кнопки копирования текста
         public Style CopyButtonItem { get; set; } = null!;
+        // Стиль для изображения с программным кодом
         public Style CodeImageItem { get; set; } = null!;
+        // Стиль для гиперссылки
         public Style HyperLinkItem { get; set; } = null!;
 
         public override Style SelectStyle(object item, DependencyObject container)

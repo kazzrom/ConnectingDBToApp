@@ -12,13 +12,18 @@
         MinWidth="800" MinHeight="500"
         x:Name="MainWindowApp"
         MaxHeight="{x:Static SystemParameters.MaximizedPrimaryScreenHeight}">
-    
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="\Dictionaries\Styles\HeaderStyles.xaml"/>
+                <ResourceDictionary Source="\Dictionaries\Styles\SidebarStyles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
     <Window.DataContext>
         <vm:MainViewModel/>
     </Window.DataContext>
-    
     <DockPanel LastChildFill="True">
-        
         <DockPanel LastChildFill="True" 
                    DockPanel.Dock="Top" 
                    Height="40"
@@ -47,11 +52,11 @@
                            Margin="0 0 10 0"/>
             </StackPanel>
         </DockPanel>
-
         <ListBox x:Name="SideBar"
                  DockPanel.Dock="Left"
                  Style="{StaticResource SideBar}"
-                 ItemContainerStyle="{StaticResource SideBarItem}">
+                 ItemContainerStyle="{StaticResource SideBarItem}" 
+                 Width="250">
             <ListBoxItem DockPanel.Dock="Top">
                 <ListBoxItem.Background>
                     <ImageBrush ImageSource="\Images\Icons\SSMS.png"/>
@@ -73,7 +78,7 @@
                     <ImageBrush ImageSource="\Images\Icons\Test.png"/>
                 </ListBoxItem.Background>
                 <ListBoxItem.Content>
-                    <TextBlock Text="Тест"/>
+                    <TextBlock Text="Проверка знаний"/>
                 </ListBoxItem.Content>
             </ListBoxItem>
             <ListBoxItem DockPanel.Dock="Bottom" 
@@ -86,7 +91,6 @@
                 </i:EventTrigger>
             </i:Interaction.Triggers>
         </ListBox>
-
         <ScrollViewer x:Name="MainScrollViewer" 
                       HorizontalScrollBarVisibility="Disabled">
             <Frame x:Name="MainFrameApp"
@@ -94,7 +98,5 @@
                    NavigationUIVisibility="Hidden"
                    Padding="30 20 0 30"/>
         </ScrollViewer>
-        
     </DockPanel>
-    
 </Window>

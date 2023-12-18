@@ -14,18 +14,22 @@ namespace ConnectingDBToApp.ViewModels
     {
         public ResultViewModel() 
         {
+            // Регистрация класса как получателя сообщений
             WeakReferenceMessenger.Default.Register(this);
         }
 
+        // Поле с результатом теста
         [ObservableProperty]
         private TestResult _result = null!;
 
+        // Метод для получения сообщения о результате пользователя
         public void Receive(GetTestResultMessage message)
         {
             Result = message.Value;
             WeakReferenceMessenger.Default.UnregisterAll(this);
         }
 
+        // Команда для возвращения на начальную страницу теста
         [RelayCommand]
         private void NavigateTestPage()
         {

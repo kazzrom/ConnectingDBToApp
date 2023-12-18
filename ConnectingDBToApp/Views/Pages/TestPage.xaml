@@ -6,19 +6,24 @@
       xmlns:vm="clr-namespace:ConnectingDBToApp.ViewModels"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Background="White"
       Title="TestPage">
-    
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="\Dictionaries\Styles\TestPageStyles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
     <Page.DataContext>
         <vm:TestViewModel/>
     </Page.DataContext>
-    
     <Grid>
         <StackPanel Orientation="Vertical"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center">
-            <TextBlock Text="Проверка знаний" 
-                       Style="{StaticResource H1}"/>
+            <TextBlock Text="Тест по теме «Технология подключения базы данных к настольному приложению»" 
+                       Style="{StaticResource H2}"
+                       TextAlignment="Center"/>
             <StackPanel Orientation="Horizontal"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
@@ -41,5 +46,4 @@
                 VerticalAlignment="Bottom"
                 Margin="0 0 0 30"/>
     </Grid>
-    
 </Page>

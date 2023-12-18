@@ -15,26 +15,9 @@ namespace ConnectingDBToApp.ViewModels
 {
     public partial class SSMSViewModel : ObservableObject
     {
-        [ObservableProperty]
-        private ObservableCollection<SSMSElement> _creatingDbItems;
-
-        [ObservableProperty]
-        private ObservableCollection<SSMSElement> _connectionDBItems;
-
-        [ObservableProperty]
-        private ObservableCollection<SSMSElement> _SQLClientDownloadItems;
-
-        [ObservableProperty]
-        private ObservableCollection<SSMSElement> _SQLClientConnectionDBItems;
-
-        [ObservableProperty]
-        private ObservableCollection<SSMSElement> _SQLClientQueryExecutionItems;
-
-        [ObservableProperty]
-        private ObservableCollection<SSMSElement> _EFCore7Items;
-
         public SSMSViewModel()
         {
+            // Получение данных из базы данных
             CreatingDbItems = new ObservableCollection<SSMSElement>(DbContext.Tables.SSMSElements.Where(item => item.Chapter == "CreatingDB"));
             ConnectionDBItems = new ObservableCollection<SSMSElement>(DbContext.Tables.SSMSElements.Where(item => item.Chapter == "ConnectionDB"));
             SQLClientDownloadItems = new ObservableCollection<SSMSElement>(DbContext.Tables.SSMSElements.Where(item => item.Chapter == "SQLClientDownload"));
@@ -43,6 +26,31 @@ namespace ConnectingDBToApp.ViewModels
             EFCore7Items = new ObservableCollection<SSMSElement>(DbContext.Tables.SSMSElements.Where(item => item.Chapter == "EFCore7"));
         }
 
+        // Поле с элементами раздела "Создание БД"
+        [ObservableProperty]
+        private ObservableCollection<SSMSElement> _creatingDbItems;
+
+        // Поле с элементами раздела "Соединение БД в VS"
+        [ObservableProperty]
+        private ObservableCollection<SSMSElement> _connectionDBItems;
+
+        // Поле с элементами раздела "Установка SqlClient"
+        [ObservableProperty]
+        private ObservableCollection<SSMSElement> _SQLClientDownloadItems;
+
+        // Поле с элементами раздела "Подключение БД"
+        [ObservableProperty]
+        private ObservableCollection<SSMSElement> _SQLClientConnectionDBItems;
+
+        // Поле с элементами раздела "Выполнение запросов"
+        [ObservableProperty]
+        private ObservableCollection<SSMSElement> _SQLClientQueryExecutionItems;
+
+        // Поле с элементами раздела "Работа с EF Core 7"
+        [ObservableProperty]
+        private ObservableCollection<SSMSElement> _EFCore7Items;
+
+        // Команда для копирования текста
         [RelayCommand]
         private void CopyText(string code)
         {
@@ -50,6 +58,7 @@ namespace ConnectingDBToApp.ViewModels
             new MessageWindow("Cкопировано!").ShowDialog();
         }
 
+        // Команда для перехода к другой вкладке
         [RelayCommand]
         private void NavigatePart(object i)
         {
@@ -58,6 +67,7 @@ namespace ConnectingDBToApp.ViewModels
             GlobalObjs.MainScrollViewer.ScrollToHome();
         }
 
+        // Команда для перехода к другой подвкладке
         [RelayCommand]
         private void NavigateSubPart(object i)
         {

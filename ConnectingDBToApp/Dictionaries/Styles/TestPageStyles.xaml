@@ -1,0 +1,44 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Style x:Key="UsernameTextBox" TargetType="TextBox">
+        <Setter Property="Width" Value="200"/>
+        <Setter Property="Padding" Value="5 3 0 3"/>
+        <Setter Property="VerticalContentAlignment" Value="Stretch"/>
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="FontFamily" Value="{StaticResource Mulish}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TextBoxBase">
+                    <Border x:Name="Border"
+                            BorderThickness="1"
+                            BorderBrush="{DynamicResource BackgroundMenuColor}"
+                            CornerRadius="5"
+                            Padding="{TemplateBinding Padding}">
+                        <Grid>
+                            <TextBlock x:Name="Placeholder"
+                                       Text="Username"
+                                       Foreground="{StaticResource BackgroundMenuColor}"
+                                       VerticalAlignment="Center"
+                                       Margin="5 0 0 0"
+                                       Visibility="Collapsed"/>
+                            <ScrollViewer x:Name="PART_ContentHost" 
+                                          VerticalAlignment="Center"/>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsFocused" Value="True">
+                            <Setter Property="BorderBrush" Value="{StaticResource BackgroundHeaderColor}"
+                                    TargetName="Border"/>
+                            <Setter Property="Visibility" Value="Collapsed"
+                                    TargetName="Placeholder"/>
+                        </Trigger>
+                        <DataTrigger Binding="{Binding Text}" Value="">
+                            <Setter Property="Visibility" Value="Visible"
+                                    TargetName="Placeholder"/>
+                        </DataTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>
